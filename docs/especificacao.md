@@ -3,27 +3,28 @@
 Nesta parte do trabalho você deve detalhar a documentação dos requisitos do sistema proposto de acordo com as seções a seguir. Ressalta-se que aqui é utilizado como exemplo um sistema de gestão de cursos de aperfeiçoamento.
 
 ## 3.1 Objetivos deste documento
-Descrever e especificar as necessidades da Coordenação do Curso de Sistemas de Informação da PUC Minas que devem ser atendidas pelo projeto SCCA – Sistema de Cadastro de Cursos de Aperfeiçoamento.
+Descrever e especificar os requisitos do sistema de gestão de finanças pessoais, definindo suas funcionalidades e características, a fim de orientar seu desenvolvimento e garantir o atendimento às necessidades dos usuários.
 
 ## 3.2 Escopo do produto
 
 ### 3.2.1 Nome do produto e seus componentes principais
-O produto será denominado SCCA – Sistema de Cadastro de Cursos de Aperfeiçoamento. Ele terá somente um componente (módulo) com os devidos elementos necessários à gestão de cursos.
+O produto será denominado Midas Helper. Ele terá dois componentes (módulos), sendo um com os devidos elementos necessários à gestão e registros financeiros e outro com elementos necessários para um módulo de assistente virtual.
 
 ### 3.2.2 Missão do produto
-Gerenciar informações sobre a oferta de cursos de aperfeiçoamento, gerenciar a composição das turmas, alunos, professores e matrículas. 
+Auxiliar jovens no controle de suas finanças pessoais por meio de uma ferramenta simples, acessível e interativa, promovendo a educação financeira e a tomada de decisões mais conscientes.
 
 ### 3.2.3 Limites do produto
-O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcelas do curso, pagamento a professore e agendamentos. O SCCA não contempla o atendimento a vários cursos de Sistemas de Informação de outras unidades da PUC Minas.
+O Midas Helper nao fornece nenhuma ligação direta com as contas bancarias do usuário, sendo necessário preencher as entradas e saídas manualmente. 
 
 ### 3.2.4 Benefícios do produto
 
 | # | Benefício | Valor para o Cliente |
 |--------------------|------------------------------------|----------------------------------------|
-|1	| Facilidade no cadastro de dados |	Essencial |
-|2 | Facilidade na recuperação de informações | Essencial | 
-|3 | Segurança no cadastro de matrículas | Essencial | 
-|4	| Melhoria na comunicação com os alunos	| Recomendável | 
+|1	| Facilidade no registro de receitas e despesas |	Essencial |
+|2 | Visualização clara dos gastos e hábitos de consumo | Essencial | 
+|3 | Segurança dos dados do usuário | Essencial | 
+|4	| Suporte inteligente para tomada de decisões financeiras	| Recomendável | 
+|5 | Auxílio no planejamento financeiro e definição de metas | Recomendável |
 
 ## 3.3 Descrição geral do produto
 
