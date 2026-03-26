@@ -49,7 +49,7 @@ O Midas Helper nao fornece nenhuma ligação direta com as contas bancarias do u
 ### 3.3.2 Requisitos Não Funcionais
 
 | Código | Requisito Não Funcional (Restrição) | Descrição |
-|--------------------|------------------------------------|
+|--------------------|--------------------------|------------------------------------|
 | RNF1 | Usabilidade | O sistema deverá possuir interface simples e intuitiva, adaptada para o público jovem e evitando termos técnicos complexos sem explicação. |
 | RNF2 | Segurança | O acesso deve ser protegido por login e senha. |
 | RNF3 |	Privacidade | Os dados do usuário devem ser armazenados de forma segura, não compartilhando os dados financeiros sensíveis com terceiros, seguindo as diretrizes da LGPD. |
