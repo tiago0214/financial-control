@@ -32,27 +32,37 @@ O Midas Helper nao fornece nenhuma ligação direta com as contas bancarias do u
 
 | Código | Requisito Funcional (Funcionalidade) | Descrição |
 |--------------------|------------------------------------|----------------------------------------|
-| RF1 | Gerenciar Curso de Aperfeiçoamento |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Cursos de Aperfeiçoamento |
-| RF2 |	Gerenciar Professor	| Processamento de Inclusão, Alteração, Exclusão e Consulta de professores |
-| RF3	| Gerenciar Matrícula |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Matrículas de alunos em Cursos de Aperfeiçoamento |
-| ... |	...	| ... |
+| RF1 | Cadastrar Usuário |	Permitir que novos usuários realizem cadastro no sistema com informações básicas. |
+| RF2 |	Realizar Login	| Permitir que o usuário acesse o sistema por meio de autenticação (email e senha). |
+| RF3 |	Gerenciar Perfil	| Permitir a edição de dados pessoais e redefinição da senha. |
+| RF4	| Registrar Receitas |	Permitir o registro de entradas financeiras como salário, mesada, etc. |
+| RF5 |	Registrar Despesas	| Permitir o registro de gastos com categorização como alimentação, transporte, lazer, etc. |
+| RF6 |	Editar/Excluir Registros	| Permitir alteração ou exclusão de receitas ou despesas já cadastradas. |
+| RF7 |	Visualizar Histórico Financeiro	| Exibir lista de transações realizadas pelo usuário. |
+| RF8 |	Categorizar Transações	| Permitir classificação das receitas e despesas em categorias. |
+| RF9 |	Gerar Relatórios	| Apresentar resumos financeiros em formato de gráficos ou listas. |
+| RF10 |	Definir Metas Financeiras	| Permitir que o usuário crie objetivos como por exemplo: viagem, compra, reserva. |
+| RF11 |	Acompanhar Metas	| Mostrar progresso das metas financeiras estabelecidas. |
+| RF12 |	Sugestões Inteligentes	| O sistema deve sugerir melhorias com base nos hábitos do usuário. |
+| RF13 |	Assistente Virtual	| Disponibilizar um assistente que auxilie com dicas e análises financeiras. |
 
 ### 3.3.2 Requisitos Não Funcionais
 
-| Código | Requisito Não Funcional (Restrição) |
+| Código | Requisito Não Funcional (Restrição) | Descrição |
 |--------------------|------------------------------------|
-| RNF1 | O ambiente operacional a ser utilizado é o Windows XP. |
-| RNF2 | O sistema deverá executar em um computador configurado com uma impressora de tecnologia laser ou de jato de tinta, a ser usada para impressão dos relatórios. |
-| RNF3 |	Segurança	O produto deve restringir o acesso por meio de senhas individuais para o usuário. |
-| ... |	... |	... |
+| RNF1 | Usabilidade | O sistema deverá possuir interface simples e intuitiva, adaptada para o público jovem e evitando termos técnicos complexos sem explicação. |
+| RNF2 | Segurança | O acesso deve ser protegido por login e senha. |
+| RNF3 |	Privacidade | Os dados do usuário devem ser armazenados de forma segura, não compartilhando os dados financeiros sensíveis com terceiros, seguindo as diretrizes da LGPD. |
+| RNF4 |	Disponibilidade | O sistema deve estar disponível 24 horas por dia via conexão com a internet. |
+| RNF5 |	Desempenho | O sistema deve responder às ações do usuário em até 3 segundos. |
+| RNF6 | Desempenho	| O sistema deve suportar múltiplos usuários simultaneamente. |
 
 ### 3.3.3 Usuários 
 
 | Ator | Descrição |
 |--------------------|------------------------------------|
-| Coordenador |	Usuário gerente do sistema responsável pelo cadastro e manutenção de cursos de aperfeiçoamento. Possui acesso geral ao sistema. |
-| Secretaria |	Usuário responsável por registros de alunos, professores, turmas e gerência de matrículas. |
-| ... |	... |	... |
+| Usuário Comum |	Jovens e adultos que utilizam o sistema para controlar suas finanças pessoais, registrar gastos, receitas e acompanhar metas. |
+| Administrador |	Responsável pela manutenção técnica do sistema e atualização dos conteúdos educativos oferecidos pelo assistente. |
 
 ## 3.4 Modelagem do Sistema
 
