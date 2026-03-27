@@ -67,11 +67,11 @@ O Midas Helper nao fornece nenhuma ligação direta com as contas bancarias do u
 ## 3.4 Modelagem do Sistema
 
 ### 3.4.1 Diagrama de Casos de Uso
-Como observado no diagrama de casos de uso da Figura 1, a secretária poderá gerenciar as matrículas e professores no sistema, enquanto o coordenador, além dessas funções, poderá gerenciar os cursos de aperfeiçoamento.
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
-![dcu](https://github.com/user-attachments/assets/41f6b731-b44e-43aa-911f-423ad6198f47)
+<img width="2332" height="1789" alt="use_case(1)" src="https://github.com/user-attachments/assets/4ddf244f-7e75-40fa-a51e-1da0af7ee8f9" />
+
  
 ### 3.4.2 Descrições de Casos de Uso
 
@@ -125,8 +125,10 @@ Pós-condições: Um professor foi inserido ou removido, seus dados foram altera
 ### 3.4.3 Diagrama de Classes 
 
 #### Figura 2: Diagrama de Classes do Sistema.
- 
-<img width="6996" height="5369" alt="use_case" src="https://github.com/user-attachments/assets/1d6465e1-bcc4-4ba5-9278-36641ebdcf3d" />
+
+A Figura 2 mostra o diagrama de classes do sistema. A Matrícula deve conter a identificação do funcionário responsável pelo registro, bem com os dados do aluno e turmas. Para uma disciplina podemos ter diversas turmas, mas apenas um professor responsável por ela.
+
+ ![image](https://github.com/user-attachments/assets/abc7591a-b46f-4ea2-b8f0-c116b60eb24e)
 
 
 
