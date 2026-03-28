@@ -70,7 +70,7 @@ O Midas Helper nao fornece nenhuma ligação direta com as contas bancarias do u
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
-<img width="2332" height="1789" alt="use_case(1)" src="https://github.com/user-attachments/assets/4ddf244f-7e75-40fa-a51e-1da0af7ee8f9" />
+<img width="2424" height="1789" alt="use_case_" src="https://github.com/user-attachments/assets/f9300a99-7184-460e-8300-030c86b839fe" />
 
  
 ### 3.4.2 Descrições de Casos de Uso
