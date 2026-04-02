@@ -126,19 +126,16 @@ Pós-condições: Um professor foi inserido ou removido, seus dados foram altera
 
 #### Figura 2: Diagrama de Classes do Sistema.
 
-A Figura 2 mostra o diagrama de classes do sistema. A Matrícula deve conter a identificação do funcionário responsável pelo registro, bem com os dados do aluno e turmas. Para uma disciplina podemos ter diversas turmas, mas apenas um professor responsável por ela.
-
- ![image](https://github.com/user-attachments/assets/abc7591a-b46f-4ea2-b8f0-c116b60eb24e)
-
-
+<img width="1310" height="551" alt="DiagramaClassesMidas" src="https://github.com/user-attachments/assets/f754b2d0-badb-4273-9a3d-019967d09ab7" />
+Obs: Os métodos de CadastrarUsuario, RegistrarMeta e RegistrarTransacao englobam as ações básicas de inclusão, alteração, visualização e exclusão. 
 
 ### 3.4.4 Descrições das Classes 
 
 | # | Nome | Descrição |
 |--------------------|------------------------------------|----------------------------------------|
-| 1	|	Aluno |	Cadastro de informações relativas aos alunos. |
-| 2	| Curso |	Cadastro geral de cursos de aperfeiçoamento. |
-| 3 |	Matrícula |	Cadastro de Matrículas de alunos nos cursos. |
-| 4 |	Turma |	Cadastro de turmas.
-| 5	|	Professor |	Cadastro geral de professores que ministram as disciplinas. |
-| ... |	... |	... |
+| 1	|	Usuario |	Cadastro do usuário no sistema. |
+| 2	| Transacao |	Dados das despesas e receitas do usuário. |
+| 3 |	Meta |	Dados das metas financeiras do usuário. |
+| 4 |	ProcessoTransacao |	Realiza a manipulação dos objetos de Transacao. |
+| 5	|	ProcessoMeta |	Realiza a manipulação dos objetos de Meta. |
+| 6 |	Assistente |	Assistente Virtual para criar sugestões e manipular Transacao e Meta. |
