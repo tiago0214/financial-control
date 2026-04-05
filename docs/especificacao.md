@@ -75,52 +75,189 @@ O Midas Helper nao fornece nenhuma ligação direta com as contas bancarias do u
  
 ### 3.4.2 Descrições de Casos de Uso
 
-Cada caso de uso deve ter a sua descrição representada nesta seção. Exemplo:
+#### Gerenciar Perfil (CSU01) 
 
-#### Gerenciar Professor (CSU01)
+Sumário:  O Usuário gerencia seus dados pessoais no sistema. 
 
-Sumário: A Secretária realiza a gestão (inclusão, remoção, alteração e consulta) dos dados sobre professores.
+Ator Primário: Usuário 
 
-Ator Primário: Secretária.
-
-Ator Secundário: Coordenador.
-
-Pré-condições: A Secretária deve ser validada pelo Sistema.
+Pré-condições:  O Usuário deve estar autenticado no sistema. 
 
 Fluxo Principal:
+1. O Usuário acessa a opção de gerenciar perfil. 
+2. O sistema exibe os dados atuais do perfil. 
+3. O Usuário edita as informações desejadas. 
+4. O sistema valida e salva os dados. 
+5. O sistema confirma a atualização. 
 
-1) 	A Secretária requisita manutenção de professores.
-2) 	O Sistema apresenta as operações que podem ser realizadas: inclusão de um novo professor, alteração de um professor, a exclusão de um professor e a consulta de dados de um professor.
-3) 	A Secretária seleciona a operação desejada: Inclusão, Exclusão, Alteração ou Consulta, ou opta por finalizar o caso de uso.
-4) 	Se a Secretária desejar continuar com a gestão de professores, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+Fluxo Alternativo: Dados inválidos 
 
-Fluxo Alternativo (3): Inclusão
+a) O sistema identifica erro nos dados.
 
-a)	A Secretária requisita a inclusão de um professor. <br>
-b)	O Sistema apresenta uma janela solicitando o CPF do professor a ser cadastrado. <br>
-c)	A Secretária fornece o dado solicitado. <br>
-d)	O Sistema verifica se o professor já está cadastrado. Se sim, o Sistema reporta o fato e volta ao início; caso contrário, apresenta um formulário em branco para que os detalhes do professor (Código, Nome, Endereço, CEP, Estado, Cidade, Bairro, Telefone, Identidade, Sexo, Fax, CPF, Data do Cadastro e Observação) sejam incluídos. <br>
-e)	A Secretária fornece os detalhes do novo professor. <br>
-f)	O Sistema verifica a validade dos dados. Se os dados forem válidos, inclui o novo professor e a grade listando os professores cadastrados é atualizada; caso contrário, o Sistema reporta o fato, solicita novos dados e repete a verificação. <br>
+b) Solicita correção ao Usuário. 
 
-Fluxo Alternativo (3): Remoção
+Pós-condições: Os dados do perfil são atualizados. 
 
-a)	A Secretária seleciona um professor e requisita ao Sistema que o remova. <br>
-b)	Se o professor pode ser removido, o Sistema realiza a remoção; caso contrário, o Sistema reporta o fato. <br>
 
-Fluxo Alternativo (3): Alteração
 
-a)	A Secretária altera um ou mais dos detalhes do professor e requisita sua atualização. <br>
-b)	O Sistema verifica a validade dos dados e, se eles forem válidos, altera os dados na lista de professores, caso contrário, o erro é reportado. <br>
- 
-Fluxo Alternativo (3): Consulta
+#### Registrar Receitas (CSU02) 
 
-a)	A Secretária opta por pesquisar pelo nome ou código e solicita a consulta sobre a lista de professores. <br>
-b)	O Sistema apresenta uma lista professores. <br>
-c)	A Secretária seleciona o professor. <br>
-d)	O Sistema apresenta os detalhes do professor no formulário de professores. <br>
+Sumário: O Usuário registra entradas financeiras. 
 
-Pós-condições: Um professor foi inserido ou removido, seus dados foram alterados ou apresentados na tela.
+Ator Primário: Usuário 
+
+Ator Secundário: Assistente Virtual 
+
+Pré-condições: Usuário autenticado.
+
+Fluxo Principal:
+1. O Usuário solicita registrar receita. 
+2. O sistema apresenta formulário. 
+3. O Usuário insere os dados. 
+4. O sistema valida e salva. 
+5. O sistema atualiza o saldo. 
+
+Fluxo Alternativo: Dados inválidos 
+
+a) O sistema solicita correção. 
+
+Pós-condições: Receita registrada no sistema. 
+
+
+
+#### Registrar Despesas (CSU03) 
+
+Sumário: O Usuário registra saídas financeiras. 
+
+Ator Primário: Usuário 
+
+Ator Secundário: Assistente Virtual 
+
+Pré-condições: Usuário autenticado. 
+
+Fluxo Principal 
+1. O Usuário solicita registrar despesa. 
+2. O sistema apresenta formulário. 
+3. O Usuário insere os dados. 
+4. O sistema valida e salva. 
+5. O sistema atualiza o saldo. 
+
+Fluxo Alternativo: Dados inválidos 
+
+a) O sistema solicita correção. 
+
+Pós-condições: Despesa registrada. 
+
+
+
+#### Editar/Excluir Registros (CSU04) 
+
+Sumário: O Usuário altera ou remove registros financeiros. 
+
+Ator Primário: Usuário 
+
+Pré-condições: Existirem registros cadastrados. 
+
+Fluxo Principal 
+1. O Usuário acessa os registros. 
+2. Seleciona um registro. 
+3. Escolhe editar ou excluir. 
+4. O sistema executa a ação. 
+
+Pós-condições: Registro atualizado ou removido. 
+
+
+
+#### Visualizar Histórico Financeiro (CSU05) 
+
+Sumário: O Usuário visualiza seu histórico financeiro. 
+
+Ator Primário: Usuário 
+
+Fluxo Principal 
+1. O Usuário solicita visualização. 
+2. O sistema apresenta o histórico. 
+
+Pós-condições: Dados financeiros exibidos. 
+
+
+
+#### Categorizar Transações (CSU06) 
+
+Sumário: O Usuário organiza transações por categorias. 
+
+Ator Primário: Usuário 
+
+Fluxo Principal 
+1. O Usuário seleciona uma transação. 
+2. Define uma categoria. 
+3. O sistema salva a categoria. 
+
+Pós-condições: Transações categorizadas. 
+
+
+
+#### Gerar Relatórios (CSU07) 
+
+Sumário: O Usuário gera relatórios financeiros. 
+
+Ator Primário: Usuário 
+
+Fluxo Principal:
+1. O Usuário solicita relatório. 
+2. Escolhe filtros (período, categoria). 
+3. O sistema gera o relatório. 
+4. O sistema exibe os resultados. 
+
+Pós-condições: Relatório gerado. 
+
+
+
+#### Definir Metas Financeiras (CSU08) 
+
+Sumário: O Usuário define metas financeiras. 
+
+Ator Primário: Usuário 
+
+Ator Secundário: Assistente Virtual 
+
+Fluxo Principal:
+1. O Usuário define uma meta. 
+2. Informa valor e prazo. 
+3. O sistema salva a meta. 
+
+Pós-condições: Meta cadastrada. 
+
+
+
+#### Acompanhar Metas (CSU09) 
+
+Sumário: O Usuário acompanha o progresso das metas. 
+
+Ator Primário: Usuário 
+
+Fluxo Principal 
+1. O Usuário acessa suas metas. 
+2. O sistema mostra progresso. 
+Pós-condições: Status das metas exibido. 
+
+
+
+#### Sugestões Inteligentes (CSU10) 
+
+Sumário: O sistema fornece recomendações financeiras com base nos dados. 
+
+Ator Primário: Assistente Virtual 
+
+Ator Secundário: Usuário 
+
+Fluxo Principal: 
+1. O sistema analisa dados financeiros. 
+2. Gera sugestões. 
+3. Apresenta ao Usuário. 
+
+Pós-condições: Sugestões exibidas.
+
 
 ### 3.4.3 Diagrama de Classes 
 
