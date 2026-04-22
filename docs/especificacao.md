@@ -57,6 +57,7 @@ Fornecer um sistema digital para controle financeiro pessoal, focado no público
 | RNF4 |	Disponibilidade | O sistema deve estar disponível 24 horas por dia via conexão com a internet. |
 | RNF5 |	Desempenho | O sistema deve responder às ações do usuário em até 3 segundos. |
 | RNF6 | Desempenho	| O sistema deve suportar múltiplos usuários simultaneamente. |
+| RNF7 | Segurança	| O sistema deverá encerrar automaticamente a sessão do usuário após 20 minutos de inatividade. |
 
 ### 3.3.3 Usuários 
 
