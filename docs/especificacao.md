@@ -1,27 +1,30 @@
 # 3. DOCUMENTO DE ESPECIFICAÇÃO DE REQUISITOS DE SOFTWARE
 
 ## 3.1 Objetivos deste documento
-Descrever e especificar os requisitos do sistema de gestão de finanças pessoais, definindo suas funcionalidades e características, a fim de orientar seu desenvolvimento e garantir o atendimento às necessidades dos usuários.
+Descrever e especificar os requisitos funcionais, não funcionais e arquiteturais do sistema de gestão de finanças pessoais (Midas Helper), definindo suas restrições técnicas e operacionais a fim de orientar o desenvolvimento e o ciclo de vida do software.
 
 ## 3.2 Escopo do produto
 
 ### 3.2.1 Nome do produto e seus componentes principais
-O produto será denominado Midas Helper. Ele terá dois componentes (módulos), sendo um com os devidos elementos necessários à gestão e registros financeiros e outro com elementos necessários para um módulo de assistente virtual.
+O produto será denominado Midas Helper. Arquiteturalmente, o sistema é dividido em três componentes principais:
+ - Aplicação Cliente (Frontend): Uma Single Page Application (SPA) desenvolvida em Vue.js 3 e TypeScript, responsável pela interface do usuário e chamadas às APIs.
+ - Servidor de Aplicação (Backend): Uma API RESTful desenvolvida em Python utilizando o framework FastAPI, responsável pela lógica de negócios, controle de dados e autenticação.
+ - Módulo de Assistente Virtual (IA): Um serviço (ou integração) acoplado ao backend responsável por analisar dados financeiros e gerar insights inteligentes.
 
 ### 3.2.2 Missão do produto
-Auxiliar jovens no controle de suas finanças pessoais por meio de uma ferramenta simples, acessível e interativa, promovendo a educação financeira e a tomada de decisões mais conscientes.
+Fornecer um sistema digital para controle financeiro pessoal, focado no público jovem, diminuindo as barreiras cognitivas através de uma interface simples e de um assistente virtual inteligente baseado em Processamento de Linguagem Natural (PLN).
 
 ### 3.2.3 Limites do produto
-O Midas Helper nao fornece nenhuma ligação direta com as contas bancarias do usuário, sendo necessário preencher as entradas e saídas manualmente. 
-
+ - O sistema funcionará com inserção de dados manual (ou via comandos ao assistente), não possuindo integração via Open Finance/Open Banking ou APIs bancárias de terceiros nesta versão inicial.
+ 
 ### 3.2.4 Benefícios do produto
 
 | # | Benefício | Valor para o Cliente |
 |--------------------|------------------------------------|----------------------------------------|
-|1	| Facilidade no registro de receitas e despesas |	Essencial |
+|1	| Facilidade no registro de receitas e despesas, de forma manual ou com auxílio do assistente virtual |	Essencial |
 |2 | Visualização clara dos gastos e hábitos de consumo | Essencial | 
-|3 | Segurança dos dados do usuário | Essencial | 
-|4	| Suporte inteligente para tomada de decisões financeiras	| Recomendável | 
+|3 | Segurança dos dados do usuário através de criptografia dos dados sensíveis | Essencial | 
+|4	| Suporte inteligente para tomada de decisões financeiras, atraves do assistente virtual	| Recomendável | 
 |5 | Auxílio no planejamento financeiro e definição de metas | Recomendável |
 
 ## 3.3 Descrição geral do produto
@@ -60,7 +63,7 @@ O Midas Helper nao fornece nenhuma ligação direta com as contas bancarias do u
 | Ator | Descrição |
 |--------------------|------------------------------------|
 | Usuário Comum |	Jovens e adultos que utilizam o sistema para controlar suas finanças pessoais, registrar gastos, receitas e acompanhar metas. |
-| Administrador |	Responsável pela manutenção técnica do sistema e atualização dos conteúdos educativos oferecidos pelo assistente. |
+| Assistente (Sistema) |	integração lógica que processa modelos de linguagem para atuar passiva/ativamente sobre os dados do usuário. |
 
 ## 3.4 Modelagem do Sistema
 
