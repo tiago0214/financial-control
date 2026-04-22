@@ -1,6 +1,6 @@
 # Application Documentation
 
-This project consists of a full-stack application with a **FastAPI backend** (Python) and a **React frontend** powered by **Vite** (TypeScript).
+This project consists of a full-stack application with a **FastAPI backend** (Python) and a **Vue frontend** powered by **Vite** (TypeScript).
 
 Here is how you can run the application, either via Docker (recommended) or locally on your machine.
 
@@ -60,7 +60,7 @@ to run the applications locally without Docker, follow these steps:
    ```
    *The backend server will be running on `http://localhost:8000`.*
 
-### 2. Running the React Frontend
+### 2. Running the Vue Frontend
 
 1. **Open a new terminal session** and navigate to the frontend directory:
    ```bash
