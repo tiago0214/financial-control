@@ -36,7 +36,7 @@ import { ArrowRight } from 'lucide-vue-next';
           </h1>
 
           <p class="mx-auto mt-6 max-w-xl text-lg text-muted-foreground animate-fade-up" :style="{ animationDelay: '200ms' }">
-            Finally is the finance app for your generation. Set bold goals, get an AI Assistant in your pocket,
+            Mildas Helper is the finance app for your generation. Set bold goals, get an AI Assistant in your pocket,
             and watch every dollar build the life you actually want.
           </p>
 
