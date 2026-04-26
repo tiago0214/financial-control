@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import heroBg from '../../../assets/hero-bg.jpg';
 import FloatingPreview from '../components/FloatingPreview.vue';
+import { ArrowRight } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -45,7 +46,7 @@ import FloatingPreview from '../components/FloatingPreview.vue';
               class="group flex items-center gap-2 rounded-2xl bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:scale-[1.03] hover:shadow-glow"
             >
               Start free
-              <i class="pi pi-arrow-right transition-transform group-hover:translate-x-1" style="font-size: 0.875rem"/>
+              <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </RouterLink>
             <RouterLink
               to="/dashboard"

@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.2.4",
     "@tanstack/vue-query": "^5.99.2",
     "axios": "^1.15.2",
+    "lucide-vue-next": "^1.0.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.5.5",
     "tailwindcss": "^4.2.4",
