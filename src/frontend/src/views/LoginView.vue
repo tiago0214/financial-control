@@ -4,6 +4,9 @@ import { Button, InputText, Password } from "primevue";
 
 <template>
   <main class="grid grid-cols-2 h-full">
+    <div class="absolute inset-0 -z-10 mesh-bg" />
+    <div class="absolute inset-0 -z-10 grid-pattern opacity-30" />
+
     <div class="h-full">Left</div>
 
     <div class="h-full flex flex-col justify-center">
