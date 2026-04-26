@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { Sparkles } from 'lucide-vue-next';
+import { useRoute } from 'vue-router'
+
+const route = useRoute();
+const onDashboard = route.path === "/dashboard";
 // const onDashboard = pathname.startsWith("/dashboard");
 </script>
 <template>
@@ -16,23 +20,22 @@ import { Sparkles } from 'lucide-vue-next';
           <a href="/#how" class="text-sm text-muted-foreground transition-colors hover:text-foreground">How it works</a>
           <a href="/#ai" class="text-sm text-muted-foreground transition-colors hover:text-foreground">AI Assistant</a>
         </div>
-        <!-- <div class="flex items-center gap-2">
-          {onDashboard ? (
-            <Link to="/" class="rounded-xl px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-              Sign out
-            </Link>
-          ) : (
-              <Link to="/register" class="hidden rounded-xl px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-block">
-                Log in
-              </Link>
-              <Link
-                to="/register"
-                class="rounded-xl bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.02]"
-              >
-                Get started
-              </Link>
-          )}
-        </div> -->
+        <div class="flex items-center gap-2">
+            <div v-if="onDashboard">
+                <RouterLink  to="/" class="rounded-xl px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+                    Sign out
+                </RouterLink>
+            </div>
+            
+            <div v-else>
+                <RouterLink to="/login" class="hidden rounded-xl px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-block">
+                    Log in
+                </RouterLink>
+                <RouterLink to="/login" class="rounded-xl bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.02]" >
+                    Get started
+                </RouterLink>
+            </div>
+        </div>
       </nav>
     </header>
 </template>
