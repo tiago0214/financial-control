@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import heroBg from '../assets/hero-bg.jpg';
+import heroBg from '../../../assets/hero-bg.jpg';
 import FloatingPreview from '../components/FloatingPreview.vue';
-
 </script>
 
 <template>
@@ -65,11 +64,5 @@ import FloatingPreview from '../components/FloatingPreview.vue';
           <FloatingPreview />
         </div>
       </div>
-    </section>
-    <section>
-        <div>tasd asd </div>
-        <div>tasd asd </div>
-        <div>tasd asd </div>
-        <div>tasd asd </div>
     </section>
 </template>
