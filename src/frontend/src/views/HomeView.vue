@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import heroBg from '../assets/hero-bg.jpg';
+import FloatingPreview from '../components/FloatingPreview.vue';
 
 </script>
 
@@ -25,7 +26,7 @@ import heroBg from '../assets/hero-bg.jpg';
               <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
               <span class="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
             </span>
-            <span class="text-muted-foreground">AI Coach now in beta</span>
+            <span class="text-muted-foreground">AI Assistant now in beta</span>
           </div>
 
           <h1 class="font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl animate-fade-up" :style="{ animationDelay: '100ms' }">
@@ -35,7 +36,7 @@ import heroBg from '../assets/hero-bg.jpg';
           </h1>
 
           <p class="mx-auto mt-6 max-w-xl text-lg text-muted-foreground animate-fade-up" :style="{ animationDelay: '200ms' }">
-            Finaly is the finance app for your generation. Set bold goals, get an AI coach in your pocket,
+            Finally is the finance app for your generation. Set bold goals, get an AI Assistant in your pocket,
             and watch every dollar build the life you actually want.
           </p>
 
@@ -45,7 +46,7 @@ import heroBg from '../assets/hero-bg.jpg';
               class="group flex items-center gap-2 rounded-2xl bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:scale-[1.03] hover:shadow-glow"
             >
               Start free
-              <i class="pi pi-arrow-right" style="font-size: 1rem"/>
+              <i class="pi pi-arrow-right transition-transform group-hover:translate-x-1" style="font-size: 0.875rem"/>
             </RouterLink>
             <RouterLink
               to="/dashboard"
