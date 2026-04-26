@@ -1,11 +1,43 @@
 <script setup lang="ts">
-import { Button } from 'primevue'
+import { Button, InputText, Password } from "primevue";
 </script>
 
 <template>
-    <h1>Login</h1>
+  <main class="grid grid-cols-2 h-full">
+    <div class="h-full">Left</div>
 
-    <Button>
-        <RouterLink to="/" style="color: black; text-decoration: none;">Home</RouterLink>
-    </Button>
+    <div class="h-full flex flex-col justify-center">
+      <div class="w-96">
+        <header>
+          <h1>Nice to meet you!</h1>
+          <span>Enter your email and password to log in.</span>
+        </header>
+        <div>
+          <div class="flex flex-col gap-2">
+            <label for="email">Email</label>
+            <InputText type="email" id="email" name="email" />
+          </div>
+          
+
+          <div >
+            <label for="password">Password</label>
+            <Password toggleMask id="password" name="password" />
+          </div>
+          <Button>Login</Button>
+        </div>
+
+      </div>
+      <footer>Created footer*</footer>
+    </div>
+  </main>
+
+  <!-- <Button> -->
+  <!--   <RouterLink to="/" style="color: black; text-decoration: none" -->
+  <!--     >Home</RouterLink -->
+  <!--   > -->
+  <!-- </Button> -->
 </template>
+
+<style lang="css" scoped>
+</style>
+

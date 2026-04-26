@@ -1,18 +1,36 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-import PrimeVue from 'primevue/config';
-import Aura from '@primeuix/themes/aura';
-import router from './router';
-import { VueQueryPlugin } from '@tanstack/vue-query'
+import { createApp } from "vue";
+import "./style.css";
+import App from "./App.vue";
+import PrimeVue from "primevue/config";
+import Nora from "@primeuix/themes/aura";
+import router from "./router";
+import { VueQueryPlugin } from "@tanstack/vue-query";
 
-const app = createApp(App)
+const app = createApp(App);
+// const MyPreset = definePreset(Nora, {
+//   semantic: {
+//     primary: {
+//       50: "{indigo.50}",
+//       100: "{indigo.100}",
+//       200: "{indigo.200}",
+//       300: "{indigo.300}",
+//       400: "{indigo.400}",
+//       500: "{indigo.500}",
+//       600: "{indigo.600}",
+//       700: "{indigo.700}",
+//       800: "{indigo.800}",
+//       900: "{indigo.900}",
+//       950: "{indigo.950}",
+//     },
+//   },
+// });
+//
 app.use(PrimeVue, {
-    theme: {
-        preset: Aura
-    }
-})
-app.use(router)
-app.use(VueQueryPlugin)
+  theme: {
+    preset: Nora,
+  },
+});
+app.use(router);
+app.use(VueQueryPlugin);
 
-app.mount('#app')
+app.mount("#app");
