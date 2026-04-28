@@ -1,5 +1,7 @@
 @import "tailwindcss";
 /* If you use tailwindcss-animate, you'll need to import it here. Note: this requires proper plugin support in v4, which is currently done via JS injection or specific CSS imports. If it struggles, you can leave the config file JUST for plugins. */
+/* Mildas Helper design system — Fresh mint on dark navy. All HSL. */
+
 @plugin "tailwindcss-animate";
 @import 'primeicons/primeicons.css';
 @theme {
@@ -7,7 +9,6 @@
   --font-display: 'Space Grotesk', 'Inter', sans-serif;
 
   --color-border: hsl(222 25% 16%);
-  /* If you want to keep CSS variables instead of replacing them: */
   /* --color-border: hsl(var(--border-color-local)); */
   --color-input: hsl(222 30% 14%);
   --color-ring: hsl(156 84% 55%);
@@ -166,5 +167,4 @@
     linear-gradient(90deg, hsl(150 15% 96% / 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
-/* Finly design system — Fresh mint on dark navy. All HSL. */
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Sparkles } from 'lucide-vue-next';
 import { useRoute } from 'vue-router'
+import Logo from "./Logo.vue";
 
 const route = useRoute();
 const onDashboard = route.path === "/dashboard";
@@ -9,12 +9,7 @@ const onDashboard = route.path === "/dashboard";
 <template>
      <header class="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
       <nav class="mx-auto flex max-w-6xl items-center justify-between rounded-2xl glass-strong px-5 py-3">
-        <RouterLink to="/" class='flex items-center gap-2'>
-            <div class="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary shadow-glow">
-            <Sparkles class="h-5 w-5 text-primary-foreground" stroke-width="2.5" />
-            </div>
-            <span class="font-display text-xl font-bold tracking-tight">Mildas Helper</span>
-        </RouterLink>
+        <Logo />
         <div class="hidden items-center gap-8 md:flex">
           <a href="/#features" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Features</a>
           <a href="/#how" class="text-sm text-muted-foreground transition-colors hover:text-foreground">How it works</a>
