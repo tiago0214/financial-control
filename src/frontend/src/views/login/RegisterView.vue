@@ -6,17 +6,16 @@ import Logo from "../home/components/Logo.vue";
 </script>
 
 <template>
-  <main class="relative min-h-screen overflow-hidden">
+  <main class="relative min-h-screen overflow-hidden flex items-center justify-center flex-col">
     <div class="absolute inset-0 -z-10 mesh-bg" />
     <div class="absolute inset-0 -z-10 grid-pattern opacity-30" />
 
-    <div class="px-6 pt-8">
+    <div class=" max-w-6xl flex items-center justify-center gap-12 px-6">
       <Logo />
     </div>
 
-    <div class="mx-auto grid max-w-6xl gap-12 px-6 py-12 lg:grid-cols-2 lg:gap-20 lg:py-20">
-      <!-- LEFT HAND -->
-      <div class="mx-auto w-full max-w-md lg:mx-0">
+    <div class=" w-content flex items-center justify-center gap-12 px-6 py-4">
+      <div class="mx-auto flex flex-col justify-center items-center rounded-2xl bg-card/30 p-8 shadow-elevated backdrop-blur animate-fade-in">
         <h1 class="font-display text-4xl font-bold tracking-tight md:text-5xl">
           Start your <span class="gradient-text">money era.</span>
         </h1>
@@ -32,28 +31,17 @@ import Logo from "../home/components/Logo.vue";
               <Input :Icon="Lock" type="password" placeholder="Password" />
             </div>
 
-            <button class="group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70">
+            <button class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70">
               Create Account
               <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
         </div>
       </div>
-
-      <!-- RIGHT HAND -->
-      <div class="mx-auto w-full max-w-md lg:mx-0">
-        CONTAINER FOR ILLUSTRATION
-      </div>
     </div>
 
 
   </main>
-
-  <!-- <Button> -->
-  <!--   <RouterLink to="/" style="color: black; text-decoration: none" -->
-  <!--     >Home</RouterLink -->
-  <!--   > -->
-  <!-- </Button> -->
 </template>
 
 <style lang="css" scoped>
