@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import Logo from "./Logo.vue";
+import Logo from "../../../components/Logo.vue";
 
 const route = useRoute();
 const onDashboard = route.path === "/dashboard";
@@ -23,7 +23,7 @@ const onDashboard = route.path === "/dashboard";
             </div>
             
             <div v-else>
-                <RouterLink to="/register" class="hidden rounded-xl px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-block">
+                <RouterLink to="/login" class="hidden rounded-xl px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-block">
                     log in
                 </RouterLink>
                 <RouterLink to="/register" class="rounded-xl bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.02]" >

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ArrowRight } from "lucide-vue-next";
 import { User, Lock, Mail } from 'lucide-vue-next' 
-import Input from "./components/Input.vue";
-import Logo from "../home/components/Logo.vue";
+import Input from "../../components/Input.vue";
+import Logo from "../../components/Logo.vue";
 </script>
 
 <template>
