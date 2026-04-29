@@ -28,10 +28,12 @@ import Input from "../../components/Input.vue";
                         <Input :Icon="Lock" type="password" placeholder="Password" />
                     </div>
 
-                    <button class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70">
-                        Login In
-                        <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </button>
+                    <router-link to="/app/dashboard">
+                        <button class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70">
+                            Login In
+                            <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </button>
+                    </router-link>
                 </div>
             </div>
       </div>
