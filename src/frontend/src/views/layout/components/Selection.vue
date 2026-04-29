@@ -19,7 +19,7 @@ const props = defineProps({
 
 const route = useRoute();
 const shouldHighlight = computed(() => {
-    return route.path === `/app/${props.title.toLowerCase()}`;
+    return route.path === props.to;
 })
 
 

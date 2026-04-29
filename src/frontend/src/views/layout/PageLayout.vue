@@ -14,10 +14,10 @@ import { LayoutDashboard, ArrowLeftRight, CreditCard, Goal, LogOut } from 'lucid
                     <Logo />
                 </header>
                 <div class="p-4 flex flex-col gap-2 mt-4">
-                    <Selection :icon="LayoutDashboard" title="Dashboard" to="/dashboard" />
-                    <Selection :icon="Goal" title="Goals" to="/goals" />
-                    <Selection :icon="ArrowLeftRight" title="Transactions" to="/transactions" />
-                    <Selection :icon="CreditCard" title="Cards" to="/cards" />
+                    <Selection :icon="LayoutDashboard" title="Dashboard" to="/app/dashboard" />
+                    <Selection :icon="Goal" title="Goals" to="/app/goals" />
+                    <Selection :icon="ArrowLeftRight" title="Transactions" to="/app/transactions" />
+                    <Selection :icon="CreditCard" title="Cards" to="/app/cards" />
                 </div>
              </div>
             

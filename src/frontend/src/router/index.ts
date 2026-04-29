@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../views/home/HomePage.vue';
 import RegisterPage from '../views/register/RegisterPage.vue';
 import LoginPage from '../views/login/LoginPage.vue';
-import PageLayout from '../views/template/PageLayout.vue';
+import PageLayout from '../views/layout/PageLayout.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -27,6 +27,18 @@ const router = createRouter({
                 {
                     path: 'dashboard',
                     component: () => import('../views/dashboard/DashboardPage.vue'),
+                },
+                {
+                    path: 'goals',
+                    component: () => import('../views/goals/GoalsPage.vue'),
+                },
+                {
+                    path: 'transactions',
+                    component: () => import('../views/transactions/TransactionsPage.vue'),
+                },
+                {
+                    path: 'cards',
+                    component: () => import('../views/cards/CardsPage.vue'),
                 }
             ]
         }
