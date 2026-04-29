@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../views/home/HomePage.vue';
 import RegisterPage from '../views/register/RegisterPage.vue';
 import LoginPage from '../views/login/LoginPage.vue';
+import PageLayout from '../views/template/PageLayout.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -17,6 +18,17 @@ const router = createRouter({
         {
             path: '/login',
             component: LoginPage
+        },
+        {
+            path: '/app',
+            component: PageLayout,
+            // meta: { requiresAuth: true },
+            children:[
+                {
+                    path: 'dashboard',
+                    component: () => import('../views/dashboard/DashboardPage.vue'),
+                }
+            ]
         }
     ]
 })
