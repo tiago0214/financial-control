@@ -6,11 +6,11 @@
       <div className="grid gap-4 md:grid-cols-3">
         <div className="rounded-2xl bg-gradient-card p-5 shadow-card">
           <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span>Total balance</span>
+            <span>Saldo total</span>
             <TrendingUp className="h-4 w-4 text-primary" />
           </div>
-          <div className="mt-2 font-display text-3xl font-bold">$12,847</div>
-          <div className="mt-1 text-xs text-primary">+$340 this week</div>
+          <div className="mt-2 font-display text-3xl font-bold">R$12,847</div>
+          <div className="mt-1 text-xs text-primary">+R$340 essa semana</div>
           <div className="mt-4 h-12 w-full">
             <Sparkline />
           </div>
@@ -18,11 +18,11 @@
 
         <div className="rounded-2xl bg-gradient-card p-5 shadow-card">
           <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span>Tokyo Trip</span>
+            <span>Viagem a Tóquio</span>
             <Target className="h-4 w-4 text-accent" />
           </div>
           <div className="mt-2 font-display text-3xl font-bold">68%</div>
-          <div className="mt-1 text-xs text-muted-foreground">$3,400 of $5,000</div>
+          <div className="mt-1 text-xs text-muted-foreground">R$3,400 of R$5,000</div>
           <div className="mt-4 h-2 overflow-hidden rounded-full bg-secondary">
             <div className="h-full w-[68%] rounded-full bg-gradient-accent" />
           </div>
@@ -30,14 +30,14 @@
 
         <div className="rounded-2xl bg-gradient-card p-5 shadow-card">
           <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span>AI Assistant</span>
+            <span>Assistente de IA</span>
             <Sparkles className="h-4 w-4 text-primary-glow" />
           </div>
           <div className="mt-2 text-sm leading-snug">
-            Skip 2 takeout orders this week → hit Tokyo by August 🗼
+            Evite 2 pedidos de comida por semana → chegue a Tóquio até agosto 🗼
           </div>
           <button className="mt-3 w-full rounded-xl bg-primary/10 py-2 text-xs font-semibold text-primary hover:bg-primary/20 transition-colors">
-            Apply suggestion
+            Aplicar sugestão
           </button>
         </div>
       </div>

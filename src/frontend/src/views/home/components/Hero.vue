@@ -26,18 +26,17 @@ import { ArrowRight } from 'lucide-vue-next';
               <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
               <span class="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
             </span>
-            <span class="text-muted-foreground">AI Assistant now in beta</span>
+            <span class="text-muted-foreground">Assistente Inteligente esta disponivel</span>
           </div>
 
           <h1 class="font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl animate-fade-up" :style="{ animationDelay: '100ms' }">
-            Stop tracking your past.
+            Pare de olhar somente para o passado.
             <br />
-            <span class="gradient-text">Start funding your future.</span>
+            <span class="gradient-text">Comece a construir o seu futuro.</span>
           </h1>
 
           <p class="mx-auto mt-6 max-w-xl text-lg text-muted-foreground animate-fade-up" :style="{ animationDelay: '200ms' }">
-            Mildas Helper is the finance app for your generation. Set bold goals, get an AI Assistant in your pocket,
-            and watch every dollar build the life you actually want.
+            Mildas Helper é o aplicativo financeiro para a sua geração. Defina metas ousadas, tenha um assistente de IA personalizado e veja cada centavo construir a vida que você realmente deseja.
           </p>
 
           <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row animate-fade-up" :style="{ animationDelay: '300ms' }">
@@ -45,7 +44,7 @@ import { ArrowRight } from 'lucide-vue-next';
               to="/register"
               class="group flex items-center gap-2 rounded-2xl bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:scale-[1.03] hover:shadow-glow"
             >
-              Start free
+              Começar agora
               <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </RouterLink>
             <!-- <RouterLink
@@ -57,7 +56,7 @@ import { ArrowRight } from 'lucide-vue-next';
           </div>
 
           <p class="mt-6 text-xs text-muted-foreground animate-fade-up" :style="{ animationDelay: '400ms' }">
-            No credit card. No hidden fees. Cancel anytime.
+            Sem cartão de crédito. Sem taxas ocultas. Cancele a qualquer momento.
           </p>
         </div>
 

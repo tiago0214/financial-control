@@ -3,5 +3,5 @@
 
 <template>
     <h1 class="text-2xl font-bold">Dashboard</h1>
-    <p>Welcome to your dashboard! Here you can manage your account and view your activity.</p>
+    <p>Bem-vindo ao seu painel! Aqui você pode gerenciar sua conta e visualizar sua atividade.</p>
 </template>

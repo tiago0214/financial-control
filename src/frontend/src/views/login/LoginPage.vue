@@ -15,22 +15,22 @@ import Input from "../../components/Input.vue";
         <div class=" w-content flex items-center justify-center gap-12 px-6 py-4">
             <div class="mx-auto flex flex-col justify-center items-center rounded-2xl bg-card/30 p-8 shadow-elevated backdrop-blur animate-fade-in">
                 <h1 class="font-display text-4xl font-bold tracking-tight md:text-5xl">
-                Welcome back!
+                Bem vindo!
                 </h1>
                 <p class="mt-3 mb-6 text-muted-foreground">
-                Sign in to continue your journey
+                Faça login para continuar sua jornada
                 </p>
 
                 <div class="w-96">
                 <div class="flex flex-col gap-8">
                     <div class="flex flex-col gap-3">
-                        <Input :Icon="Mail" type="email" placeholder="Your email"/>
-                        <Input :Icon="Lock" type="password" placeholder="Password" />
+                        <Input :Icon="Mail" type="email" placeholder="Seu email"/>
+                        <Input :Icon="Lock" type="password" placeholder="Senha" />
                     </div>
 
                     <router-link to="/app/dashboard">
                         <button class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70">
-                            Login In
+                            Entrar
                             <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </button>
                     </router-link>

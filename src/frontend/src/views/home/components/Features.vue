@@ -4,38 +4,38 @@ import { ArrowRight, MessageSquareText, Sparkles, Target, TrendingUp, Zap } from
 const features = [
     {
       icon: Target,
-      title: "Goal-first banking",
-      desc: "Build a vault for every dream — Tokyo, a Tesla, an apartment. Watch each one fill up in real time.",
+      title: "Metas que você realmente quer",
+      desc: "Defina qualquer objetivo financeiro, de 'Viajar para o Japão' a 'Ter uma emergência de R$500'. O app se adapta ao que você quer, não o contrário.",
       gradient: "from-primary to-primary-glow",
     },
     {
       icon: Sparkles,
-      title: "AI Assistant, 24/7",
-      desc: "Chat about your money like you would a friend. Get plans, nudges, and answers — never lectures.",
+      title: "Assistente de IA, 24/7",
+      desc: "Converse sobre seu dinheiro como faria com um amigo. Obtenha planos, lembretes e respostas — nunca palestras.",
       gradient: "from-accent to-warning",
     },
     {
       icon: TrendingUp,
-      title: "Future projections",
-      desc: "See exactly when you'll hit each goal at your current pace. Then ask the AI how to get there faster.",
+      title: "Projeções futuras",
+      desc: "Veja exatamente quando você atingirá cada meta com sua velocidade atual. Então pergunte à IA como chegar lá mais rápido.",
       gradient: "from-primary-glow to-primary",
     },
     {
       icon: Zap,
-      title: "Auto-save on autopilot",
-      desc: "Round-ups, paycheck splits, and smart rules that move money toward goals before you can spend it.",
+      title: "Salvamento automático em piloto automático",
+      desc: "Arredondamentos, divisões de salário e regras inteligentes que movem dinheiro em direção às metas antes que você possa gastá-lo.",
       gradient: "from-warning to-accent",
     },
     {
       icon: MessageSquareText,
-      title: "Plain-English insights",
-      desc: "No jargon. Just clear answers like 'You spent $84 more on coffee this month than last.'",
+      title: "Insights em português simples",
+      desc: "Sem jargão. Apenas respostas claras como 'Você gastou R$84 a mais com café este mês que o anterior.'",
       gradient: "from-primary to-accent",
     },
     {
       icon: ArrowRight,
-      title: "Cancel anytime, free forever",
-      desc: "The core app stays free. No fees on your first $1,000 saved. Premium when you want more.",
+      title: "Sem taxas ocultas, sem pegadinhas",
+      desc: "Tudo o que oferecemos é o que você vê. Sem taxas de assinatura, sem upsells, sem necessidade de cartão de crédito para começar.",
       gradient: "from-accent to-primary",
     },
   ];
@@ -47,10 +47,10 @@ const features = [
         <div class="mx-auto max-w-2xl text-center">
           <span class="text-xs font-semibold uppercase tracking-widest text-primary">Why Mildas Helper</span>
           <h2 class="mt-3 font-display text-4xl font-bold md:text-5xl">
-            Built for how you actually live.
+            Feito para a vida real. Sem julgamentos, apenas resultados.
           </h2>
           <p class="mt-4 text-muted-foreground">
-            Most finance apps make you feel guilty. Mildas Helper makes you feel powerful.
+            A maioria dos aplicativos financeiros fazem você se sentir culpado. O Mildas Helper faz você se sentir poderoso.
           </p>
         </div>
 

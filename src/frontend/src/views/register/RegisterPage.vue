@@ -17,22 +17,22 @@ import Logo from "../../components/Logo.vue";
     <div class=" w-content flex items-center justify-center gap-12 px-6 py-4">
       <div class="mx-auto flex flex-col justify-center items-center rounded-2xl bg-card/30 p-8 shadow-elevated backdrop-blur animate-fade-in">
         <h1 class="font-display text-4xl font-bold tracking-tight md:text-5xl">
-          Start your <span class="gradient-text">money era.</span>
+          Comece sua <span class="gradient-text">jornada.</span>
         </h1>
         <p class="mt-3 mb-6 text-muted-foreground">
-          Free forever. Takes 60 seconds. Your AI Assistant is waiting.
+          Deixe o futuro financeiro começar.
         </p>
 
         <div class="w-96">
           <div class="flex flex-col gap-8">
             <div class="flex flex-col gap-3">
-              <Input :Icon="User" type="text" placeholder="Your name"/>
-              <Input :Icon="Mail" type="email" placeholder="Your email"/>
-              <Input :Icon="Lock" type="password" placeholder="Password" />
+              <Input :Icon="User" type="text" placeholder="Seu nome"/>
+              <Input :Icon="Mail" type="email" placeholder="Seu email"/>
+              <Input :Icon="Lock" type="password" placeholder="Sua senha" />
             </div>
 
             <button class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70">
-              Create Account
+              Criar conta
               <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
           </div>

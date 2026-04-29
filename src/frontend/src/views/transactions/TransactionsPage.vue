@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 <template>
   <div>
-    <h1>Transactions</h1>
-    <p>This is the Transactions page.</p>
+    <h1>Transações</h1>
+    <p>Essa é a página de transações.</p>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 <template>
   <div>
-    <h1>Goals</h1>
-    <p>This is the Goals page.</p>
+    <h1>Metas</h1>
+    <p>Essa é a página de metas.</p>
   </div>
 </template>
