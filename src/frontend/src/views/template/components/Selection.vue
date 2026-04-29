@@ -25,8 +25,8 @@ const shouldHighlight = computed(() => {
 
 </script>
 <template>
-    <RouterLink :to="to" :class="shouldHighlight ? 'bg-primary/10 hover:bg-primary/20 text-primary' : 'hover:bg-muted'" class="px-3 py-2.5 font-medium transition-colors mt-6 flex items-center rounded-md">
+    <RouterLink :to="to" :class="shouldHighlight ? 'bg-primary/10 hover:bg-primary/20 text-primary' : 'text-muted-foreground hover:bg-muted'" class="px-3 py-2.5 font-medium transition-colors flex items-center rounded-md">
         <component :is="icon" class="w-4 h-4 mr-2 ml-2" />
-        <span class="font-semibold text-sm">{{ title }}</span>
+        <span class="font-semibold text-sm ">{{ title }}</span>
     </RouterLink>
 </template>
