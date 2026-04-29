@@ -29,7 +29,7 @@ import { LayoutDashboard, ArrowLeftRight, CreditCard, Goal, LogOut } from 'lucid
         <section class="w-full border-b border-border flex flex-col ">
             <header class="p-6 bg-card flex flex-col gap-1">
                 <span class="text-sm text-muted-foreground">Bom dia ☀️</span>
-                <h1 class="font-display text-xl font-bold">E ai <span class="gradient-text">Tiago</span></h1>
+                <h1 class="font-display text-xl font-bold gradient-text">Tiago</h1>
             </header>
 
             <main class="p-6 h-full">
