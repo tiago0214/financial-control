@@ -48,12 +48,12 @@ import { ArrowRight } from 'lucide-vue-next';
               Start free
               <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </RouterLink>
-            <RouterLink
+            <!-- <RouterLink
               to="/dashboard"
               class="rounded-2xl glass px-7 py-4 text-base font-semibold text-foreground transition-all hover:bg-secondary"
             >
               See live demo
-            </RouterLink>
+            </RouterLink> -->
           </div>
 
           <p class="mt-6 text-xs text-muted-foreground animate-fade-up" :style="{ animationDelay: '400ms' }">
