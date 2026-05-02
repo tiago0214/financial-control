@@ -26,7 +26,7 @@ import { ArrowRight } from 'lucide-vue-next';
               <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
               <span class="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
             </span>
-            <span class="text-muted-foreground">Assistente Inteligente esta disponivel</span>
+            <span class="text-muted-foreground">Assistente Inteligente</span>
           </div>
 
           <h1 class="font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl animate-fade-up" :style="{ animationDelay: '100ms' }">
@@ -36,7 +36,7 @@ import { ArrowRight } from 'lucide-vue-next';
           </h1>
 
           <p class="mx-auto mt-6 max-w-xl text-lg text-muted-foreground animate-fade-up" :style="{ animationDelay: '200ms' }">
-            Mildas Helper é o aplicativo financeiro para a sua geração. Defina metas ousadas, tenha um assistente de IA personalizado e veja cada centavo construir a vida que você realmente deseja.
+            Midas Helper é o aplicativo financeiro para a sua geração. Defina metas ousadas, tenha um assistente de IA personalizado e veja cada centavo construir a vida que você realmente deseja.
           </p>
 
           <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row animate-fade-up" :style="{ animationDelay: '300ms' }">

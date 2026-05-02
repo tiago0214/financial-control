@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="Mildas Helper")
+app = FastAPI(title="Midas Helper")
 
 origins = [
     "*"

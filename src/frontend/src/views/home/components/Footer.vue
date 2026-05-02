@@ -14,7 +14,7 @@ import Logo from "../../../components/Logo.vue";
         <a href="#" class="hover:text-foreground transition-colors">Termos</a>
         <a href="#" class="hover:text-foreground transition-colors">Suporte</a>
       </div>
-      <p class="text-xs text-muted-foreground">© 2026 Mildas Helper. Feito para a sua geração.</p>
+      <p class="text-xs text-muted-foreground">© 2026 Midas Helper. Feito para a sua geração.</p>
     </div>
   </footer>
 </template>

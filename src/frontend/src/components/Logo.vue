@@ -7,6 +7,6 @@ import { Sparkles } from 'lucide-vue-next';
         <div class="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary shadow-glow">
         <Sparkles class="h-5 w-5 text-primary-foreground" stroke-width="2.5" />
         </div>
-        <span class="font-display text-xl font-bold tracking-tight">Mildas Helper</span>
+        <span class="font-display text-xl font-bold tracking-tight">Midas Helper</span>
     </RouterLink>
 </template>

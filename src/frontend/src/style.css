@@ -2,7 +2,7 @@
 
 @import "tailwindcss";
 /* If you use tailwindcss-animate, you'll need to import it here. Note: this requires proper plugin support in v4, which is currently done via JS injection or specific CSS imports. If it struggles, you can leave the config file JUST for plugins. */
-/* Mildas Helper design system — Fresh mint on dark navy. All HSL. */
+/* Midas Helper design system — Fresh mint on dark navy. All HSL. */
 
 @plugin "tailwindcss-animate";
 @import 'primeicons/primeicons.css';

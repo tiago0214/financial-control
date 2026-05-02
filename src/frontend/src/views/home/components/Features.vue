@@ -45,12 +45,12 @@ const features = [
     <section id="features" class="relative px-6 py-24 md:py-32">
       <div class="mx-auto max-w-6xl">
         <div class="mx-auto max-w-2xl text-center">
-          <span class="text-xs font-semibold uppercase tracking-widest text-primary">Why Mildas Helper</span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-primary">Why Midas Helper</span>
           <h2 class="mt-3 font-display text-4xl font-bold md:text-5xl">
             Feito para a vida real. Sem julgamentos, apenas resultados.
           </h2>
           <p class="mt-4 text-muted-foreground">
-            A maioria dos aplicativos financeiros fazem você se sentir culpado. O Mildas Helper faz você se sentir poderoso.
+            A maioria dos aplicativos financeiros fazem você se sentir culpado. O Midas Helper faz você se sentir poderoso.
           </p>
         </div>
 
