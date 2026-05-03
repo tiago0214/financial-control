@@ -46,7 +46,7 @@ import { TrendingUp, Target, Sparkles } from 'lucide-vue-next'
             <Target class="h-4 w-4 text-accent" />
           </div>
           <div class="mt-2 font-display text-3xl font-bold">68%</div>
-          <div class="mt-1 text-xs text-muted-foreground">R$3,400 of R$5,000</div>
+          <div class="mt-1 text-xs text-muted-foreground">R$3,400 de R$5,000</div>
           <div class="mt-4 h-2 overflow-hidden rounded-full bg-secondary">
             <div class="h-full w-[68%] rounded-full bg-gradient-accent" />
           </div>
