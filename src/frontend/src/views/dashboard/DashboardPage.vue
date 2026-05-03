@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BalanceCard from './componentes/BalanceCard.vue';
 import GoalsSection from './componentes/GoalsSection.vue';
+import RecentActivity from './componentes/RecentActivity.vue';
 import StatCard from './componentes/StatCard.vue';
 import { PiggyBank, ShoppingBag } from 'lucide-vue-next';
 
@@ -28,7 +29,9 @@ import { PiggyBank, ShoppingBag } from 'lucide-vue-next';
                     tint="from-accent to-warning"
                 />
             </div>
+            <RecentActivity />
         </div>
+
         <div>
             <GoalsSection />
         </div>
