@@ -15,7 +15,7 @@ defineProps({
     <div class="rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card">
     <div class="flex items-center justify-between">
       <span class="text-xs font-medium uppercase tracking-widest text-muted-foreground">{{label}}</span>
-      <div :class="`flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br ${tint}`">
+      <div :class="`flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br ${tint}`">
         <component :is="icon" class="h-4 w-4 text-primary-foreground" :stroke-width="2.5" />
       </div>
     </div>

@@ -24,7 +24,7 @@ const goals = [
         class="group rounded-2xl border border-border/50 bg-background/40 p-4 transition-all hover:border-primary/30"
       >
         <div class="flex items-center gap-4">
-          <div :class="`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${g.tint} shadow-soft`">
+          <div :class="`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br ${g.tint} shadow-soft`">
             <component :is="g.icon" class="h-5 w-5 text-primary-foreground" :stroke-width="2.5" />
           </div>
           <div class="min-w-0 flex-1">
@@ -40,7 +40,7 @@ const goals = [
             </div>
             <div class="mt-2 h-2 overflow-hidden rounded-full bg-secondary">
               <div
-                :class="`h-full rounded-full bg-gradient-to-r ${g.tint} transition-all`"
+                :class="`h-full rounded-full bg-linear-to-r ${g.tint} transition-all`"
                 :style="{ width: `${Math.round((g.current / g.target) * 100)}%` }"
               />
             </div>

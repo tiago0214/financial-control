@@ -60,7 +60,7 @@ const features = [
             :key="f.title"
             class="group relative overflow-hidden rounded-3xl border border-border/50 bg-gradient-card p-6 transition-all hover:border-primary/30 hover:shadow-elevated"
             >
-                <div :class='`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${f.gradient} shadow-soft`'>
+                <div :class='`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br ${f.gradient} shadow-soft`'>
                     <component :is="f.icon" class="h-6 w-6 text-primary-foreground stroke-width='2.5'" />
                 </div>
                 <h3 class="font-display text-xl font-semibold">{{f.title}}</h3>

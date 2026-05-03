@@ -25,7 +25,7 @@ const txns = [
         :key="i"
         class="flex items-center gap-3 rounded-2xl px-3 py-3 transition-colors hover:bg-secondary/50"
       >
-        <div :class="`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl ${t.amount > 0 ? 'bg-primary/15 text-primary' : 'bg-secondary text-foreground'}`">
+        <div :class="`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${t.amount > 0 ? 'bg-primary/15 text-primary' : 'bg-secondary text-foreground'}`">
           <component :is="t.icon" class="h-4 w-4" />
         </div>
         <div class="min-w-0 flex-1">
