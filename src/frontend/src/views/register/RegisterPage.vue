@@ -3,6 +3,31 @@ import { ArrowRight } from "lucide-vue-next";
 import { User, Lock, Mail } from 'lucide-vue-next' 
 import Input from "../../components/Input.vue";
 import Logo from "../../components/Logo.vue";
+import { useAuthStore } from "../../stores/auth";
+import { reactive } from "vue";
+
+const authStore = useAuthStore();
+
+const userData = reactive({
+  name: '',
+  email: '',
+  password: ''
+})
+
+function handleRegister() {
+  try {
+    console.log("Attempting to register with:", userData)
+
+    if (!userData.name || !userData.email || !userData.password) {
+      throw new Error("All fields are required")
+    }
+
+    authStore.register(userData)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 </script>
 
 <template>
@@ -26,12 +51,12 @@ import Logo from "../../components/Logo.vue";
         <div class="w-96">
           <div class="flex flex-col gap-8">
             <div class="flex flex-col gap-3">
-              <Input :Icon="User" type="text" placeholder="Seu nome"/>
-              <Input :Icon="Mail" type="email" placeholder="Seu email"/>
-              <Input :Icon="Lock" type="password" placeholder="Sua senha" />
+              <Input :Icon="User" type="text" placeholder="Seu nome" v-model="userData.name"/>
+              <Input :Icon="Mail" type="email" placeholder="Seu email" v-model="userData.email"/>
+              <Input :Icon="Lock" type="password" placeholder="Sua senha" v-model="userData.password" />
             </div>
 
-            <button class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70">
+            <button class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70" @click="handleRegister">
               Criar conta
               <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
