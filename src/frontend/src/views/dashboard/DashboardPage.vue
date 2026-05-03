@@ -1,7 +1,36 @@
 <script setup lang="ts">
+import BalanceCard from './componentes/BalanceCard.vue';
+import GoalsSection from './componentes/GoalsSection.vue';
+import StatCard from './componentes/StatCard.vue';
+import { PiggyBank, ShoppingBag } from 'lucide-vue-next';
+
 </script>
 
 <template>
-    <h1 class="text-2xl font-bold">Dashboard</h1>
-    <p>Bem-vindo ao seu painel! Aqui você pode gerenciar sua conta e visualizar sua atividade.</p>
+    <div class="grid grid-cols-3 gap-6">
+        <div class="col-span-2 space-y-6">
+            <div class="grid grid-cols-3 gap-4">
+                <BalanceCard />
+                <StatCard 
+                    label="This month saved"
+                    value="$1,240"
+                    change="+18%"
+                    up
+                    :icon=PiggyBank
+                    tint="from-primary to-primary-glow"
+                />
+                <StatCard 
+                    label="Spent this month"
+                    value="$1,860"
+                    change="-12%"
+                    up
+                    :icon=ShoppingBag
+                    tint="from-accent to-warning"
+                />
+            </div>
+        </div>
+        <div>
+            <GoalsSection />
+        </div>
+    </div>
 </template>
