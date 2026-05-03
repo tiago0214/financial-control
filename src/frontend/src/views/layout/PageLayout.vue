@@ -14,7 +14,7 @@ function handleLogout() {
 </script>
 <template>
     <div class="flex min-h-screen bg-background text-foreground">
-        <aside class="w-64 flex-shrink-0 border-r border-border bg-card flex flex-col justify-between">
+        <aside class="w-64 shrink-0 border-r border-border bg-card flex flex-col justify-between">
             <!-- <Sidebar /> -->
              <div>
                 <header class="p-6 font-display font-bold text-xl border-border">

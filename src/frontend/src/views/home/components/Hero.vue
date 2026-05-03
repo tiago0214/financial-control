@@ -14,7 +14,7 @@ import { ArrowRight } from 'lucide-vue-next';
             height="1024"
             class="h-full w-full object-cover opacity-40"
             />
-            <div class="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+            <div class="absolute inset-0 bg-linear-to-b from-background/60 via-background/80 to-background" />
             <div class="absolute inset-0 mesh-bg" />
             <div class="absolute inset-0 grid-pattern opacity-40" />
         </div>
