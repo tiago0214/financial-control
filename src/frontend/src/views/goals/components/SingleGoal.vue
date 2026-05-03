@@ -1,27 +1,46 @@
 <!-- src/views/goals/components/SingleGoal.vue -->
 <script setup lang="ts">
 import { Sparkles, Calendar } from 'lucide-vue-next';
+import type { PropType } from 'vue';
 
 defineProps({
-    // You can define dynamic props here later!
+    goal: {
+        type: Object as PropType<{
+            icon: string;
+            title: string;
+            type: string;
+            duration: string;
+            currentAmount: number;
+            targetAmount: number;
+            progress: number;
+            monthlyContribution: number;
+            aiInsight?: string;
+            targetDate: string;
+        }>,
+        required: true
+    }
 })
+
+const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
+}
 </script>
 
 <template>
     <!-- Card Container -->
-    <div class="flex flex-col gap-6 rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card">
+    <div class="flex flex-col justify-between gap-6 rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card">
         
         <!-- Header -->
         <header class="flex justify-between items-start">
             <div class="flex gap-3 items-center">
-                <div class="text-4xl leading-none">✈️</div>
+                <div class="text-4xl leading-none">{{ goal.icon }}</div>
                 <div class="flex flex-col">
-                    <span class="text-xl font-bold text-foreground">Europe Adventure</span>
-                    <span class="text-sm text-muted-foreground">Medium-term goal</span>
+                    <span class="text-xl font-bold text-foreground">{{ goal.title }}</span>
+                    <span class="text-sm text-muted-foreground">{{ goal.type }}</span>
                 </div>
             </div>
             <span class="text-primary font-medium rounded-full bg-primary/10 px-3 py-1 text-xs">
-                9 months
+                {{ goal.duration }}
             </span>
         </header>
 
@@ -29,30 +48,30 @@ defineProps({
         <div class="flex flex-col gap-2">
             <!-- Amounts -->
             <div class="flex justify-between items-end">
-                <span class="text-3xl font-bold text-foreground leading-none font-display">$2,400</span>
-                <span class="text-base text-muted-foreground font-display">$5,000</span>
+                <span class="text-3xl font-bold text-foreground leading-none font-display">{{ formatCurrency(goal.currentAmount) }}</span>
+                <span class="text-base text-muted-foreground font-display">{{ formatCurrency(goal.targetAmount) }}</span>
             </div>
             
             <!-- Progress Bar -->
             <div class="h-2 overflow-hidden rounded-full bg-secondary">
-                <div class="h-full rounded-full bg-gradient-hero transition-all" style="width: 48%;"></div>
+                <div class="h-full rounded-full bg-gradient-hero transition-all" :style="{ width: goal.progress + '%' }"></div>
             </div>
             
             <!-- Progress Details -->
             <div class="flex justify-between items-center text-sm mt-1">
-                <span class="text-muted-foreground font-display">48% complete</span>
-                <span class="text-primary font-semibold font-display">+$300/month</span>
+                <span class="text-muted-foreground font-display">{{ goal.progress }}% complete</span>
+                <span class="text-primary font-semibold font-display">+{{ formatCurrency(goal.monthlyContribution) }}/month</span>
             </div>
         </div>
 
         <!-- AI Insight Box -->
-        <div class="flex flex-col gap-2 rounded-2xl bg-primary/5 p-4">
+        <div v-if="goal.aiInsight" class="flex flex-col gap-2 rounded-2xl bg-primary/5 p-4">
             <div class="flex items-center gap-2 text-primary font-semibold text-sm">
                 <Sparkles class="h-4 w-4" />
                 <span class="font-display">AI Insight</span>
             </div>
             <span class="text-sm text-primary/80 leading-relaxed">
-                On track! You could reach this 2 months early by reducing dining out by $50/month.
+                {{ goal.aiInsight }}
             </span>
         </div>
 
@@ -60,13 +79,12 @@ defineProps({
         <footer class="flex justify-between items-center mt-1">
             <div class="flex items-center gap-2 text-muted-foreground text-sm">
                 <Calendar class="h-4 w-4" />
-                <span class="text-sm">Target: September 2026</span>
+                <span class="text-sm">Target: {{ goal.targetDate }}</span>
             </div>
             
             <button class="rounded-xl bg-primary/10 px-4 py-2 font-semibold text-primary transition-all hover:bg-primary/20 cursor-pointer text-xs">
                 Adjust Goal
             </button>
         </footer>
-
     </div>
 </template>
