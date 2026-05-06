@@ -2,19 +2,19 @@
 import { Plane, Home, Car, Calendar } from 'lucide-vue-next';
 
 const goals = [
-  { name: "Tokyo Trip", icon: Plane, current: 3400, target: 5000, by: "Aug 2026", tint: "from-primary to-primary-glow" },
-  { name: "Move Out Fund", icon: Home, current: 1820, target: 6000, by: "Jan 2027", tint: "from-accent to-warning" },
-  { name: "First Car", icon: Car, current: 4200, target: 12000, by: "Jun 2027", tint: "from-primary-glow to-accent" },
+  { name: "Viagem a Tóquio", icon: Plane, current: 3400, target: 5000, by: "Ago 2026", tint: "from-primary to-primary-glow" },
+  { name: "Fundo de Mudança", icon: Home, current: 1820, target: 6000, by: "Jan 2027", tint: "from-accent to-warning" },
+  { name: "Primeiro Carro", icon: Car, current: 4200, target: 12000, by: "Jun 2027", tint: "from-primary-glow to-accent" },
 ];
 </script>
 <template>
   <section class="rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card">
     <div class="mb-5 flex items-center justify-between">
       <div>
-        <h2 class="font-display text-xl font-bold">Your goals</h2>
-        <p class="text-xs text-muted-foreground">3 active • $9,420 saved</p>
+        <h2 class="font-display text-xl font-bold">Suas Metas</h2>
+        <p class="text-xs text-muted-foreground">3 ativos • R$9,420 economizados</p>
       </div>
-      <button class="text-xs font-semibold text-primary hover:underline">View all</button>
+      <button class="text-xs font-semibold text-primary hover:underline">Ver todos</button>
     </div>
 
     <div class="space-y-4">
@@ -33,7 +33,7 @@ const goals = [
               <div class="text-sm font-bold tabular-nums">{{ Math.round((g.current / g.target) * 100) }}%</div>
             </div>
             <div class="mt-1 flex items-center justify-between text-xs text-muted-foreground">
-              <span>${{ g.current.toLocaleString() }} of ${{ g.target.toLocaleString() }}</span>
+              <span>R${{ g.current.toLocaleString() }} de R${{ g.target.toLocaleString() }}</span>
               <span class="flex items-center gap-1">
                 <Calendar class="h-3 w-3" /> {{ g.by }}
               </span>

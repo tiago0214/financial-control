@@ -13,16 +13,16 @@ import { PiggyBank, ShoppingBag } from 'lucide-vue-next';
             <div class="grid grid-cols-3 gap-4">
                 <BalanceCard />
                 <StatCard 
-                    label="This month saved"
-                    value="$1,240"
+                    label="Este mês economizado"
+                    value="R$1,240"
                     change="+18%"
                     up
                     :icon=PiggyBank
                     tint="from-primary to-primary-glow"
                 />
                 <StatCard 
-                    label="Spent this month"
-                    value="$1,860"
+                    label="Gasto este mês"
+                    value="R$1,860"
                     change="-12%"
                     up
                     :icon=ShoppingBag

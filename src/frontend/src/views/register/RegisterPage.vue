@@ -5,8 +5,10 @@ import Input from "../../components/Input.vue";
 import Logo from "../../components/Logo.vue";
 import { useAuthStore } from "../../stores/auth";
 import { reactive } from "vue";
+import { useRouter } from "vue-router";
 
 const authStore = useAuthStore();
+const route = useRouter()
 
 const userData = reactive({
   name: '',
@@ -23,6 +25,10 @@ function handleRegister() {
     }
 
     authStore.register(userData)
+
+    if(authStore.isAuthenticated){
+      route.push('/app/dashboard')
+    }
   } catch (error) {
     console.error(error)
   }

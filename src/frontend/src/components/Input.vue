@@ -9,7 +9,7 @@ const props = defineProps({
         required: true,
     },
     Icon: {
-        type: Object,
+        type: Function,
         required: true,
     },
     modelValue: {

@@ -6,7 +6,7 @@ defineProps({
     value: String,
     change: String,
     up: Boolean,
-    icon: Object,
+    icon: Function,
     tint: String
 })
 </script>
@@ -23,7 +23,7 @@ defineProps({
     <div :class="`mt-1 flex items-center gap-1 text-xs ${up ? 'text-primary' : 'text-destructive'}`">
       <ArrowUpRight v-if="up" class="h-3 w-3" />
       <ArrowDownRight v-else class="h-3 w-3" />
-      {{change}} vs last month
+      {{change}} vs ultimo mês
     </div>
   </div>
 </template>

@@ -22,7 +22,7 @@ defineProps({
 })
 
 const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(value);
 }
 </script>
 
@@ -59,8 +59,8 @@ const formatCurrency = (value: number) => {
             
             <!-- Progress Details -->
             <div class="flex justify-between items-center text-sm mt-1">
-                <span class="text-muted-foreground font-display">{{ goal.progress }}% complete</span>
-                <span class="text-primary font-semibold font-display">+{{ formatCurrency(goal.monthlyContribution) }}/month</span>
+                <span class="text-muted-foreground font-display">{{ goal.progress }}% completo</span>
+                <span class="text-primary font-semibold font-display">+{{ formatCurrency(goal.monthlyContribution) }}/mês</span>
             </div>
         </div>
 
@@ -68,7 +68,7 @@ const formatCurrency = (value: number) => {
         <div v-if="goal.aiInsight" class="flex flex-col gap-2 rounded-2xl bg-primary/5 p-4">
             <div class="flex items-center gap-2 text-primary font-semibold text-sm">
                 <Sparkles class="h-4 w-4" />
-                <span class="font-display">AI Insight</span>
+                <span class="font-display">Insight da IA</span>
             </div>
             <span class="text-sm text-primary/80 leading-relaxed">
                 {{ goal.aiInsight }}
@@ -79,11 +79,11 @@ const formatCurrency = (value: number) => {
         <footer class="flex justify-between items-center mt-1">
             <div class="flex items-center gap-2 text-muted-foreground text-sm">
                 <Calendar class="h-4 w-4" />
-                <span class="text-sm">Target: {{ goal.targetDate }}</span>
+                <span class="text-sm">Meta: {{ goal.targetDate }}</span>
             </div>
             
             <button class="rounded-xl bg-primary/10 px-4 py-2 font-semibold text-primary transition-all hover:bg-primary/20 cursor-pointer text-xs">
-                Adjust Goal
+                Ajustar Meta
             </button>
         </footer>
     </div>

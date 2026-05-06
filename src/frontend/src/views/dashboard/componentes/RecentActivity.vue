@@ -2,22 +2,20 @@
 import { ArrowDownLeft, ArrowUpRight, ShoppingBag, Coffee, Music, PiggyBank } from 'lucide-vue-next';
 
 const txns = [
-  { name: "Grocery Store", cat: "Food", when: "Today", amount: -85.20, icon: ShoppingBag },
-  { name: "Salary", cat: "Income", when: "Yesterday", amount: 3200.00, icon: ArrowDownLeft },
-  { name: "Coffee Shop", cat: "Food", when: "May 1", amount: -4.50, icon: Coffee },
-  { name: "Spotify", cat: "Music", amount: -10.99, icon: Music, when: "Today" },
-  { name: "Paycheck", cat: "Income", amount: 1600, icon: ArrowUpRight, when: "Today" },
-  { name: "Blue Bottle Coffee", cat: "Coffee", amount: -6.5, icon: Coffee, when: "Yesterday" },
-  { name: "Auto-save → Tokyo", cat: "Savings", amount: -85, icon: PiggyBank, when: "Yesterday" },
-  { name: "Uniqlo", cat: "Shopping", amount: -42.3, icon: ShoppingBag, when: "Apr 22" },
+  { name: "Supermercado", cat: "Alimentação", when: "Hoje", amount: -85.20, icon: ShoppingBag },
+  { name: "Salário", cat: "Rendimento", when: "Ontem", amount: 3200.00, icon: ArrowDownLeft },
+  { name: "Cafeteria", cat: "Alimentação", when: "1 Mai", amount: -4.50, icon: Coffee },
+  { name: "Spotify", cat: "Música", amount: -10.99, icon: Music, when: "Hoje" },
+  { name: "Pagamento", cat: "Rendimento", amount: 1600, icon: ArrowUpRight, when: "Hoje" },
+  { name: "Blue Bottle Coffee", cat: "Café", amount: -6.5, icon: Coffee, when: "Ontem" },
 ];
 
 </script>
 <template>
   <section class="rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card">
     <div class="mb-5 flex items-center justify-between">
-      <h2 class="font-display text-xl font-bold">Recent activity</h2>
-      <button class="text-xs font-semibold text-primary hover:underline">See all</button>
+      <h2 class="font-display text-xl font-bold">Atividade recente</h2>
+      <button class="text-xs font-semibold text-primary hover:underline">Ver tudo</button>
     </div>
     <div class="space-y-1">
       <div
@@ -33,7 +31,7 @@ const txns = [
           <div class="text-xs text-muted-foreground">{{ t.cat }} • {{ t.when }}</div>
         </div>
         <div :class="`text-sm font-bold tabular-nums ${t.amount > 0 ? 'text-primary' : 'text-foreground'}`">
-          {{ t.amount > 0 ? "+" : "" }}${{ Math.abs(t.amount).toFixed(2) }}
+          {{ t.amount > 0 ? "+" : "" }}R${{ Math.abs(t.amount).toFixed(2) }}
         </div>
       </div>
     </div>
