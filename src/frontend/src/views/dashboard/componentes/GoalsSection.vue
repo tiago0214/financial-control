@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { Plane, Home, Car, Calendar } from 'lucide-vue-next';
+import { useRouter } from "vue-router";
+
+const route = useRouter();
 
 const goals = [
   { name: "Viagem a Tóquio", icon: Plane, current: 3400, target: 5000, by: "Ago 2026", tint: "from-primary to-primary-glow" },
@@ -14,7 +17,7 @@ const goals = [
         <h2 class="font-display text-xl font-bold">Suas Metas</h2>
         <p class="text-xs text-muted-foreground">3 ativos • R$9,420 economizados</p>
       </div>
-      <button class="text-xs font-semibold text-primary hover:underline">Ver todos</button>
+      <button class="text-xs font-semibold text-primary hover:underline cursor-pointer" @click="route.push('/app/goals')">Ver todos</button>
     </div>
 
     <div class="space-y-4">

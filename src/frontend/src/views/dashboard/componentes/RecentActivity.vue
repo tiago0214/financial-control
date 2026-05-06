@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { ArrowDownLeft, ArrowUpRight, ShoppingBag, Coffee, Music, PiggyBank } from 'lucide-vue-next';
+import { ArrowDownLeft, ArrowUpRight, ShoppingBag, Coffee, Music } from 'lucide-vue-next';
+import { useRouter } from 'vue-router'; 
+
+const route = useRouter();
 
 const txns = [
   { name: "Supermercado", cat: "Alimentação", when: "Hoje", amount: -85.20, icon: ShoppingBag },
@@ -15,7 +18,7 @@ const txns = [
   <section class="rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card">
     <div class="mb-5 flex items-center justify-between">
       <h2 class="font-display text-xl font-bold">Atividade recente</h2>
-      <button class="text-xs font-semibold text-primary hover:underline">Ver tudo</button>
+      <button class="text-xs font-semibold text-primary hover:underline cursor-pointer" @click="route.push('/app/transactions')">Ver tudo</button>
     </div>
     <div class="space-y-1">
       <div
