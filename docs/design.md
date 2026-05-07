@@ -7,6 +7,8 @@ Persona - Julia Santos
 
 Persona - Marina Oliveira
 
+![Persona2](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/8d87813e711d6e1af533a929a90c41f5b1143362/docs/img/persona-marina-oliveira.png)
+
 Persona - Gabriel Leal
 
 Persona - Carla Mendes
