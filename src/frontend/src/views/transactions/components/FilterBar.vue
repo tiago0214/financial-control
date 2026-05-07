@@ -14,7 +14,7 @@ import { Filter } from 'lucide-vue-next';
 
         <!-- RIGHT -->
          <div class="">
-            <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold ring-offset-background transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-linear-to-br from-accent to-warning text-accent-foreground hover:opacity-90 hover:-translate-y-0.5 h-9 px-4 text-xs rounded-full cursor-pointer">Adicionar Transação</button>
+            <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold ring-offset-background transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-linear-to-br from-accent to-warning text-accent-foreground hover:opacity-90 hover:-translate-y-0.5 h-9 px-4 text-xs rounded-full cursor-pointer">Aplicar Filtros</button>
          </div>
     </div>
 </template>

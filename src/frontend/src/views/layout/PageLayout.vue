@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import Logo from '../../components/Logo.vue';
 import Selection from './components/Selection.vue';
-import { LayoutDashboard, ArrowLeftRight, CreditCard, Goal, LogOut } from 'lucide-vue-next'
+import { LayoutDashboard, ArrowLeftRight, Goal, LogOut } from 'lucide-vue-next'
 import { useAuthStore } from '../../stores/auth';
 import { useRouter } from 'vue-router';
+import { computed, watch } from 'vue';
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -11,6 +12,22 @@ function handleLogout() {
     authStore.logout();
     router.push('/login');
 }
+
+const greetings = [
+    "Bom dia ☀️",
+    "Boa tarde 🌤️",
+    "Boa noite 🌙",
+];
+const mappedGreetings = computed(() => {
+    const hour = new Date().getHours();
+    if (hour < 12) return greetings[0];
+    else if (hour < 18) return greetings[1];
+    else return greetings[2];
+});
+
+const route = useRouter();
+const activeRoute = computed(() => route.currentRoute.value.path);
+
 </script>
 <template>
     <div class="flex min-h-screen bg-background text-foreground">
@@ -36,10 +53,17 @@ function handleLogout() {
             </footer>
         </aside>
         
+        <!-- Top Navigation -->
         <section class="w-full border-b border-border flex flex-col ">
-            <header class="p-6 bg-card flex flex-col gap-1">
-                <span class="text-xs text-muted-foreground">Bom dia ☀️</span>
-                <h1 class="font-display text-xl font-bold gradient-text">{{ authStore.user?.name || 'Usuário' }}</h1>
+            <header class="p-6 bg-card flex gap-1 justify-between items-center">
+                <div>
+                    <span class="text-xs text-muted-foreground">{{ mappedGreetings }}</span>
+                    <h1 class="font-display text-xl font-bold gradient-text">{{ authStore.user?.name || 'Usuário' }}</h1>
+                </div>
+                <div>
+                    <button v-if="activeRoute == '/app/goals'" class="rounded-xl bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.03] cursor-pointer mr-6">Adicionar Meta</button>
+                    <button v-if="activeRoute == '/app/transactions'" class="rounded-xl bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.03] cursor-pointer mr-6">Adicionar Transação</button>
+                </div>
             </header>
 
             <main class="p-6 h-full">
