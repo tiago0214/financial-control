@@ -2,6 +2,7 @@
 import { CreditCard, ArrowUpRight, ArrowDownLeft } from 'lucide-vue-next';
 import StatCard from './components/StatCard.vue';
 import FilterBar from './components/FilterBar.vue';
+import TransactionTable from './components/TransactionTable.vue';
 
 </script>
 <template>
@@ -28,5 +29,6 @@ import FilterBar from './components/FilterBar.vue';
     </div>
 
     <FilterBar />
+    <TransactionTable />
   </main>
 </template>

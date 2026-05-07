@@ -2,7 +2,7 @@
 import { Filter } from 'lucide-vue-next';
 </script>
 <template>
-    <div class="shadow-card rounded-3xl border border-border/50 bg-gradient-card p-6 flex items-center justify-between">
+    <div class="shadow-card rounded-3xl border border-border/50 bg-gradient-card p-4 flex items-center justify-between">
 
         <!-- LEFT -->
          <div class="flex items-center gap-2">
