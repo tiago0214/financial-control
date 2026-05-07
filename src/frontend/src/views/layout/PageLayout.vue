@@ -61,8 +61,8 @@ const activeRoute = computed(() => route.currentRoute.value.path);
                     <h1 class="font-display text-xl font-bold gradient-text">{{ authStore.user?.name || 'Usuário' }}</h1>
                 </div>
                 <div>
-                    <button v-if="activeRoute == '/app/goals'" class="rounded-xl bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.03] cursor-pointer mr-6">Adicionar Meta</button>
-                    <button v-if="activeRoute == '/app/transactions'" class="rounded-xl bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.03] cursor-pointer mr-6">Adicionar Transação</button>
+                    <button v-if="activeRoute == '/app/goals'" class="rounded-full bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.03] cursor-pointer mr-6">Adicionar Meta</button>
+                    <button v-if="activeRoute == '/app/transactions'" class="rounded-full bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.03] cursor-pointer mr-6">Adicionar Transação</button>
                 </div>
             </header>
 

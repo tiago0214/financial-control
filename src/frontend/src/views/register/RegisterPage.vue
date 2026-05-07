@@ -62,7 +62,7 @@ function handleRegister() {
               <Input :Icon="Lock" type="password" placeholder="Sua senha" v-model="userData.password" />
             </div>
 
-            <button class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70" @click="handleRegister">
+            <button class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70" @click="handleRegister">
               Criar conta
               <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
