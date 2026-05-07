@@ -24,7 +24,7 @@ function handleLogout() {
                     <Selection :icon="LayoutDashboard" title="Dashboard" to="/app/dashboard" />
                     <Selection :icon="Goal" title="Metas" to="/app/goals" />
                     <Selection :icon="ArrowLeftRight" title="Transações" to="/app/transactions" />
-                    <Selection :icon="CreditCard" title="Cartões" to="/app/cards" />
+                    <!-- <Selection :icon="CreditCard" title="Cartões" to="/app/cards" /> -->
                 </div>
              </div>
             

@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { CreditCard, ArrowUpRight, ArrowDownLeft } from 'lucide-vue-next';
 import StatCard from './components/StatCard.vue';
+import FilterBar from './components/FilterBar.vue';
 
 </script>
 <template>
+  <main class="flex flex-col space-y-6">
   <div class="grid grid-cols-3 gap-4">
     <StatCard 
       label="Depositos este mês"
@@ -23,5 +25,8 @@ import StatCard from './components/StatCard.vue';
       tint="bg-slate-400/10 text-slate-300"
       :icon="CreditCard"
     />
-  </div>
+    </div>
+
+    <FilterBar />
+  </main>
 </template>

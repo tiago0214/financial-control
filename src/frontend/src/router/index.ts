@@ -37,10 +37,10 @@ const router = createRouter({
                     path: 'transactions',
                     component: () => import('../views/transactions/TransactionsPage.vue'),
                 },
-                {
-                    path: 'cards',
-                    component: () => import('../views/cards/CardsPage.vue'),
-                }
+                // {
+                //     path: 'cards',
+                //     component: () => import('../views/cards/CardsPage.vue'),
+                // }
             ]
         }
     ]
