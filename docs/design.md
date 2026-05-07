@@ -3,7 +3,15 @@
 ## 4.1 Personas
 Persona - Julia Santos
 
-[![Persona -  Julia Santos.png](docs/img/Persona -  Julia Santos.png)](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/678f116584bc435515e1a10c3ac772e7e1fb8850/docs/img/Persona%20-%20%20Julia%20Santos.png)
+Persona - Marina Oliveira
+
+Persona - Gabriel Leal
+
+Persona - Carla Mendes
+
+Persona - Claudia Lopez
+
+Persona - Francisco Souza
 
 ## 4.2 Mapa de Empatia
 Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A partir do mapa da empatia é possível detalhar a personalidade do cliente e compreendê-la melhor. O objetivo é obter um nível mais profundo de compreensão de uma persona. A seguir um exemplo de template que pode ser usado para o mapa de empatia. Para cada persona deverá ser apresentado o seu respectivo mapa de empatia. Sugere-se a utilização do template apresentado em https://www.rdstation.com/blog/marketing/mapa-da-empatia/.
