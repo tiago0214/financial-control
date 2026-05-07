@@ -1,24 +1,14 @@
 <script setup lang="ts">
 import Dialog from 'primevue/dialog'
-import { ref } from 'vue';
-const visible = ref(false);
-const title = ref("Título do Modal");
-function open(newTitle: string) {
-    title.value = newTitle;
-
-    visible.value = true;
-}
-
-function close() {
-    visible.value = false;
-}
+import { useUiStore } from '../../../stores/ui';
+const uiStore = useUiStore();
 
 defineExpose({ open, close })
 </script>
 <template>
     <Dialog 
-        v-model:visible="visible" 
-        :header="title"
+        v-model:visible="uiStore.isModalOpen" 
+        :header="uiStore.modalTitle"
         modal 
         class="w-120"
         :pt="{
@@ -30,6 +20,6 @@ defineExpose({ open, close })
             // mask: 'backdrop-blur-sm bg-background/60',
         }"
     >
-        <p>Conteúdo do modal aqui...</p>
+        <slot></slot>
     </Dialog>
 </template>
