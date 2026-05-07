@@ -3,7 +3,7 @@
 ## 4.1 Personas
 Persona - Julia Santos
 
-![Persona Julia Santos](docs/img/persona-julia-santos.png)
+![Persona1](docs/img/persona-julia-santos.png)
 
 Persona - Marina Oliveira
 
