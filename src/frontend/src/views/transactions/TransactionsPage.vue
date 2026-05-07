@@ -4,7 +4,9 @@ import StatCard from './components/StatCard.vue';
 import FilterBar from './components/FilterBar.vue';
 import TransactionTable from './components/TransactionTable.vue';
 import CustomModal from '../layout/components/CustomModal.vue';
+import { useUiStore } from '../../stores/ui';
 
+const uiStore = useUiStore();
 </script>
 <template>
   <main class="flex flex-col space-y-6">
@@ -32,31 +34,69 @@ import CustomModal from '../layout/components/CustomModal.vue';
     <FilterBar />
     <TransactionTable />
 
-    <CustomModal
-      modal-id="add-transaction"
-    >
-      <!-- Formulário de exemplo -->
-      <form class="space-y-4">
-        <div>
-          <label class="block text-sm font-medium mb-1">Descrição</label>
-          <input type="text" class="w-full border border-border rounded-md p-2" placeholder="Ex: Compra no supermercado" />
+    <CustomModal modalId="add-transaction">
+      <!-- Formulário de Nova Transação -->
+      <form class="space-y-5">
+        
+        <!-- Descrição -->
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm font-semibold text-foreground">Descrição</label>
+          <input type="text" class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all" placeholder="Ex: Compra no supermercado" />
         </div>
-        <div>
-          <label class="block text-sm font-medium mb-1">Valor</label>
-          <input type="number" class="w-full border border-border rounded-md p-2" placeholder="Ex: 150.00" />
+
+        <!-- Valor e Data -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-foreground">Valor (R$)</label>
+            <input type="number" step="0.01" class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all" placeholder="0.00" />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-foreground">Data</label>
+            <input type="date" class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all text-muted-foreground" />
+          </div>
         </div>
-        <div>
-          <label class="block text-sm font-medium mb-1">Categoria</label>
-          <select class="w-full border border-border rounded-md p-2">
-            <option>Alimentação</option>
-            <option>Transporte</option>
-            <option>Lazer</option> 
-            <option>Outros</option>
+
+        <!-- Categoria e Status -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-foreground">Categoria</label>
+            <select class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all cursor-pointer">
+              <option>Alimentação</option>
+              <option>Transporte</option>
+              <option>Moradia</option>
+              <option>Assinaturas</option>
+              <option>Saúde</option>
+              <option>Compras</option>
+              <option>Receita</option>
+              <option>Outros</option>
+            </select>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-foreground">Status</label>
+            <select class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all cursor-pointer">
+              <option value="debito">Débito (-)</option>
+              <option value="credito">Crédito (+)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Método de Pagamento -->
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm font-semibold text-foreground">Método de Pagamento</label>
+          <select class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all cursor-pointer">
+            <option>Cartão de Crédito</option>
+            <option>Cartão de Débito</option>
+            <option>Pix</option>
+            <option>Transferência</option>
+            <option>Boleto</option>
+            <option>Dinheiro</option>
           </select>
         </div>
-        <div class="flex justify-end">
-          <button type="button" class="px-4 py-2 bg-secondary text-sm font-medium rounded-md mr-2">Cancelar</button>
-          <button type="submit" class="px-4 py-2 bg-primary text-sm font-medium rounded-md text-primary-foreground">Salvar</button>
+
+        <!-- Ações -->
+        <div class="flex justify-end gap-3 pt-4 border-t border-border/50">
+          <button type="button" @click="uiStore.closeModal()" class="px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-muted text-muted-foreground transition-colors cursor-pointer">Cancelar</button>
+          <button type="submit" class="px-5 py-2.5 rounded-full font-semibold text-sm bg-gradient-primary text-primary-foreground shadow-soft hover:shadow-glow hover:scale-[1.02] transition-all cursor-pointer">Adicionar Transação</button>
         </div>
       </form>
     </CustomModal>
