@@ -4,10 +4,17 @@ import { useUiStore } from '../../../stores/ui';
 const uiStore = useUiStore();
 
 defineExpose({ open, close })
+const props = defineProps({
+    modalId: {
+        type: String,
+        required: true
+    },
+})
 </script>
 <template>
     <Dialog 
-        v-model:visible="uiStore.isModalOpen" 
+        :visible="uiStore.isModalOpen && uiStore.activeModalId === props.modalId" 
+        @update:visible="(val) => { if (!val) uiStore.closeModal() }"
         :header="uiStore.modalTitle"
         modal 
         class="w-120"

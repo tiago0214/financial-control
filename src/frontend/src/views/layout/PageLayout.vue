@@ -4,8 +4,7 @@ import Selection from './components/Selection.vue';
 import { LayoutDashboard, ArrowLeftRight, Goal, LogOut } from 'lucide-vue-next'
 import { useAuthStore } from '../../stores/auth';
 import { useRouter } from 'vue-router';
-import { computed } from 'vue';
-import CustomModal from './components/CustomModal.vue';
+import { computed, watch } from 'vue';
 import { useUiStore } from '../../stores/ui';
 
 // STORES
@@ -32,6 +31,10 @@ const mappedGreetings = computed(() => {
 
 const route = useRouter();
 const activeRoute = computed(() => route.currentRoute.value.path);
+
+watch(() => route.currentRoute.value.path, () => {
+    uiStore.closeModal();
+});
 
 </script>
 <template>
@@ -66,8 +69,8 @@ const activeRoute = computed(() => route.currentRoute.value.path);
                     <h1 class="font-display text-xl font-bold gradient-text">{{ authStore.user?.name || 'Usuário' }}</h1>
                 </div>
                 <div>
-                    <button v-if="activeRoute == '/app/goals'" class="rounded-full bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.03] cursor-pointer mr-6" @click="uiStore.openModal('Adicionar Meta')">Adicionar Meta</button>
-                    <button v-if="activeRoute == '/app/transactions'" class="rounded-full bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.03] cursor-pointer mr-6" @click="uiStore.openModal('Adicionar Transação')">Adicionar Transação</button>
+                    <button v-if="activeRoute == '/app/goals'" class="rounded-full bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.03] cursor-pointer mr-6" @click="uiStore.openModal('Adicionar Meta', 'add-goal')">Adicionar Meta</button>
+                    <button v-if="activeRoute == '/app/transactions'" class="rounded-full bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.03] cursor-pointer mr-6" @click="uiStore.openModal('Adicionar Transação', 'add-transaction')">Adicionar Transação</button>
                 </div>
             </header>
 
@@ -75,7 +78,5 @@ const activeRoute = computed(() => route.currentRoute.value.path);
                 <router-view />
             </main>
         </section>
-
-        <CustomModal />
     </div>
 </template>
