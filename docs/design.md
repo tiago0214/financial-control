@@ -3,7 +3,7 @@
 ## 4.1 Personas
 Persona - Julia Santos
 
-![Persona1](docs/img/persona-julia-santos.png)
+![Persona1](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/8b470e811b2a178f1124f2a8a30c9b0d2f58f203/docs/img/persona-julia-santos.png)
 
 Persona - Marina Oliveira
 
