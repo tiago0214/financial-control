@@ -6,7 +6,8 @@ import type { PropType } from 'vue';
 defineProps({
     goal: {
         type: Object as PropType<{
-            icon: string;
+            icon: any;
+            tint: string;
             title: string;
             type: string;
             duration: string;
@@ -32,8 +33,10 @@ const formatCurrency = (value: number) => {
         
         <!-- Header -->
         <header class="flex justify-between items-start">
-            <div class="flex gap-3 items-center">
-                <div class="text-4xl leading-none">{{ goal.icon }}</div>
+            <div class="flex gap-4 items-center">
+                <div :class="`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br ${goal.tint} shadow-soft`">
+                    <component :is="goal.icon" class="h-5 w-5 text-primary-foreground" :stroke-width="2.5" />
+                </div>
                 <div class="flex flex-col">
                     <span class="text-xl font-bold text-foreground">{{ goal.title }}</span>
                     <span class="text-sm text-muted-foreground">{{ goal.type }}</span>

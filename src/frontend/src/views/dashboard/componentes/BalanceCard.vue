@@ -16,10 +16,10 @@ import { TrendingUp } from 'lucide-vue-next';
         <div class="mt-1 text-sm text-primary-foreground/80">+R$340.20 Esta semana</div>
         <div class="mt-5 flex gap-2">
             <button class="flex-1 rounded-xl bg-background/20 backdrop-blur-sm py-2 text-xs font-semibold text-primary-foreground transition-colors hover:bg-background/30 cursor-pointer">
-            Adicionar fundos
+            Adicionar Entrada
             </button>
             <button class="flex-1 rounded-xl bg-background/20 backdrop-blur-sm py-2 text-xs font-semibold text-primary-foreground transition-colors hover:bg-background/30 cursor-pointer">
-            Registrar gasto
+            Adicionar Saída
             </button>
         </div>
         </div>

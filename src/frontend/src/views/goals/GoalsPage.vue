@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { Plane, Car } from 'lucide-vue-next';
 import OverallGoals from './components/OverallGoals.vue';
 import SingleGoal from './components/SingleGoal.vue';
 
 const goals = ref([
   {
     id: 1,
-    icon: '✈️',
+    icon: Plane,
+    tint: 'from-primary to-primary-glow',
     title: 'Aventura na Europa',
     type: 'Meta de médio prazo',
     duration: '9 meses',
@@ -19,7 +21,8 @@ const goals = ref([
   },
   {
     id: 2,
-    icon: '🚗',
+    icon: Car,
+    tint: 'from-primary-glow to-accent',
     title: 'Carro Novo',
     type: 'Meta de longo prazo',
     duration: '2 anos',
