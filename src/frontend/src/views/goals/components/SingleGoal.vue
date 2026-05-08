@@ -14,7 +14,6 @@ defineProps({
             currentAmount: number;
             targetAmount: number;
             progress: number;
-            monthlyContribution: number;
             aiInsight?: string;
             targetDate: string;
         }>,
@@ -63,7 +62,6 @@ const formatCurrency = (value: number) => {
             <!-- Progress Details -->
             <div class="flex justify-between items-center text-sm mt-1">
                 <span class="text-muted-foreground font-display">{{ goal.progress }}% completo</span>
-                <span class="text-primary font-semibold font-display">+{{ formatCurrency(goal.monthlyContribution) }}/mês</span>
             </div>
         </div>
 
