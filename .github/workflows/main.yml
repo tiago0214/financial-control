@@ -16,7 +16,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
-    defauts:
+    defaults:
       run: 
         working-directory: ./src/frontend
 
