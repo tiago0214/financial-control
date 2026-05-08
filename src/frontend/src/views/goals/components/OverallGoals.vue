@@ -14,6 +14,13 @@ const overallProgress = computed(() => {
     if (goalsStore.totalTargetAmount === 0) return 0;
     return Math.min(100, (transactionsStore.totalAvailable / goalsStore.totalTargetAmount) * 100);
 });
+
+const progressColor = computed(() => {
+    const p = overallProgress.value;
+    if (p < 30) return 'from-accent to-warning';
+    if (p < 60) return 'from-accent to-primary-glow';
+    return 'from-primary to-primary-glow';
+});
 </script>
 <template>
     <section class="rounded-3xl bg-card border border-border p-6 mt-4">
@@ -29,7 +36,7 @@ const overallProgress = computed(() => {
             </div>
         </header>
         <div class="mt-2 h-3 overflow-hidden rounded-full bg-secondary">
-            <div class="h-full rounded-full bg-linear-to-r bg-gradient-hero transition-all" :style="{ width: overallProgress + '%' }"></div>
+            <div class="h-full rounded-full bg-linear-to-r transition-all" :class="progressColor" :style="{ width: overallProgress + '%' }"></div>
         </div>
     </section>
 </template>

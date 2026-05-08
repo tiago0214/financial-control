@@ -1,5 +1,6 @@
 <!-- src/views/goals/components/SingleGoal.vue -->
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Sparkles, Calendar } from 'lucide-vue-next';
 import type { PropType } from 'vue';
 import { useGoalsStore } from '../../../stores/goals';
@@ -8,7 +9,7 @@ import { useUiStore } from '../../../stores/ui';
 const goalsStore = useGoalsStore()
 const uiStore = useUiStore()
 
-const { goal } = defineProps({
+const props = defineProps({
     goal: {
         type: Object as PropType<{
             id:string;
@@ -31,8 +32,15 @@ const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(value);
 }
 
+const progressColor = computed(() => {
+    const p = props.goal.progress;
+    if (p < 30) return 'from-accent to-warning';
+    if (p < 60) return 'from-accent to-primary-glow';
+    return 'from-primary to-primary-glow';
+});
+
 function handleEdit() {
-  goalsStore.selectGoal(goal.id);
+  goalsStore.selectGoal(props.goal.id);
   uiStore.openModal('Editar Meta', 'add-goal'); // Assuming your UI store has an openModal function
 }
 </script>
@@ -44,7 +52,7 @@ function handleEdit() {
         <!-- Header -->
         <header class="flex justify-between items-start">
             <div class="flex gap-4 items-center">
-                <div :class="`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br ${goal.tint} shadow-soft`">
+                <div :class="['flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br shadow-soft', progressColor]">
                     <component :is="goal.icon" class="h-5 w-5 text-primary-foreground" :stroke-width="2.5" />
                 </div>
                 <div class="flex flex-col">
@@ -61,18 +69,16 @@ function handleEdit() {
         <div class="flex flex-col gap-2">
             <!-- Amounts -->
             <div class="flex justify-between items-end">
-                <span class="text-3xl font-bold text-foreground leading-none font-display">{{ formatCurrency(goal.currentAmount) }}</span>
-                <span class="text-base text-muted-foreground font-display">{{ formatCurrency(goal.targetAmount) }}</span>
+                <span class="text-3xl font-bold text-foreground leading-none font-display">{{ formatCurrency(goal.targetAmount) }}</span>
+                            <!-- Progress Details -->
+                <div class="flex justify-between items-center text-sm mt-1">
+                    <span class="text-muted-foreground font-display">{{ goal.progress }}% completo</span>
+                </div>
             </div>
             
             <!-- Progress Bar -->
             <div class="h-2 overflow-hidden rounded-full bg-secondary">
-                <div class="h-full rounded-full bg-gradient-hero transition-all" :style="{ width: goal.progress + '%' }"></div>
-            </div>
-            
-            <!-- Progress Details -->
-            <div class="flex justify-between items-center text-sm mt-1">
-                <span class="text-muted-foreground font-display">{{ goal.progress }}% completo</span>
+                <div class="h-full rounded-full bg-linear-to-r transition-all" :class="progressColor" :style="{ width: goal.progress + '%' }"></div>
             </div>
         </div>
 
