@@ -18,7 +18,7 @@ const overallProgress = computed(() => {
 const progressColor = computed(() => {
     const p = overallProgress.value;
     if (p < 30) return 'from-accent to-warning';
-    if (p < 60) return 'from-accent to-primary-glow';
+    if (p < 70) return 'from-accent to-primary-glow';
     return 'from-primary to-primary-glow';
 });
 </script>
