@@ -15,6 +15,11 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
+    defauts:
+      run: 
+        working-directory: ./src/frontend
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
