@@ -2,7 +2,7 @@
 import { Filter } from 'lucide-vue-next';
 
 function handleApplyFilters() {
-   alert("Ainda, não implementado!")
+   alert("Não implementado!")
 }
 </script>
 <template>
