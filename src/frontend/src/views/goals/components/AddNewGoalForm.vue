@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useUiStore } from '../../../stores/ui';
 import { useGoalsStore } from '../../../stores/goals';
 
@@ -10,6 +10,17 @@ const title = ref('');
 const targetAmount = ref<number | null>(null);
 const targetDate = ref('');
 const selectedIcon = ref('Plane');
+const isEditing = computed(() => !!goalsStore.selectedGoalId);
+
+function closeAndClean() {
+    goalsStore.selectGoal(null);
+    uiStore.closeModal();
+    // Reset form
+    title.value = '';
+    targetAmount.value = null;
+    targetDate.value = '';
+    selectedIcon.value = 'Plane';
+}
 
 function handleSubmit() {
   if (!title.value || !targetAmount.value || !targetDate.value) {
@@ -17,22 +28,43 @@ function handleSubmit() {
     return;
   }
 
-  goalsStore.addGoal({
-    title: title.value,
-    targetAmount: targetAmount.value,
-    targetDate: targetDate.value,
-    iconString: selectedIcon.value,
-    aiInsight: 'Sua meta foi criada! Assim que você economizar seus primeiros valores, te ajudaremos com insights.',
-  });
+  if(isEditing.value){
+    goalsStore.updateGoal({
+      title: title.value,
+      targetAmount: targetAmount.value,
+      targetDate: targetDate.value,
+      iconString: selectedIcon.value,
+    });
+  }else{
+    goalsStore.addGoal({
+        title: title.value,
+        targetAmount: targetAmount.value,
+        targetDate: targetDate.value,
+        iconString: selectedIcon.value,
+        aiInsight: 'Sua meta foi criada! Assim que você economizar seus primeiros valores, te ajudaremos com insights.',
+    });
+  }
 
-  // Reset form
-  title.value = '';
-  targetAmount.value = null;
-  targetDate.value = '';
-  selectedIcon.value = 'Plane';
-  
-  uiStore.closeModal();
+  closeAndClean()
 }
+
+onMounted(() => {
+  if (goalsStore.selectedGoalId) {
+    const goalToEdit = goalsStore.userGoals.find(g => g.id === goalsStore.selectedGoalId);
+    if (goalToEdit) {
+      title.value = goalToEdit.title;
+      targetAmount.value = goalToEdit.targetAmount;
+      targetDate.value = goalToEdit.targetDate;
+      selectedIcon.value = goalToEdit.iconString;
+    }
+  }
+});
+
+onBeforeUnmount(() => {
+    if(goalsStore.selectedGoalId){
+        goalsStore.selectGoal(null)
+    }
+})
 </script>
 <template>
     <!-- Formulário de Nova Meta -->
@@ -74,7 +106,9 @@ function handleSubmit() {
           <!-- Ações -->
           <div class="flex justify-end gap-3 pt-4 ">
             <button type="button" class="px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-muted text-muted-foreground transition-colors cursor-pointer" @click="uiStore.closeModal()">Cancelar</button>
-            <button type="submit" class="px-5 py-2.5 rounded-full font-semibold text-sm bg-gradient-primary text-primary-foreground shadow-soft hover:shadow-glow hover:scale-[1.02] transition-all cursor-pointer">Adicionar Meta</button>
+            <button type="submit" class="px-5 py-2.5 rounded-full font-semibold text-sm bg-gradient-primary text-primary-foreground shadow-soft hover:shadow-glow hover:scale-[1.02] transition-all cursor-pointer">
+                Salvar
+            </button>
           </div>
         </form>
 </template>

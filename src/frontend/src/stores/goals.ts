@@ -15,6 +15,7 @@ export interface Goal {
 
 export const useGoalsStore = defineStore('goals', () => {
   const authStore = useAuthStore();
+  const selectedGoalId = ref<string | null>(null);
   
   // Load from local storage or default to empty array
   const savedGoals = localStorage.getItem('user_goals');
@@ -57,12 +58,29 @@ export const useGoalsStore = defineStore('goals', () => {
     localStorage.setItem('user_goals', JSON.stringify(allGoals.value));
   }
 
+  function selectGoal(goalId: string | null) {
+    selectedGoalId.value = goalId;
+  }
+
+  function updateGoal(updatedData: Partial<Goal>){
+    if(!selectedGoalId.value) return;
+    const index = allGoals.value.findIndex(g => g.id === selectedGoalId.value)
+
+    if(index != -1){
+        allGoals.value[index] = { ...allGoals.value[index], ...updatedData };
+        saveToStorage();
+    }
+  }
+
   return {
     allGoals,
     userGoals,
     totalTargetAmount,
     totalCurrentAmount,
     overallProgress,
-    addGoal
+    selectedGoalId,
+    addGoal,
+    selectGoal,
+    updateGoal
   };
 });

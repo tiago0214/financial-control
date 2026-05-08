@@ -2,10 +2,16 @@
 <script setup lang="ts">
 import { Sparkles, Calendar } from 'lucide-vue-next';
 import type { PropType } from 'vue';
+import { useGoalsStore } from '../../../stores/goals';
+import { useUiStore } from '../../../stores/ui';
 
-defineProps({
+const goalsStore = useGoalsStore()
+const uiStore = useUiStore()
+
+const { goal } = defineProps({
     goal: {
         type: Object as PropType<{
+            id:string;
             icon: any;
             tint: string;
             title: string;
@@ -24,12 +30,17 @@ defineProps({
 const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(value);
 }
+
+function handleEdit() {
+  goalsStore.selectGoal(goal.id);
+  uiStore.openModal('Editar Meta', 'add-goal'); // Assuming your UI store has an openModal function
+}
 </script>
 
 <template>
     <!-- Card Container -->
     <div class="flex flex-col justify-between gap-6 rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card">
-        
+
         <!-- Header -->
         <header class="flex justify-between items-start">
             <div class="flex gap-4 items-center">
@@ -82,8 +93,7 @@ const formatCurrency = (value: number) => {
                 <Calendar class="h-4 w-4" />
                 <span class="text-sm">Meta: {{ goal.targetDate }}</span>
             </div>
-            
-            <button class="rounded-xl bg-primary/10 px-4 py-2 font-semibold text-primary transition-all hover:bg-primary/20 cursor-pointer text-xs">
+            <button class="rounded-full bg-gradient-primary px-4 py-2 font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow cursor-pointer text-xs" @click="handleEdit">
                 Ajustar Meta
             </button>
         </footer>
