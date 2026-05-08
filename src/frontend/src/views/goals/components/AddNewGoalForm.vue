@@ -1,0 +1,80 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useUiStore } from '../../../stores/ui';
+import { useGoalsStore } from '../../../stores/goals';
+
+const uiStore = useUiStore();
+const goalsStore = useGoalsStore();
+
+const title = ref('');
+const targetAmount = ref<number | null>(null);
+const targetDate = ref('');
+const selectedIcon = ref('Plane');
+
+function handleSubmit() {
+  if (!title.value || !targetAmount.value || !targetDate.value) {
+    alert('Preencha os campos obrigatórios');
+    return;
+  }
+
+  goalsStore.addGoal({
+    title: title.value,
+    targetAmount: targetAmount.value,
+    targetDate: targetDate.value,
+    iconString: selectedIcon.value,
+    aiInsight: 'Sua meta foi criada! Assim que você economizar seus primeiros valores, te ajudaremos com insights.',
+  });
+
+  // Reset form
+  title.value = '';
+  targetAmount.value = null;
+  targetDate.value = '';
+  selectedIcon.value = 'Plane';
+  
+  uiStore.closeModal();
+}
+</script>
+<template>
+    <!-- Formulário de Nova Meta -->
+        <form class="space-y-5" @submit.prevent="handleSubmit">
+          
+          <!-- Título da Meta -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-foreground">Título da Meta</label>
+            <input v-model="title" required type="text" class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all" placeholder="Ex: Viagem para Europa" />
+          </div>
+
+          <!-- Valor Alvo e Data Alvo -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1.5">
+              <label class="text-sm font-semibold text-foreground">Valor Alvo (R$)</label>
+              <input v-model="targetAmount" required type="number" step="0.01" class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all" placeholder="0.00" />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label class="text-sm font-semibold text-foreground">Data Alvo</label>
+              <input v-model="targetDate" required type="date" class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all text-muted-foreground" />
+            </div>
+          </div>
+
+          <!-- Ícone -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1.5">
+              <label class="text-sm font-semibold text-foreground">Ícone</label>
+              <select v-model="selectedIcon" class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all cursor-pointer">
+                <option value="Plane">✈️ Avião</option>
+                <option value="Car">🚗 Carro</option>
+                <option value="Home">🏠 Casa</option>
+                <option value="Star">✨ Estrela</option>
+              </select>
+            </div>
+            
+          </div>
+
+          <!-- Ações -->
+          <div class="flex justify-end gap-3 pt-4 ">
+            <button type="button" class="px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-muted text-muted-foreground transition-colors cursor-pointer" @click="uiStore.closeModal()">Cancelar</button>
+            <button type="submit" class="px-5 py-2.5 rounded-full font-semibold text-sm bg-gradient-primary text-primary-foreground shadow-soft hover:shadow-glow hover:scale-[1.02] transition-all cursor-pointer">Adicionar Meta</button>
+          </div>
+        </form>
+</template>
