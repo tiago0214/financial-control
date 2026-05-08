@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Music, Sparkles, ShoppingBag, Pizza, Bus, Dumbbell, BookOpen, CircleDollarSign } from 'lucide-vue-next';
+import { Music, Sparkles, ShoppingBag, Pizza, Bus, Dumbbell, BookOpen, CircleDollarSign, Banknote, CreditCard, TrendingUp, Briefcase } from 'lucide-vue-next';
 import { useTransactionsStore } from '../../../stores/transactions';
 
 const transactionsStore = useTransactionsStore();
@@ -15,7 +15,11 @@ const categoryIconMap: Record<string, any> = {
   'Compras': ShoppingBag,
   'Receita': Sparkles,
   'Moradia': BookOpen,
-  'Outros': CircleDollarSign
+  'Outros': CircleDollarSign,
+  'Salário': Banknote,
+  'Pagamento': CreditCard,
+  'Rendimento': TrendingUp,
+  'Freelance': Briefcase
 };
 
 const getIcon = (category: string) => categoryIconMap[category] || CircleDollarSign;

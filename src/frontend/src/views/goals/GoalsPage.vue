@@ -65,7 +65,7 @@ const goals = ref([
 
             <div class="flex flex-col gap-1.5">
               <label class="text-sm font-semibold text-foreground">Data Alvo</label>
-              <input type="date" class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all" />
+              <input type="date" class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all text-muted-foreground" />
             </div>
           </div>
 

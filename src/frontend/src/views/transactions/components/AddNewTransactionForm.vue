@@ -9,8 +9,8 @@ const transactionsStore = useTransactionsStore();
 const description = ref('');
 const amount = ref<number | null>(null);
 const date = ref('');
-const category = ref('Alimentação');
-const status = ref<'debito' | 'credito'>('debito');
+const category = ref('Receita');
+const status = ref<'debito' | 'credito'>('credito');
 const paymentMethod = ref('Cartão de Crédito');
 
 function handleSubmit() {
@@ -64,14 +64,22 @@ function handleSubmit() {
           <div class="flex flex-col gap-1.5">
             <label class="text-sm font-semibold text-foreground">Categoria</label>
             <select v-model="category" class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all cursor-pointer">
-              <option>Alimentação</option>
-              <option>Transporte</option>
-              <option>Moradia</option>
-              <option>Assinaturas</option>
-              <option>Saúde</option>
-              <option>Compras</option>
-              <option>Receita</option>
-              <option>Outros</option>
+                <optgroup label="Receitas">
+                    <option>Receita</option>
+                    <option>Salário</option>
+                    <option>Pagamento</option>
+                    <option>Rendimento</option>
+                    <option>Freelance</option>
+                </optgroup>
+                <optgroup label="Despesas">
+                    <option>Alimentação</option>
+                    <option>Transporte</option>
+                    <option>Moradia</option>
+                    <option>Assinaturas</option>
+                    <option>Saúde</option>
+                    <option>Compras</option>
+                    <option>Outros</option>
+                </optgroup>
             </select>
           </div>
           <div class="flex flex-col gap-1.5">

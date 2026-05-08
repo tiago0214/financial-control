@@ -4,11 +4,9 @@ import StatCard from './components/StatCard.vue';
 import FilterBar from './components/FilterBar.vue';
 import TransactionTable from './components/TransactionTable.vue';
 import CustomModal from '../layout/components/CustomModal.vue';
-import { useUiStore } from '../../stores/ui';
 import { useTransactionsStore } from '../../stores/transactions';
 import AddNewTransactionForm from './components/AddNewTransactionForm.vue';
 
-const uiStore = useUiStore();
 const transactionsStore = useTransactionsStore();
 </script>
 <template>
