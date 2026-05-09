@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import Logo from "../../components/Logo.vue";
 import { Mail, Lock, ArrowRight } from "lucide-vue-next";
-import Input from "../../components/Input.vue";
+import InputText from "primevue/inputtext";
 import { useAuthStore } from "../../stores/auth";
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useToast } from "primevue";
 import { z } from "zod";
+import { zodResolver } from '@primevue/forms/resolvers/zod';
+import { Form } from '@primevue/forms';
+import Message from 'primevue/message';
 
 const router = useRouter();
 
@@ -18,59 +21,36 @@ const userData = reactive({
 
 const toast = useToast();
 
-const shouldHighlight = reactive({
-  email: false,
-  password: false,
-});
+const resolver = ref(zodResolver(
+  z.object({
+    email: z.email({ message: "Email inválido" }),
+    password: z.string().min(1, { message: "Senha é obrigatória" }),
+  })
+));
 
-const loginSchema = z.object({
-  email: z.email({ message: "Email inválido" }),
-  password: z.string().min(1, { message: "Senha é obrigatória" }),
-});
+const onFormSubmit = ({ valid, states }: any) => {
+  if (valid) {
+    try {
+      const email = states.email.value;
+      const password = states.password.value;
 
-function handleLogin() {
-  try {
-    const validationResult = loginSchema.safeParse(userData);
+      const sucess = authStore.login(email, password);
 
-    if (!validationResult.success) {
-      validationResult.error.issues.forEach((issue) => {
+      if (sucess) {
+        router.push("/app/dashboard");
+      } else {
         toast.add({
           severity: "error",
           summary: "Erro",
-          detail: issue.message,
+          detail: "Credenciais inválidas!",
           life: 3000,
         });
-
-        if (issue.path.includes("email")) {
-          shouldHighlight.email = true;
-        } 
-        if (issue.path.includes("password")) {
-          shouldHighlight.password = true;
-        }
-      });
-
-      return;
+      }
+    } catch (error) {
+      console.error(error);
     }
-
-    const sucess = authStore.login(userData.email, userData.password);
-
-    if (sucess) {
-      router.push("/app/dashboard");
-    } else {
-      toast.add({
-        severity: "error",
-        summary: "Erro",
-        detail: "Credenciais inválidas!",
-        life: 3000,
-      });
-
-      shouldHighlight.email = true;
-      shouldHighlight.password = true;
-    }
-  } catch (error) {
-    console.error(error);
   }
-}
+};
 </script>
 <template>
   <main
@@ -96,34 +76,48 @@ function handleLogin() {
 
         <div class="w-96">
           <div class="flex flex-col gap-8">
-            <div class="flex flex-col gap-3">
-              <Input
-                :Icon="Mail"
-                type="email"
-                placeholder="Seu email"
-                v-model="userData.email"
-                :error="shouldHighlight.email"
-              />
-              <Input
-                :Icon="Lock"
-                type="password"
-                placeholder="Senha"
-                v-model="userData.password"
-                :error="shouldHighlight.password"
-              />
-            </div>
+            <Form class="flex flex-col gap-3" v-slot="$form" :resolver="resolver" :initialValues="userData" @submit="onFormSubmit">
+              <div class="flex flex-col gap-1">
+                <div class="relative">
+                  <Mail class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground z-10 pointer-events-none" />
+                  <InputText
+                    name="email"
+                    type="email"
+                    placeholder="Seu email"
+                    :pt="{
+                      root: `!w-full !rounded-2xl !border !bg-input/50 !py-4 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.email?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
+                    }"
+                  />
+                </div>
+                <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">{{ $form.email.error?.message }}</Message>
+              </div>
+              <div class="flex flex-col gap-1">
+                <div class="relative">
+                  <Lock class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground z-10 pointer-events-none" />
+                  <InputText
+                    name="password"
+                    type="password"
+                    placeholder="Senha"
+                    :pt="{
+                      root: `!w-full !rounded-2xl !border !bg-input/50 !py-4 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.password?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
+                    }"
+                  />
+                </div>
+                <Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">{{ $form.password.error?.message }}</Message>
+              </div>
 
-            <div>
-              <button
-                class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70"
-                @click="handleLogin"
-              >
-                Entrar
-                <ArrowRight
-                  class="h-4 w-4 transition-transform group-hover:translate-x-1"
-                />
-              </button>
-            </div>
+              <div class="pt-5">
+                <button
+                  class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70"
+                  type="submit"
+                >
+                  Entrar
+                  <ArrowRight
+                    class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  />
+                </button>
+              </div>
+            </Form>
           </div>
         </div>
       </div>
