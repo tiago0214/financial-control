@@ -1,13 +1,32 @@
 <script setup lang="ts">
 import { TrendingUp } from "lucide-vue-next";
 import { useTransactionsStore } from "../../../stores/transactions";
-import CustomModal from "../../layout/components/CustomModal.vue";
-import { useUiStore } from "../../../stores/ui";
-import DashboardForm from "./DashboardForm.vue";
-
-const uiStore = useUiStore();
+import { computed } from "vue";
 
 const transactionStore = useTransactionsStore();
+
+const weeklyIncoming = computed(() => {
+  const now = new Date();
+  const startOfWeek = new Date(now);
+  startOfWeek.setDate(now.getDate() - now.getDay()); // Sunday
+  startOfWeek.setHours(0, 0, 0, 0);
+
+  let total = 0;
+  transactionStore.userTransactions.forEach((ts) => {
+    if (ts.status === "credito") {
+      const txDate = new Date(ts.date);
+      if (txDate >= startOfWeek) {
+        total += Number(ts.amount);
+      }
+    }
+  });
+
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    maximumFractionDigits: 0,
+  }).format(total);
+});
 </script>
 
 <template>
@@ -28,7 +47,7 @@ const transactionStore = useTransactionsStore();
         R${{ transactionStore.totalAvailable }}
       </div>
       <div class="mt-1 text-xs text-primary-foreground/80">
-        +R$340.20 Esta semana
+        +{{ weeklyIncoming }} Esta semana
       </div>
       <!-- <div class="mt-5 flex gap-2"> -->
       <!--   <button -->
