@@ -39,7 +39,7 @@ watch(() => route.currentRoute.value.path, () => {
 </script>
 <template>
     <div class="flex min-h-screen bg-background text-foreground">
-        <aside class="w-64 shrink-0 border-r border-border bg-card flex flex-col justify-between">
+        <aside class="fixed top-0 left-0 h-screen w-64 border-r border-border bg-card flex flex-col justify-between z-10">
             <!-- <Sidebar /> -->
              <div>
                 <header class="p-6 font-display font-bold text-xl border-border">
@@ -49,7 +49,6 @@ watch(() => route.currentRoute.value.path, () => {
                     <Selection :icon="LayoutDashboard" title="Dashboard" to="/app/dashboard" />
                     <Selection :icon="Goal" title="Metas" to="/app/goals" />
                     <Selection :icon="ArrowLeftRight" title="Transações" to="/app/transactions" />
-                    <!-- <Selection :icon="CreditCard" title="Cartões" to="/app/cards" /> -->
                 </div>
              </div>
             
@@ -61,9 +60,9 @@ watch(() => route.currentRoute.value.path, () => {
             </footer>
         </aside>
         
-        <!-- Top Navigation -->
-        <section class="w-full border-b border-border flex flex-col ">
-            <header class="p-6 bg-card flex gap-1 justify-between items-center">
+        <!-- Main Content Area -->
+        <section class="pl-64 flex flex-col min-h-screen w-full">
+            <header class="p-6 bg-card flex gap-1 justify-between items-center border-b border-border sticky top-0 z-10">
                 <div>
                     <span class="text-xs text-muted-foreground">{{ mappedGreetings }}</span>
                     <h1 class="font-display text-xl font-bold gradient-text">{{ authStore.user?.name || 'Usuário' }}</h1>
@@ -74,7 +73,7 @@ watch(() => route.currentRoute.value.path, () => {
                 </div>
             </header>
 
-            <main class="p-6 h-full">
+            <main class="p-6 h-full grow">
                 <router-view />
             </main>
         </section>
