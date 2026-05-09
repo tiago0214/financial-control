@@ -8,8 +8,6 @@ const chartOptions = ref();
 const transactions = useTransactionsStore();
 
 const setChartData = () => {
-    const documentStyle = getComputedStyle(document.documentElement);
-    
     const monthNames = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
     const monthlyData: Record<string, { income: number, expense: number, dateValue: number }> = {};
     
@@ -123,7 +121,7 @@ watchEffect(() => {
 <template>
     <section class="rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card">
         <div class="card">
-            <Chart type="bar" :data="chartData" :options="chartOptions" class="h-[30rem]" />
+            <Chart type="bar" :data="chartData" :options="chartOptions" class="h-120" />
         </div>
     </section>
 </template>
