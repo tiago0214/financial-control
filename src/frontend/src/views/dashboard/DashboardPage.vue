@@ -18,30 +18,39 @@ const formatCurrency = (value: number) => {
 };
 
 const computedIncoming = computed(() => {
-  const thisMonth = new Date().getMonth();
+  const currentDate = new Date();
+  const thisMonth = currentDate.getMonth();
+  const currentYear = currentDate.getFullYear();
+  
   const lastMonth = thisMonth - 1 < 0 ? 11 : thisMonth - 1;
+  const lastMonthYear = thisMonth === 0 ? currentYear - 1 : currentYear;
+  
   let thisMonthTransactionsTotal = 0;
   let lastMonthTransactionsTotal = 0;
 
   transactions.userTransactions.forEach((ts) => {
-    const transactionMonth = new Date(ts.date).getMonth();
+    const transactionDate = new Date(ts.date);
+    const transactionMonth = transactionDate.getMonth();
+    const transactionYear = transactionDate.getFullYear();
 
-    if (transactionMonth == thisMonth && ts.status === "credito") {
+    if (transactionMonth === thisMonth && transactionYear === currentYear && ts.status === "credito") {
       thisMonthTransactionsTotal += Number(ts.amount);
     }
 
-    if (transactionMonth == lastMonth && ts.status === "credito") {
+    if (transactionMonth === lastMonth && transactionYear === lastMonthYear && ts.status === "credito") {
       lastMonthTransactionsTotal += Number(ts.amount);
     }
   });
 
-  const change =
-    (thisMonthTransactionsTotal / lastMonthTransactionsTotal) * 100;
+  let change = 0;
+  if (lastMonthTransactionsTotal > 0) {
+    change = ((thisMonthTransactionsTotal - lastMonthTransactionsTotal) / lastMonthTransactionsTotal) * 100;
+  } else if (thisMonthTransactionsTotal > 0) {
+    change = 100;
+  }
 
-  const upOrDown = thisMonthTransactionsTotal > lastMonthTransactionsTotal;
-  const changeFormmated = upOrDown
-    ? `+${Math.trunc(change)}%`
-    : `-${Math.trunc(change)}%`;
+  const upOrDown = thisMonthTransactionsTotal >= lastMonthTransactionsTotal;
+  const changeFormmated = `${change >= 0 ? '+' : '-'}${Math.abs(Math.trunc(change))}%`;
 
   return {
     incoming: formatCurrency(thisMonthTransactionsTotal),
@@ -51,33 +60,42 @@ const computedIncoming = computed(() => {
 });
 
 const computedExpense = computed(() => {
-  const thisMonth = new Date().getMonth();
+  const currentDate = new Date();
+  const thisMonth = currentDate.getMonth();
+  const currentYear = currentDate.getFullYear();
+  
   const lastMonth = thisMonth - 1 < 0 ? 11 : thisMonth - 1;
+  const lastMonthYear = thisMonth === 0 ? currentYear - 1 : currentYear;
+  
   let thisMonthExpensesTotal = 0;
   let lastMonthExpensesTotal = 0;
 
   transactions.userTransactions.forEach((ts) => {
-    const transactionMonth = new Date(ts.date).getMonth();
+    const transactionDate = new Date(ts.date);
+    const transactionMonth = transactionDate.getMonth();
+    const transactionYear = transactionDate.getFullYear();
 
-    if (transactionMonth == thisMonth && ts.status === "debito") {
+    if (transactionMonth === thisMonth && transactionYear === currentYear && ts.status === "debito") {
       thisMonthExpensesTotal += Number(ts.amount);
     }
 
-    if (transactionMonth == lastMonth && ts.status === "debito") {
+    if (transactionMonth === lastMonth && transactionYear === lastMonthYear && ts.status === "debito") {
       lastMonthExpensesTotal += Number(ts.amount);
     }
   });
 
-  const change = (thisMonthExpensesTotal / lastMonthExpensesTotal) * 100;
+  let change = 0;
+  if (lastMonthExpensesTotal > 0) {
+    change = ((thisMonthExpensesTotal - lastMonthExpensesTotal) / lastMonthExpensesTotal) * 100;
+  } else if (thisMonthExpensesTotal > 0) {
+    change = 100;
+  }
 
-  const upOrDown = thisMonthExpensesTotal > lastMonthExpensesTotal;
-  const changeFormmated = upOrDown
-    ? `-${Math.trunc(change)}%`
-    : `+${Math.trunc(change)}%`;
+  const changeFormmated = `${change >= 0 ? '+' : '-'}${Math.abs(Math.trunc(change))}%`;
 
   return {
     expenses: formatCurrency(thisMonthExpensesTotal),
-    upOrDown: upOrDown,
+    upOrDown: thisMonthExpensesTotal <= lastMonthExpensesTotal,
     changeFormmated,
   };
 });
