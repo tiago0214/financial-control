@@ -5,9 +5,10 @@ import PrimeVue from "primevue/config";
 import Nora from "@primeuix/themes/aura";
 import router from "./router";
 import { VueQueryPlugin } from "@tanstack/vue-query";
-import { createPinia } from 'pinia'
+import { createPinia } from "pinia";
+import ToastService from "primevue/toastservice";
 
-const pinia = createPinia()
+const pinia = createPinia();
 const app = createApp(App);
 app.use(pinia);
 app.use(PrimeVue, {
@@ -17,5 +18,6 @@ app.use(PrimeVue, {
 });
 app.use(router);
 app.use(VueQueryPlugin);
+app.use(ToastService);
 
 app.mount("#app");

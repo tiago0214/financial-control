@@ -40,4 +40,3 @@ const transactionsStore = useTransactionsStore();
     </CustomModal>
   </main>
 </template>
-
