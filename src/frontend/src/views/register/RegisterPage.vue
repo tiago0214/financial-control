@@ -19,15 +19,22 @@ const toast = useToast();
 const userData = reactive({
   name: '',
   email: '',
-  password: ''
+  password: '',
+  confirmPassword: ''
 })
 
 const resolver = ref(zodResolver(
     z.object({
         name: z.string().min(1, { message: 'O nome é obrigatório.' }),
         email: z.email({ message: 'Endereço de email inválido.' }),
-        password: z.string().min(6, { message: 'A senha deve ter no mínimo 6 caracteres.' })
-    })
+        password: z.string().min(6, { message: 'A senha deve ter no mínimo 6 caracteres.' }),
+        confirmPassword: z.string().min(6, { message: 'A confirmação da senha deve ter no mínimo 6 caracteres.' })
+    }).check(
+        z.refine((data) => data.password === data.confirmPassword, {
+          error: "Senhas não coincidem.",
+          path: ["confirmPassword"],
+        })
+    )
 ));
 
 const onFormSubmit = ({ valid, states }: any) => {
@@ -118,6 +125,21 @@ const onFormSubmit = ({ valid, states }: any) => {
                   />
                 </div>
                 <Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">{{ $form.password.error?.message }}</Message>
+              </div>
+
+              <div class="flex flex-col gap-1">
+                <div class="relative">
+                  <Lock class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground z-10 pointer-events-none" />
+                  <InputText
+                    name="confirmPassword"
+                    type="password"
+                    placeholder="Confirme sua senha"
+                    :pt="{
+                      root: `!w-full !rounded-2xl !border !bg-input/50 !py-4 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.password?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
+                    }"
+                  />
+                </div>
+                <Message v-if="$form.confirmPassword?.invalid" severity="error" size="small" variant="simple">{{ $form.confirmPassword.error?.message }}</Message>
               </div>
 
               <button class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70" type="submit">
