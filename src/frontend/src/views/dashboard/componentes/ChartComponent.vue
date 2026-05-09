@@ -2,6 +2,7 @@
 import { ref, watchEffect } from 'vue';
 import Chart from 'primevue/chart';
 import { useTransactionsStore } from '../../../stores/transactions';
+import { ChartColumn } from 'lucide-vue-next';
 
 const chartData = ref({});
 const chartOptions = ref({});
@@ -131,7 +132,7 @@ watchEffect(() => {
         
         <div v-else class="flex flex-col items-center justify-center flex-1 h-full text-center text-muted-foreground gap-4">
             <div class="h-16 w-16 rounded-full bg-secondary/50 flex items-center justify-center">
-                <i class="pi pi-chart-bar text-2xl text-muted-foreground/50"></i>
+                <ChartColumn class="text-2xl text-muted-foreground/50"/>
             </div>
             <p>Nenhuma transação encontrada.</p>
             <span class="text-sm">Comece adicionando entradas e saídas para ver seu gráfico.</span>
