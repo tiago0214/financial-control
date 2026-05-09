@@ -47,7 +47,7 @@ const txns = computed(() => {
             'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl',
             t.amount > 0
               ? 'bg-primary/10 text-primary'
-              : 'bg-destructive/10 text-destructive',
+              : 'bg-accent/10 text-accent',
           ]"
         >
           <component :is="t.icon" class="h-4 w-4" />
@@ -61,7 +61,7 @@ const txns = computed(() => {
         <div
           :class="[
             'text-sm font-bold tabular-nums',
-            t.amount > 0 ? 'text-success' : 'text-destructive',
+            t.amount > 0 ? 'text-success' : 'text-accent',
           ]"
         >
           {{ t.amount > 0 ? "+" : "-" }}R$ {{ Math.abs(t.amount).toFixed(2) }}

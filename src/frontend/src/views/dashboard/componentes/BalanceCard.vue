@@ -31,7 +31,7 @@ const weeklyIncoming = computed(() => {
 
 <template>
   <div
-    class="relative overflow-hidden rounded-3xl bg-gradient-hero p-6 shadow-elevated md:col-span-1"
+    class="relative overflow-hidden rounded-3xl bg-linear-to-br from-primary to-primary-glow p-6 shadow-elevated md:col-span-1"
   >
     <div class="absolute inset-0 grid-pattern opacity-20" />
     <div class="relative">

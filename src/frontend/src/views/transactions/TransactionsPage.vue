@@ -21,7 +21,7 @@ const transactionsStore = useTransactionsStore();
       <StatCard
         label="Gastos Totais"
         :value="transactionsStore.totalExpense"
-        tint="bg-destructive/10 text-destructive"
+        tint="bg-accent/10 text-accent"
         :icon="ArrowUpRight"
       />
       <StatCard

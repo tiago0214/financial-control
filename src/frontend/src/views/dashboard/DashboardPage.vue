@@ -6,6 +6,7 @@ import StatCard from "./componentes/StatCard.vue";
 import { PiggyBank, ShoppingBag } from "lucide-vue-next";
 import { useTransactionsStore } from "../../stores/transactions";
 import { computed } from "vue";
+import ChartComponent from "./componentes/ChartComponent.vue";
 
 const transactions = useTransactionsStore();
 
@@ -102,8 +103,8 @@ const computedExpense = computed(() => {
 </script>
 
 <template>
-  <div class="grid grid-cols-3 gap-6">
-    <div class="col-span-2 space-y-6">
+  <div class="flex flex-col gap-6">
+    <div class="col-span-3 space-y-6">
       <div class="grid grid-cols-3 gap-4">
         <BalanceCard />
         <StatCard
@@ -120,13 +121,17 @@ const computedExpense = computed(() => {
           :change="computedExpense.changeFormmated"
           :up="computedExpense.upOrDown"
           :icon="ShoppingBag"
-          tint="from-accent to-warning"
+          tint="from-accent to-accent"
         />
       </div>
-      <RecentActivity />
     </div>
 
-    <div>
+    <ChartComponent />
+
+    <div class="w-full grid gap-6 grid-cols-3">
+      <div class="col-span-2">
+        <RecentActivity />
+      </div>
       <GoalsSection />
     </div>
   </div>

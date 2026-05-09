@@ -28,12 +28,12 @@ const getTone = (status: string) => status === 'credito' ? 'primary' : 'alert';
 
 const toneMap: Record<string, string> = {
   primary: "bg-primary/10 text-primary",
-  alert: "bg-destructive/10 text-destructive",
+  alert: "bg-accent/10 text-accent",
 };
 
 const statusStyles: Record<string, string> = {
   credito: "border-success/30 bg-success/10 text-success",
-  debito: "border-destructive/30 bg-destructive/10 text-destructive",
+  debito: "border-accent/30 bg-accent/10 text-accent",
 };
 
 const statusLabels: Record<string, string> = {
@@ -91,7 +91,7 @@ function formatDate(dateStr: string) {
                         </span>
                     </td>
                     <td class="py-3 text-right pr-6">
-                        <span :class="['font-semibold text-sm', t.status === 'credito' ? 'text-success' : 'text-destructive']">
+                        <span :class="['font-semibold text-sm', t.status === 'credito' ? 'text-success' : 'text-accent']">
                             {{ t.status === 'credito' ? '+' : '-' }}R$ {{ Math.abs(t.amount).toFixed(2) }}
                         </span>
                     </td>
