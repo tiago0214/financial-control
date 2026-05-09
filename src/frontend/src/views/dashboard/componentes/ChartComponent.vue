@@ -3,8 +3,8 @@ import { ref, watchEffect } from 'vue';
 import Chart from 'primevue/chart';
 import { useTransactionsStore } from '../../../stores/transactions';
 
-const chartData = ref();
-const chartOptions = ref();
+const chartData = ref({});
+const chartOptions = ref({});
 const transactions = useTransactionsStore();
 
 const setChartData = () => {
@@ -119,9 +119,22 @@ watchEffect(() => {
 </script>
 
 <template>
-    <section class="rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card">
-        <div class="card">
-            <Chart type="bar" :data="chartData" :options="chartOptions" class="h-120" />
+    <section class="flex flex-col rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card min-h-[34rem]">
+        <!-- Show the chart if there are transactions -->
+        <Chart 
+            v-if="transactions.userTransactions.length > 0" 
+            type="bar" 
+            :data="chartData" 
+            :options="chartOptions" 
+            class="h-120" 
+        />
+        
+        <div v-else class="flex flex-col items-center justify-center flex-1 h-full text-center text-muted-foreground gap-4">
+            <div class="h-16 w-16 rounded-full bg-secondary/50 flex items-center justify-center">
+                <i class="pi pi-chart-bar text-2xl text-muted-foreground/50"></i>
+            </div>
+            <p>Nenhuma transação encontrada.</p>
+            <span class="text-sm">Comece adicionando entradas e saídas para ver seu gráfico.</span>
         </div>
     </section>
 </template>
