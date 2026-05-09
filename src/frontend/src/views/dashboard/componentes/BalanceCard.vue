@@ -20,9 +20,9 @@ const transactionStore = useTransactionsStore();
       <div class="mt-3 font-display text-4xl font-bold text-primary-foreground">
         R${{ transactionStore.totalAvailable }}
       </div>
-      <div class="mt-1 text-sm text-primary-foreground/80">
-        +R$340.20 Esta semana
-      </div>
+      <!-- <div class="mt-1 text-sm text-primary-foreground/80"> -->
+      <!--   +R$340.20 Esta semana -->
+      <!-- </div> -->
       <div class="mt-5 flex gap-2">
         <button
           class="flex-1 rounded-full bg-background/20 backdrop-blur-sm py-2 text-xs font-semibold text-primary-foreground transition-colors hover:bg-background/30 cursor-pointer"
@@ -38,4 +38,3 @@ const transactionStore = useTransactionsStore();
     </div>
   </div>
 </template>
-

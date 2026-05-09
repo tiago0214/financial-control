@@ -1,18 +1,27 @@
 <script setup lang="ts">
-import { ArrowDownLeft, ArrowUpRight, ShoppingBag, Coffee, Music } from 'lucide-vue-next';
+import { ArrowDownLeft, ShoppingBag } from 'lucide-vue-next';
 import { useRouter } from 'vue-router'; 
+import { useTransactionsStore } from '../../../stores/transactions';
+import { computed } from 'vue';
 
 const route = useRouter();
+const transactionsStore = useTransactionsStore();
 
-const txns = [
-  { name: "Supermercado", cat: "Alimentação", when: "Hoje", amount: -85.20, icon: ShoppingBag },
-  { name: "Salário", cat: "Rendimento", when: "Ontem", amount: 3200.00, icon: ArrowDownLeft },
-  { name: "Cafeteria", cat: "Alimentação", when: "1 Mai", amount: -4.50, icon: Coffee },
-  { name: "Spotify", cat: "Música", amount: -10.99, icon: Music, when: "Hoje" },
-  { name: "Pagamento", cat: "Rendimento", amount: 1600, icon: ArrowUpRight, when: "Hoje" },
-  { name: "Blue Bottle Coffee", cat: "Café", amount: -6.5, icon: Coffee, when: "Ontem" },
-];
-
+const txns = computed(() => {
+  return [...transactionsStore.userTransactions]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 6)
+    .map((t) => {
+      const isCredit = t.status === 'credito';
+      return {
+        name: t.description,
+        cat: t.category,
+        when: new Date(t.date).toLocaleDateString('pt-BR'),
+        amount: isCredit ? Number(t.amount) : -Number(t.amount),
+        icon: isCredit ? ArrowDownLeft : ShoppingBag,
+      };
+    });
+});
 </script>
 <template>
   <section class="rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card">
@@ -26,15 +35,15 @@ const txns = [
         :key="i"
         class="flex items-center gap-3 rounded-2xl px-3 py-3 transition-colors hover:bg-secondary/50"
       >
-        <div :class="`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${t.amount > 0 ? 'bg-primary/15 text-primary' : 'bg-secondary text-foreground'}`">
+        <div :class="['flex h-10 w-10 shrink-0 items-center justify-center rounded-xl', t.amount > 0 ? 'bg-primary/10 text-primary' : 'bg-destructive/10 text-destructive']">
           <component :is="t.icon" class="h-4 w-4" />
         </div>
         <div class="min-w-0 flex-1">
           <div class="truncate text-sm font-semibold">{{ t.name }}</div>
           <div class="text-xs text-muted-foreground">{{ t.cat }} • {{ t.when }}</div>
         </div>
-        <div :class="`text-sm font-bold tabular-nums ${t.amount > 0 ? 'text-primary' : 'text-foreground'}`">
-          {{ t.amount > 0 ? "+" : "" }}R${{ Math.abs(t.amount).toFixed(2) }}
+        <div :class="['text-sm font-bold tabular-nums', t.amount > 0 ? 'text-success' : 'text-destructive']">
+          {{ t.amount > 0 ? '+' : '-' }}R$ {{ Math.abs(t.amount).toFixed(2) }}
         </div>
       </div>
     </div>
