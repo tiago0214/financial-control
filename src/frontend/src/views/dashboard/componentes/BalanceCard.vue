@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { TrendingUp } from "lucide-vue-next";
 import { useTransactionsStore } from "../../../stores/transactions";
+import CustomModal from "../../layout/components/CustomModal.vue";
+import { useUiStore } from "../../../stores/ui";
+import DashboardForm from "./DashboardForm.vue";
+
+const uiStore = useUiStore();
 
 const transactionStore = useTransactionsStore();
 </script>
@@ -15,26 +20,34 @@ const transactionStore = useTransactionsStore();
         <span class="text-xs font-medium uppercase tracking-widest"
           >Saldo total</span
         >
-        <TrendingUp class="h-4 w-4" />
+        <div :class="`flex h-9 w-9 items-center justify-center rounded-xl `">
+          <TrendingUp class="h-4 w-4" :stroke-width="2.5" />
+        </div>
       </div>
       <div class="mt-3 font-display text-4xl font-bold text-primary-foreground">
         R${{ transactionStore.totalAvailable }}
       </div>
-      <!-- <div class="mt-1 text-sm text-primary-foreground/80"> -->
-      <!--   +R$340.20 Esta semana -->
-      <!-- </div> -->
-      <div class="mt-5 flex gap-2">
-        <button
-          class="flex-1 rounded-full bg-background/20 backdrop-blur-sm py-2 text-xs font-semibold text-primary-foreground transition-colors hover:bg-background/30 cursor-pointer"
-        >
-          Adicionar Entrada
-        </button>
-        <button
-          class="flex-1 rounded-full bg-background/20 backdrop-blur-sm py-2 text-xs font-semibold text-primary-foreground transition-colors hover:bg-background/30 cursor-pointer"
-        >
-          Adicionar Saída
-        </button>
+      <div class="mt-1 text-xs text-primary-foreground/80">
+        +R$340.20 Esta semana
       </div>
+      <!-- <div class="mt-5 flex gap-2"> -->
+      <!--   <button -->
+      <!--     class="flex-1 rounded-full bg-background/20 backdrop-blur-sm py-2 text-xs font-semibold text-primary-foreground transition-colors hover:bg-background/30 cursor-pointer" -->
+      <!--     @click="uiStore.openModal('Adicionar Entrada', 'main-dashboard')" -->
+      <!--   > -->
+      <!--     Adicionar Entrada -->
+      <!--   </button> -->
+      <!--   <button -->
+      <!--     class="flex-1 rounded-full bg-background/20 backdrop-blur-sm py-2 text-xs font-semibold text-primary-foreground transition-colors hover:bg-background/30 cursor-pointer" -->
+      <!--     @click="uiStore.openModal('Adicionar Saida', 'main-dashboard')" -->
+      <!--   > -->
+      <!--     Adicionar Saída -->
+      <!--   </button> -->
+      <!-- </div> -->
     </div>
+    <!---->
+    <!-- <CustomModal modalId="main-dashboard"> -->
+    <!--   <DashboardForm /> -->
+    <!-- </CustomModal> -->
   </div>
 </template>
