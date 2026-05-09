@@ -38,6 +38,13 @@ function handleSubmit() {
       targetDate: targetDate.value,
       iconString: selectedIcon.value,
     });
+
+    toast.add({
+      severity: "success",
+      summary: "Sucesso",
+      detail: "Meta atualizada com sucesso!",
+      life: 3000,
+    });
   } else {
     goalsStore.addGoal({
       title: title.value,
@@ -47,16 +54,16 @@ function handleSubmit() {
       aiInsight:
         "Sua meta foi criada! Assim que você economizar seus primeiros valores, te ajudaremos com insights.",
     });
+
+    toast.add({
+      severity: "success",
+      summary: "Sucesso",
+      detail: "Nova meta adicionada com sucesso!",
+      life: 3000,
+    });
   }
 
   closeAndClean();
-
-  toast.add({
-    severity: "success",
-    summary: "Sucesso",
-    detail: "Nova meta adicionada com sucesso!",
-    life: 3000,
-  });
 }
 
 onMounted(() => {

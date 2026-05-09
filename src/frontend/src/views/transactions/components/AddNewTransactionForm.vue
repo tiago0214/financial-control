@@ -30,12 +30,11 @@ function handleSubmit() {
     paymentMethod: paymentMethod.value,
   });
 
+  uiStore.closeModal();
   // Reset form
   description.value = "";
   amount.value = null;
   date.value = "";
-
-  uiStore.closeModal();
 
   toast.add({
     severity: "success",
