@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import Logo from "../../../components/Logo.vue";
+const url = import.meta.env.BASE_URL
 
 const route = useRoute();
 const onDashboard = route.path === "/dashboard";
@@ -11,9 +12,9 @@ const onDashboard = route.path === "/dashboard";
       <nav class="mx-auto flex max-w-6xl items-center justify-between rounded-2xl glass-strong px-5 py-3">
         <Logo />
         <div class="hidden items-center gap-8 md:flex">
-          <a href="/#features" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Funcionalidades</a>
-          <a href="/#how" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Como funciona</a>
-          <a href="/#ai" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Assistente Inteligente</a>
+          <a :href="`${url}#features`" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Funcionalidades</a>
+          <a :href="`${url}#how`" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Como funciona</a>
+          <a :href="`${url}#ai`" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Assistente Inteligente</a>
         </div>
         <div class="flex items-center gap-2">
             <div v-if="onDashboard">
