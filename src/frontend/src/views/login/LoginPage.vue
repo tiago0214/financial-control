@@ -8,7 +8,7 @@ import { useRouter } from "vue-router";
 import { useToast } from "primevue";
 import { z } from "zod";
 import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { Form, FormField } from '@primevue/forms';
+import { Form } from '@primevue/forms';
 import Message from 'primevue/message';
 
 const router = useRouter();
