@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useUiStore } from "../../../stores/ui";
 import { useTransactionsStore } from "../../../stores/transactions";
 import { useToast } from "primevue/usetoast";
@@ -43,6 +43,19 @@ function handleSubmit() {
     life: 3000,
   });
 }
+
+const availableOptions = computed(() => {
+  const incomeValues = ['Receita', 'Salário', 'Pagamento', 'Rendimento', 'Freelance'];
+  const expense = ['Alimentação', 'Transporte', 'Moradia', 'Assinaturas', 'Saúde', 'Compras'];
+
+  if (incomeValues.includes(category.value)) {
+    return 'incoming';
+  } else if (expense.includes(category.value)) {
+    return 'expense';
+  } else {
+    return 'chose';
+  }
+});
 </script>
 
 <template>
@@ -106,19 +119,31 @@ function handleSubmit() {
             <option>Assinaturas</option>
             <option>Saúde</option>
             <option>Compras</option>
+          </optgroup>
+          <optgroup label="Outros">
             <option>Outros</option>
           </optgroup>
         </select>
       </div>
       <div class="flex flex-col gap-1.5">
-        <label class="text-sm font-semibold text-foreground">Status</label>
+        <label class="text-sm font-semibold text-foreground">Tipo</label>
         <select
+          v-if="availableOptions === 'chose'"
           v-model="status"
           class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all cursor-pointer"
         >
           <option value="debito">Débito (-)</option>
           <option value="credito">Crédito (+)</option>
         </select>
+
+        <div v-else>
+          <input
+            type="text"
+            :value="availableOptions === 'incoming' ? 'Crédito (+)' : 'Débito (-)'"
+            disabled
+            class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all text-muted-foreground cursor-not-allowed"
+          />
+        </div>
       </div>
     </div>
 
@@ -158,4 +183,3 @@ function handleSubmit() {
     </div>
   </form>
 </template>
-

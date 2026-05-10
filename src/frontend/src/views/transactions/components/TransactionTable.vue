@@ -59,7 +59,7 @@ function formatDate(dateStr: string) {
                     <th class="py-3 font-medium text-muted-foreground text-sm">Categoria</th>
                     <th class="py-3 font-medium text-muted-foreground text-sm">Método</th>
                     <th class="py-3 font-medium text-muted-foreground text-sm">Data</th>
-                    <th class="py-3 font-medium text-muted-foreground text-sm">Status</th>
+                    <th class="py-3 font-medium text-muted-foreground text-sm">Tipo</th>
                     <th class="py-3 font-medium text-muted-foreground text-sm text-right pr-6">Valor</th>
                 </tr>
             </thead>
