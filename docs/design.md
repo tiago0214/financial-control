@@ -2,40 +2,52 @@
 
 ## 4.1 Personas
 Persona - Julia Santos
+
 ![Persona1](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/8b470e811b2a178f1124f2a8a30c9b0d2f58f203/docs/img/persona-julia-santos.png)
 
 Persona - Marina Oliveira
+
 ![Persona2](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/8d87813e711d6e1af533a929a90c41f5b1143362/docs/img/persona-marina-oliveira.png)
 
 Persona - Gabriel Leal
+
 ![Persona3](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/ff1a12d9682765fa7ccf838c73a887599cc3c73b/docs/img/persona-gabriel-leal.png)
 
 Persona - Carla Mendes
+
 ![Persona4](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/ff1a12d9682765fa7ccf838c73a887599cc3c73b/docs/img/persona-carla-mendes.png)
 
 Persona - Claudia Lopez
+
 ![Persona5](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/ff1a12d9682765fa7ccf838c73a887599cc3c73b/docs/img/persona-claudia-lopez.png)
 
 Persona - Francisco Souza
+
 ![Persona6](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/ff1a12d9682765fa7ccf838c73a887599cc3c73b/docs/img/persona-francisco-souza.png)
 
 ## 4.2 Mapa de Empatia
 Mapa de Empatia - Julia Santos
+
 ![MapadeEmpatia1](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/270b273e87b40f427b6b52276b60f7eb8a7e274e/docs/img/mapa-da-empatia-julia-santos.png)
 
 Mapa de Empatia - Marina Oliveira
+
 ![MapadeEmpatia2](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/270b273e87b40f427b6b52276b60f7eb8a7e274e/docs/img/mapa-da-empatia-marina-oliveira.png)
 
 Mapa de Empatia - Gabriel Leal
+
 ![MapadeEmpatia3](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/270b273e87b40f427b6b52276b60f7eb8a7e274e/docs/img/mapa-da-empatia-gabriel-leal.png)
 
 Mapa de Empatia - Carla Mendes
+
 ![MapadeEmpatia4](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/270b273e87b40f427b6b52276b60f7eb8a7e274e/docs/img/mapa-da-empatia-carla-mendes.png)
 
 Mapa de Empatia - Claudia Lopez
+
 ![MapadeEmpatia5](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/270b273e87b40f427b6b52276b60f7eb8a7e274e/docs/img/mapa-da-empatia-claudia-lopez.png)
 
 Mapa de Empatia - Francisco Souza
+
 ![MapadeEmpatia6](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/270b273e87b40f427b6b52276b60f7eb8a7e274e/docs/img/mapa-da-empatia-francisco-souza.png)
 
 ## 4.3 Protótipos das Interfaces
@@ -53,7 +65,7 @@ A tela Home é a página inicial do sistema e tem como objetivo apresentar o Mid
 * Similaridade: Aplicado na seção de “Funcionalidades”, onde os seis cards possuem o mesmo tamanho, cor de fundo e estrutura interna como ícone, título e descrição;
 * Proximidade: Os campos de “Entrar” e “Criar Conta” estão próximos um do outro, formando um grupo visual coerente de entrada de dados e reforçando a ideia de sequência de ação. Também aplicado na seção de “Funcionalidades”, no agrupamento dos cards em 3 colunas de 2;
 * Simetria: Aplicado no alinhamento horizontal dos itens do menu de navegação (Funcionalidades, Como funciona, Assistente Inteligente);
-Região Comum: Aplicado ao separar visualmente a seção principal com o título  da seção de cards por meio de cores de fundo distintas.
+* Região Comum: Aplicado ao separar visualmente a seção principal com o título  da seção de cards por meio de cores de fundo distintas.
 
 ##### 4.3.1.3 Recomendações Ergonômicas
 * Os ícones dos cards utilizam símbolos reconhecíveis e padronizados;
@@ -158,22 +170,28 @@ As telas correspondem aos modais de cadastro de nova meta financeira e de nova t
 
 #### 4.3.6 Wireframes do projeto
 Dashboard
+
 ![Dashboard](design/Dashboard.png)
 
 Transações
+
 ![Dashboard](design/Transactions.png)
 
 Metas
+
 ![Dashboard](design/Goals.png)
 
 #### 4.3.7 Guias de estilo do projeto
-Cores\
+Cores
+
 ![Dashboard](design/Cores.png)
 
-Tipografia\
+Tipografia
+
 ![Dashboard](design/Tipografia.png)
 
-Icones\
+Icones
+
 ![Dashboard](design/Icones.png)
 
 ## 4.4 Testes com Protótipos
