@@ -117,7 +117,7 @@ const onFormSubmit = ({ valid, states }: any) => {
                     type="text"
                     placeholder="Seu nome"
                     :pt="{
-                      root: `!w-full !rounded-2xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.name?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`,
+                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.name?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`,
                     }"
                   />
                 </div>
@@ -139,7 +139,7 @@ const onFormSubmit = ({ valid, states }: any) => {
                     type="email"
                     placeholder="Seu email"
                     :pt="{
-                      root: `!w-full !rounded-2xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.email?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`,
+                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.email?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`,
                     }"
                   />
                 </div>
@@ -161,7 +161,7 @@ const onFormSubmit = ({ valid, states }: any) => {
                     type="password"
                     placeholder="Sua senha"
                     :pt="{
-                      root: `!w-full !rounded-2xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.password?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`,
+                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.password?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`,
                     }"
                   />
                 </div>
@@ -184,7 +184,7 @@ const onFormSubmit = ({ valid, states }: any) => {
                     type="password"
                     placeholder="Confirme sua senha"
                     :pt="{
-                      root: `!w-full !rounded-2xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.confirmPassword?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`,
+                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.confirmPassword?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`,
                     }"
                   />
                 </div>

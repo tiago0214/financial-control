@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useUiStore } from "../../../stores/ui";
 import { useTransactionsStore } from "../../../stores/transactions";
 import { useToast } from "primevue/usetoast";
@@ -54,6 +54,14 @@ const availableOptions = computed(() => {
     return 'expense';
   } else {
     return 'chose';
+  }
+});
+
+watch(availableOptions, (newOption) => {
+  if (newOption === 'incoming') {
+    status.value = 'credito';
+  } else if (newOption === 'expense') {
+    status.value = 'debito';
   }
 });
 </script>
