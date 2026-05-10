@@ -39,6 +39,27 @@ Mapa de Empatia - Francisco Souza
 ![MapadeEmpatia6](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/270b273e87b40f427b6b52276b60f7eb8a7e274e/docs/img/mapa-da-empatia-francisco-souza.png)
 
 ## 4.3 Protótipos das Interfaces
+
+#### 4.3.1 Wireframes do projetos
+Dashboard
+![Dashboard](design/Dashboard.png)
+
+Transações
+![Dashboard](design/Transactions.png)
+
+Metas
+![Dashboard](design/Goals.png)
+
+#### 4.3.1 Guias de estilo do projeto
+Cores\
+![Dashboard](design/Cores.png)
+
+Tipografia\
+![Dashboard](design/Tipografia.png)
+
+Icones\
+![Dashboard](design/Icones.png)
+
 Apresente nesta seção os protótipos de alta fidelidade do sistema proposto. A fidelidade do protótipo refere-se ao nível de detalhes e funcionalidades incorporadas a ele. Assim, um protótipo de alta fidelidade é uma representação interativa do produto, baseada no computador ou em dispositivos móveis. Esse protótipo já apresenta maior semelhança com o design final em termos de detalhes e funcionalidades. No desenvolvimento dos protótipos, devem ser considerados os princípios gestálticos, as recomendações ergonômicas e as regras de design (como as 8 regras de ouro). É importante descrever no texto do relatório como os princípios gestálticos e as regras de ouro foram seguidas no projeto das interfaces. Nesta etapa deve-se dar uma ênfase na implementação do software de modo que possam ser realizados os testes com usuários na etapa seguinte.
 
 ## 4.4 Testes com Protótipos
