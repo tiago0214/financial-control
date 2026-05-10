@@ -8,7 +8,7 @@ import { useRouter } from "vue-router";
 import { useToast } from "primevue";
 import { z } from "zod";
 import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { Form } from '@primevue/forms';
+import { Form, FormField } from '@primevue/forms';
 import Message from 'primevue/message';
 
 const router = useRouter();
@@ -85,7 +85,7 @@ const onFormSubmit = ({ valid, states }: any) => {
                     type="email"
                     placeholder="Seu email"
                     :pt="{
-                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.email?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
+                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.email?.invalid ? '!border-red-400 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
                     }"
                   />
                 </div>
@@ -99,7 +99,7 @@ const onFormSubmit = ({ valid, states }: any) => {
                     type="password"
                     placeholder="Senha"
                     :pt="{
-                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.password?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
+                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.password?.invalid ? '!border-red-400 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
                     }"
                   />
                 </div>
