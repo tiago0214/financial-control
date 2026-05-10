@@ -132,6 +132,9 @@ A tela de Transações exibe o histórico de movimentações financeiras do usu�
 * Feedback Informativo: Aplicado nos cards de resumo que atualizam automaticamente os totais conforme as transações são registradas.
 
 #### 4.3.5 Protótipos - Telas Adicionar Meta / Adicionar Transação
+![prototipo](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/64f308a262a2e62a2f5311c4e91dcd3977aa70f5/docs/img/prototipo_adicionar_meta2.jpg)
+
+![prototipo](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-grupo-04/blob/64f308a262a2e62a2f5311c4e91dcd3977aa70f5/docs/img/prototipo_adicionar_transacoes2.jpg)
 
 ##### 4.3.5.1 Objetivo das Telas
 As telas correspondem aos modais de cadastro de nova meta financeira e de nova transação. Ambas compartilham a mesma estrutura de formulário em modal, onde o usuário preenche os dados necessários e confirma ou cancela a ação. No modal de meta, são preenchidos título, valor alvo, data alvo e ícone e no modal de transação, são preenchidos descrição, valor, data, categoria, status e método de pagamento.
