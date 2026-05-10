@@ -64,8 +64,13 @@ const onFormSubmit = ({ valid, states }: any) => {
           life: 3000,
         });
       }
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      toast.add({
+        severity: "error",
+        summary: "Erro",
+        detail: error.message,
+        life: 3000,
+      });
     }
   }
 };
