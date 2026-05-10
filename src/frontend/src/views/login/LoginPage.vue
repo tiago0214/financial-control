@@ -85,7 +85,7 @@ const onFormSubmit = ({ valid, states }: any) => {
                     type="email"
                     placeholder="Seu email"
                     :pt="{
-                      root: `!w-full !rounded-2xl !border !bg-input/50 !py-4 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.email?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
+                      root: `!w-full !rounded-2xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.email?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
                     }"
                   />
                 </div>
@@ -99,7 +99,7 @@ const onFormSubmit = ({ valid, states }: any) => {
                     type="password"
                     placeholder="Senha"
                     :pt="{
-                      root: `!w-full !rounded-2xl !border !bg-input/50 !py-4 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.password?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
+                      root: `!w-full !rounded-2xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.password?.invalid ? '!border-red-500 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
                     }"
                   />
                 </div>
@@ -108,7 +108,7 @@ const onFormSubmit = ({ valid, states }: any) => {
 
               <div class="pt-5">
                 <button
-                  class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70"
+                  class="cursor-pointer group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:shadow-glow hover:scale-[1.01] disabled:opacity-70"
                   type="submit"
                 >
                   Entrar
