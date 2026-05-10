@@ -40,7 +40,7 @@ Mapa de Empatia - Francisco Souza
 
 ## 4.3 Protótipos das Interfaces
 
-#### 4.3.1 Wireframes do projetos
+#### 4.3.1 Wireframes do projeto
 Dashboard
 ![Dashboard](design/Dashboard.png)
 
