@@ -21,7 +21,7 @@ import { ArrowRight } from 'lucide-vue-next';
 
         <div class="relative mx-auto max-w-6xl px-6">
         <div class="mx-auto max-w-3xl text-center">
-          <div class="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium animate-fade-up">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium">
             <span class="relative flex h-2 w-2">
               <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
               <span class="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
@@ -29,17 +29,17 @@ import { ArrowRight } from 'lucide-vue-next';
             <span class="text-muted-foreground">Assistente Inteligente</span>
           </div>
 
-          <h1 class="font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl animate-fade-up" :style="{ animationDelay: '100ms' }">
+          <h1 class="font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
             Pare de olhar somente para o passado.
             <br />
             <span class="gradient-text">Comece a construir o seu futuro.</span>
           </h1>
 
-          <p class="mx-auto mt-6 max-w-xl text-lg text-muted-foreground animate-fade-up" :style="{ animationDelay: '200ms' }">
+          <p class="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
             Midas Helper é o aplicativo financeiro para a sua geração. Defina metas ousadas, tenha um assistente de IA personalizado e veja cada centavo construir a vida que você realmente deseja.
           </p>
 
-          <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row animate-fade-up" :style="{ animationDelay: '300ms' }">
+          <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <RouterLink
               to="/register"
               class="group flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:scale-[1.03] hover:shadow-glow"
@@ -55,12 +55,12 @@ import { ArrowRight } from 'lucide-vue-next';
             </RouterLink> -->
           </div>
 
-          <p class="mt-6 text-xs text-muted-foreground animate-fade-up" :style="{ animationDelay: '400ms' }">
+          <p class="mt-6 text-xs text-muted-foreground">
             Sem cartão de crédito. Sem taxas ocultas. Cancele a qualquer momento.
           </p>
         </div>
 
-        <div class="relative mx-auto mt-20 max-w-4xl animate-fade-up" :style="{ animationDelay: '500ms' }">
+        <div class="relative mx-auto mt-20 max-w-4xl">
           <FloatingPreview />
         </div>
       </div>
