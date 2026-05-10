@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
     <!-- Título da Meta -->
     <div class="flex flex-col gap-1.5">
       <label class="text-sm font-semibold text-foreground"
-        >Título da Meta</label
+        >Título da Meta <span class="text-accent text-sm">*</span></label
       >
       <input
         v-model="title"
@@ -107,8 +107,8 @@ onBeforeUnmount(() => {
     <div class="grid grid-cols-2 gap-4">
       <div class="flex flex-col gap-1.5">
         <label class="text-sm font-semibold text-foreground"
-          >Valor Alvo (R$)</label
-        >
+          >Valor Alvo (R$)<span class="text-accent text-sm">*</span>
+        </label>
         <input
           v-model="targetAmount"
           required
@@ -120,7 +120,9 @@ onBeforeUnmount(() => {
       </div>
 
       <div class="flex flex-col gap-1.5">
-        <label class="text-sm font-semibold text-foreground">Data Alvo</label>
+        <label class="text-sm font-semibold text-foreground"
+          >Data Alvo <span class="text-accent text-sm">*</span></label
+        >
         <input
           v-model="targetDate"
           required
@@ -164,4 +166,3 @@ onBeforeUnmount(() => {
     </div>
   </form>
 </template>
-

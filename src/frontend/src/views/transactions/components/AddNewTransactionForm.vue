@@ -45,23 +45,36 @@ function handleSubmit() {
 }
 
 const availableOptions = computed(() => {
-  const incomeValues = ['Receita', 'Salário', 'Pagamento', 'Rendimento', 'Freelance'];
-  const expense = ['Alimentação', 'Transporte', 'Moradia', 'Assinaturas', 'Saúde', 'Compras'];
+  const incomeValues = [
+    "Receita",
+    "Salário",
+    "Pagamento",
+    "Rendimento",
+    "Freelance",
+  ];
+  const expense = [
+    "Alimentação",
+    "Transporte",
+    "Moradia",
+    "Assinaturas",
+    "Saúde",
+    "Compras",
+  ];
 
   if (incomeValues.includes(category.value)) {
-    return 'incoming';
+    return "incoming";
   } else if (expense.includes(category.value)) {
-    return 'expense';
+    return "expense";
   } else {
-    return 'chose';
+    return "chose";
   }
 });
 
 watch(availableOptions, (newOption) => {
-  if (newOption === 'incoming') {
-    status.value = 'credito';
-  } else if (newOption === 'expense') {
-    status.value = 'debito';
+  if (newOption === "incoming") {
+    status.value = "credito";
+  } else if (newOption === "expense") {
+    status.value = "debito";
   }
 });
 </script>
@@ -71,7 +84,9 @@ watch(availableOptions, (newOption) => {
   <form class="space-y-5" @submit.prevent="handleSubmit">
     <!-- Descrição -->
     <div class="flex flex-col gap-1.5">
-      <label class="text-sm font-semibold text-foreground">Descrição</label>
+      <label class="text-sm font-semibold text-foreground"
+        >Descrição <span class="text-accent text-sm">*</span></label
+      >
       <input
         v-model="description"
         required
@@ -84,7 +99,9 @@ watch(availableOptions, (newOption) => {
     <!-- Valor e Data -->
     <div class="grid grid-cols-2 gap-4">
       <div class="flex flex-col gap-1.5">
-        <label class="text-sm font-semibold text-foreground">Valor (R$)</label>
+        <label class="text-sm font-semibold text-foreground"
+          >Valor (R$)<span class="text-accent text-sm">*</span></label
+        >
         <input
           v-model="amount"
           required
@@ -95,7 +112,9 @@ watch(availableOptions, (newOption) => {
         />
       </div>
       <div class="flex flex-col gap-1.5">
-        <label class="text-sm font-semibold text-foreground">Data</label>
+        <label class="text-sm font-semibold text-foreground"
+          >Data <span class="text-accent text-sm">*</span></label
+        >
         <input
           v-model="date"
           required
@@ -147,7 +166,9 @@ watch(availableOptions, (newOption) => {
         <div v-else>
           <input
             type="text"
-            :value="availableOptions === 'incoming' ? 'Crédito (+)' : 'Débito (-)'"
+            :value="
+              availableOptions === 'incoming' ? 'Crédito (+)' : 'Débito (-)'
+            "
             disabled
             class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all text-muted-foreground cursor-not-allowed"
           />
