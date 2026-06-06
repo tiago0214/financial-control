@@ -67,8 +67,8 @@ export const useGoalsStore = defineStore('goals', () => {
     const index = allGoals.value.findIndex(g => g.id === selectedGoalId.value)
 
     if(index != -1){
-        allGoals.value[index] = { ...allGoals.value[index], ...updatedData };
-        saveToStorage();
+      allGoals.value[index] = { ...allGoals.value[index], ...updatedData };
+      saveToStorage();
     }
   }
 

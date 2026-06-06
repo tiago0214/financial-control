@@ -64,7 +64,14 @@ export const useTransactionsStore = defineStore('transactions', () => {
   }
 
   function updateTransaction(transaction: Partial<Transaction>){
-    const s = 0
+    if(!selectedTransactionId.value) return
+    const index = allTransactions.value.findIndex((t) => t.id == selectedTransactionId.value)
+
+    if(index !== -1){
+      allTransactions.value[index] = {...allTransactions.value[index], ...transaction}
+
+      saveToStorage()
+    }
   }
 
   function selectTransaction(transcationId: string | null){
@@ -79,6 +86,7 @@ export const useTransactionsStore = defineStore('transactions', () => {
     totalAvailable,
     addTransaction,
     selectTransaction,
-    selectedTransactionId
+    selectedTransactionId,
+    updateTransaction
   };
 });

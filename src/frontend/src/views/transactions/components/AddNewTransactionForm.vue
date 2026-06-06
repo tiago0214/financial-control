@@ -17,6 +17,19 @@ const category = ref("Receita");
 const status = ref<"debito" | "credito">("credito");
 const paymentMethod = ref("Cartão de Crédito");
 
+function closeAndClean(){
+  transactionsStore.selectTransaction(null)
+  uiStore.closeModal();
+
+  // Reset form
+  description.value = "";
+  amount.value = null;
+  date.value = "";
+  category.value = "Receita";
+  status.value = "credito";
+  paymentMethod.value = "Cartão de Crédito";
+}
+
 function handleSubmit() {
   if (!description.value || !amount.value || !date.value) {
     alert("Preencha os campos obrigatórios");
@@ -24,6 +37,21 @@ function handleSubmit() {
   }
 
   if(isEditing){
+    transactionsStore.updateTransaction({
+      description: description.value,
+      amount: amount.value,
+      date: date.value,
+      category: category.value,
+      status: status.value,
+      paymentMethod: paymentMethod.value,
+    });
+
+    toast.add({
+      severity: "success",
+      summary: "Sucesso",
+      detail: "Transação atualizada com sucesso!",
+      life: 3000,
+    });
 
   }else{
     transactionsStore.addTransaction({
@@ -34,20 +62,17 @@ function handleSubmit() {
       status: status.value,
       paymentMethod: paymentMethod.value,
     });
+
+    toast.add({
+      severity: "success",
+      summary: "Sucesso",
+      detail: "Nova transação adicionada com sucesso!",
+      life: 3000,
+    });
   } 
 
-  uiStore.closeModal();
   // Reset form
-  description.value = "";
-  amount.value = null;
-  date.value = "";
-
-  toast.add({
-    severity: "success",
-    summary: "Sucesso",
-    detail: "Nova transação adicionada com sucesso!",
-    life: 3000,
-  });
+  closeAndClean();
 }
 
 const availableOptions = computed(() => {
