@@ -20,6 +20,8 @@ export const useTransactionsStore = defineStore('transactions', () => {
   const savedTransactions = localStorage.getItem('user_transactions');
   const allTransactions = ref<Transaction[]>(savedTransactions ? JSON.parse(savedTransactions) : []);
 
+  const selectedTransactionId = ref<string | null>(null)
+
   // Filter transactions for the current user
   const userTransactions = computed(() => {
     if (!authStore.user?.id) return [];
@@ -41,7 +43,7 @@ export const useTransactionsStore = defineStore('transactions', () => {
 
   const totalAvailable = computed(() => {
     // Basic logic for demonstration: Income - Expense
-    return totalIncome.value - totalExpense.value;
+    return totalIncome.value - totalExpense.value >= 0 ? totalIncome.value - totalExpense.value : 0;
   });
 
   function addTransaction(transactionData: Omit<Transaction, 'id' | 'userId'>) {
@@ -61,12 +63,22 @@ export const useTransactionsStore = defineStore('transactions', () => {
     localStorage.setItem('user_transactions', JSON.stringify(allTransactions.value));
   }
 
+  function updateTransaction(transaction: Partial<Transaction>){
+    const s = 0
+  }
+
+  function selectTransaction(transcationId: string | null){
+    selectedTransactionId.value = transcationId
+  }
+
   return {
     allTransactions,
     userTransactions,
     totalIncome,
     totalExpense,
     totalAvailable,
-    addTransaction
+    addTransaction,
+    selectTransaction,
+    selectedTransactionId
   };
 });

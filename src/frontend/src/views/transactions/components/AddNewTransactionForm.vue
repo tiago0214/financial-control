@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useUiStore } from "../../../stores/ui";
 import { useTransactionsStore } from "../../../stores/transactions";
 import { useToast } from "primevue/usetoast";
 
 const uiStore = useUiStore();
 const transactionsStore = useTransactionsStore();
+const isEditing = !!transactionsStore.selectedTransactionId;
 
 const toast = useToast();
 
@@ -15,20 +16,25 @@ const date = ref("");
 const category = ref("Receita");
 const status = ref<"debito" | "credito">("credito");
 const paymentMethod = ref("Cartão de Crédito");
+
 function handleSubmit() {
   if (!description.value || !amount.value || !date.value) {
     alert("Preencha os campos obrigatórios");
     return;
   }
 
-  transactionsStore.addTransaction({
-    description: description.value,
-    amount: amount.value,
-    date: date.value,
-    category: category.value,
-    status: status.value,
-    paymentMethod: paymentMethod.value,
-  });
+  if(isEditing){
+
+  }else{
+    transactionsStore.addTransaction({
+      description: description.value,
+      amount: amount.value,
+      date: date.value,
+      category: category.value,
+      status: status.value,
+      paymentMethod: paymentMethod.value,
+    });
+  } 
 
   uiStore.closeModal();
   // Reset form
@@ -77,6 +83,29 @@ watch(availableOptions, (newOption) => {
     status.value = "debito";
   }
 });
+
+onMounted(() => {
+  if(transactionsStore.selectedTransactionId){
+    const findTransaction = transactionsStore.userTransactions.find((t) => {
+      return t.id == transactionsStore.selectedTransactionId
+    })
+
+    if(findTransaction){
+      description.value = findTransaction.description
+      amount.value = findTransaction.amount
+      date.value = findTransaction.date
+      category.value = findTransaction.category
+      status.value = findTransaction.status
+      paymentMethod.value = findTransaction.paymentMethod
+    }
+  }
+})
+
+onBeforeUnmount(() => {
+  if(transactionsStore.selectedTransactionId){
+    transactionsStore.selectTransaction(null)
+  }
+})
 </script>
 
 <template>
