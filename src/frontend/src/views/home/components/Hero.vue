@@ -42,7 +42,7 @@ import { ArrowRight } from 'lucide-vue-next';
           <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <RouterLink
               to="/register"
-              class="group flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:scale-[1.03] hover:shadow-glow"
+              class="group flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3 text-base font-semibold text-primary-foreground shadow-elevated transition-all hover:scale-[1.03] hover:shadow-glow"
             >
               Começar agora
               <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />

@@ -99,7 +99,7 @@ function handleEdit() {
                 <Calendar class="h-4 w-4" />
                 <span class="text-sm">Meta: {{ goal.targetDate }}</span>
             </div>
-            <button class="rounded-full bg-gradient-primary px-4 py-2 font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow cursor-pointer text-xs" @click="handleEdit">
+            <button class="rounded-sm bg-gradient-primary px-4 py-2 font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow cursor-pointer text-xs" @click="handleEdit">
                 Ajustar Meta
             </button>
         </footer>

@@ -72,7 +72,7 @@ function formatDate(dateStr: string) {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="t in userTransactions" :key="t.id" @click="handleEdit(t.id)" class="border-b border-border/50 last:border-0 hover:bg-white/5 transition-colors hover:cursor-pointer">
+                <tr v-for="t in userTransactions" :key="t.id" @click="handleEdit(t.id)" class="group border-b border-border/50 last:border-0 hover:bg-white/5 transition-colors hover:cursor-pointer">
                     <td class="py-3 pl-6">
                         <div class="flex items-center gap-3">
                             <span :class="['flex h-10 w-10 items-center justify-center rounded-2xl', toneMap[getTone(t.status)]]">
@@ -80,7 +80,6 @@ function formatDate(dateStr: string) {
                             </span>
                             <div>
                                 <p class="font-medium text-sm">{{ t.description }}</p>
-                                <p class="text-xs text-muted-foreground">{{ t.id }}</p>
                             </div>
                         </div>
                     </td>

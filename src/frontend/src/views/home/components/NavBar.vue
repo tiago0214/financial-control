@@ -18,16 +18,16 @@ const onDashboard = route.path === "/dashboard";
         </div>
         <div class="flex items-center gap-2">
             <div v-if="onDashboard">
-                <RouterLink  to="/" class="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+                <RouterLink  to="/" class="rounded-sm px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
                     Sair
                 </RouterLink>
             </div>
             
             <div v-else>
-                <RouterLink to="/login" class="hidden rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-block">
+                <RouterLink to="/login" class="hidden rounded-sm px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-block">
                     Entrar
                 </RouterLink>
-                <RouterLink to="/register" class="rounded-full bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.02]" >
+                <RouterLink to="/register" class="rounded-sm bg-gradient-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-all hover:shadow-glow hover:scale-[1.02]" >
                     Criar conta
                 </RouterLink>
             </div>

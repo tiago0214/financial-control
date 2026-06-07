@@ -255,13 +255,13 @@ onBeforeUnmount(() => {
       <button
         type="button"
         @click="uiStore.closeModal()"
-        class="px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-muted text-muted-foreground transition-colors cursor-pointer"
+        class="px-5 py-2.5 rounded-sm font-semibold text-sm hover:bg-muted text-muted-foreground transition-colors cursor-pointer"
       >
         Cancelar
       </button>
       <button
         type="submit"
-        class="px-5 py-2.5 rounded-full font-semibold text-sm bg-gradient-primary text-primary-foreground shadow-soft hover:shadow-glow hover:scale-[1.02] transition-all cursor-pointer"
+        class="px-5 py-2.5 rounded-sm font-semibold text-sm bg-gradient-primary text-primary-foreground shadow-soft hover:shadow-glow hover:scale-[1.02] transition-all cursor-pointer"
       >
         Salvar
       </button>
