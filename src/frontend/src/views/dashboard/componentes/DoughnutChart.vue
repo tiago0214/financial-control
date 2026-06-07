@@ -3,7 +3,7 @@
         <header class="text-lg font-semibold mb-6">Gastos por Categoria</header>
         
         <div v-if="topSpending.length > 0" class="flex flex-col flex-1">
-            <div class="flex-1 flex items-center justify-center min-h-0 relative h-64">
+            <div class="flex items-center justify-center min-h-0">
                 <Chart 
                     type="doughnut" 
                     :data="chartData" 
