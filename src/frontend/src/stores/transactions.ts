@@ -19,12 +19,21 @@ export const useTransactionsStore = defineStore('transactions', () => {
   // Load from local storage or default to empty array
   const savedTransactions = localStorage.getItem('user_transactions');
   const allTransactions = ref<Transaction[]>(savedTransactions ? JSON.parse(savedTransactions) : []);
+  const searchQuery = ref('');
 
   const selectedTransactionId = ref<string | null>(null)
 
   // Filter transactions for the current user
   const userTransactions = computed(() => {
     if (!authStore.user?.id) return [];
+
+    if (searchQuery.value) {
+      return allTransactions.value.filter(t => 
+        t.userId === authStore.user.id && 
+        t.description.toLowerCase().includes(searchQuery.value.toLowerCase())
+      );
+    }
+
     return allTransactions.value.filter(t => t.userId === authStore.user.id);
   });
 
@@ -84,6 +93,7 @@ export const useTransactionsStore = defineStore('transactions', () => {
     totalIncome,
     totalExpense,
     totalAvailable,
+    searchQuery,
     addTransaction,
     selectTransaction,
     selectedTransactionId,
