@@ -3,16 +3,18 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useUiStore } from "../../../stores/ui";
 import { useTransactionsStore } from "../../../stores/transactions";
 import { useToast } from "primevue/usetoast";
+import { toLocalISOString } from "../../../lib/date";
 
 const uiStore = useUiStore();
 const transactionsStore = useTransactionsStore();
 const isEditing = !!transactionsStore.selectedTransactionId;
+const defaultDate = toLocalISOString(new Date()).split("T")[0]; // Get only the date part in YYYY-MM-DD format
 
 const toast = useToast();
 
 const description = ref("");
 const amount = ref<number | null>(null);
-const date = ref("");
+const date = ref(defaultDate);
 const category = ref("Receita");
 const status = ref<"debito" | "credito">("credito");
 const paymentMethod = ref("Cartão de Crédito");
@@ -24,7 +26,7 @@ function closeAndClean(){
   // Reset form
   description.value = "";
   amount.value = null;
-  date.value = "";
+  date.value = defaultDate;
   category.value = "Receita";
   status.value = "credito";
   paymentMethod.value = "Cartão de Crédito";
@@ -173,7 +175,7 @@ onBeforeUnmount(() => {
           v-model="date"
           required
           type="date"
-          class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all text-muted-foreground"
+          class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all text-foreground"
         />
       </div>
     </div>

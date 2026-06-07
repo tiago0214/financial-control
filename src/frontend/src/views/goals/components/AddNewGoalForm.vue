@@ -3,15 +3,18 @@ import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useUiStore } from "../../../stores/ui";
 import { useGoalsStore } from "../../../stores/goals";
 import { useToast } from "primevue";
+import { toLocalISOString } from "../../../lib/date";
 
 const uiStore = useUiStore();
 const goalsStore = useGoalsStore();
 
 const toast = useToast();
 
+const defaultDate = toLocalISOString(new Date()).split("T")[0]; // Get only the date part in YYYY-MM-DD format
+
 const title = ref("");
 const targetAmount = ref<number | null>(null);
-const targetDate = ref("");
+const targetDate = ref(defaultDate);
 const selectedIcon = ref("Plane");
 const isEditing = computed(() => !!goalsStore.selectedGoalId);
 
@@ -21,7 +24,7 @@ function closeAndClean() {
   // Reset form
   title.value = "";
   targetAmount.value = null;
-  targetDate.value = "";
+  targetDate.value = defaultDate;
   selectedIcon.value = "Plane";
 }
 
@@ -127,7 +130,7 @@ onBeforeUnmount(() => {
           v-model="targetDate"
           required
           type="date"
-          class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all text-muted-foreground"
+          class="w-full outline-0 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all text-foreground"
         />
       </div>
     </div>
