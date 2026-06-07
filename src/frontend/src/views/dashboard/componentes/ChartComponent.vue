@@ -129,7 +129,7 @@ watchEffect(() => {
             type="bar" 
             :data="chartData" 
             :options="chartOptions" 
-            class="h-120" 
+            class="h-100" 
         />
         
         <div v-else class="flex flex-col items-center justify-center flex-1 h-full text-center text-muted-foreground gap-4">
