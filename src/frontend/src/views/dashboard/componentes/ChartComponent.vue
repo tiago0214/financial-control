@@ -121,7 +121,7 @@ watchEffect(() => {
 
 <template>
     <section class="flex flex-col rounded-3xl border border-border/50 bg-gradient-card p-6 shadow-card min-h-[34rem]">
-        <header class="text-lg font-semibold mb-6">Atividade Recente</header>
+        <header class="text-lg font-semibold mb-6">Atividades Recentes</header>
 
         <!-- Show the chart if there are transactions -->
         <Chart 
