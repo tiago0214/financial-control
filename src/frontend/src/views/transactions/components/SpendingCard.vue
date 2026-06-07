@@ -2,7 +2,7 @@
   <div class="flex flex-col space-y-1">
     <div class="flex justify-between items-center font-medium">
       <span class="text-foreground font-semibold">{{ spending.category }}</span>
-      <span class="text-foreground font-bold">${{ spending.amount.toFixed(0) }}</span>
+      <span class="text-foreground font-bold">R$ {{ spending.amount.toFixed(0) }}</span>
     </div>
     <div class="h-2 w-full bg-secondary/60 rounded-full overflow-hidden mt-1">
       <div class="h-full rounded-full" :class="barColor" :style="{ width: `${percentage}%` }"></div>

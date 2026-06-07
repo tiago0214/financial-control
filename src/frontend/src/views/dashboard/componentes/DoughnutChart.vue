@@ -18,7 +18,7 @@
                         <div class="w-3 h-3 rounded-full" :style="{ backgroundColor: chartColors[index % chartColors.length] }"></div>
                         <span class="text-muted-foreground">{{ item.category }}</span>
                     </div>
-                    <span class="font-bold text-foreground">${{ item.amount.toFixed(0) }}</span>
+                    <span class="font-bold text-foreground">R$ {{ item.amount.toFixed(0) }}</span>
                 </div>
             </div>
         </div>
