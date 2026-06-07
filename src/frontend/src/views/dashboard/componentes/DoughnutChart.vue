@@ -77,9 +77,8 @@ const setChartData = () => {
                 data: topSpending.value.map(item => item.amount),
                 backgroundColor: chartColors.slice(0, topSpending.value.length),
                 hoverBackgroundColor: chartColors.slice(0, topSpending.value.length),
-                borderWidth: 8,
-                borderSkipped: true,
-                borderColor: 'transparent', // Match the card background for a seamless look
+                borderWidth: 6,
+                borderColor: 'hsl(222, 40%, 9.5%)', // Matches the average of your bg-gradient-card specifically
             }
         ]
     };
@@ -94,7 +93,7 @@ const setChartOptions = () => {
         },
         // maintainAspectRatio: false,
         // aspectRatio: 1,
-        // cutout: '60%', // Creates the thin doughnut look
+        cutout: '60%', // Creates the thin doughnut look
     };
 }
 
