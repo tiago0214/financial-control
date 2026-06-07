@@ -7,6 +7,7 @@ import { PiggyBank, ShoppingBag } from "lucide-vue-next";
 import { useTransactionsStore } from "../../stores/transactions";
 import { computed } from "vue";
 import ChartComponent from "./componentes/ChartComponent.vue";
+import DoughnutChart from "./componentes/DoughnutChart.vue";
 
 const transactions = useTransactionsStore();
 
@@ -126,7 +127,10 @@ const computedExpense = computed(() => {
       </div>
     </div>
 
-    <ChartComponent />
+    <div class="w-full grid gap-6 grid-cols-3 ">
+      <ChartComponent class="col-span-2"/>
+      <DoughnutChart class="col-span-1"/>
+    </div>
 
     <div class="w-full grid gap-6 grid-cols-3 items-start">
       <div class="col-span-2">
