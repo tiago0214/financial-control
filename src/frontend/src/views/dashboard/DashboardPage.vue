@@ -128,7 +128,7 @@ const computedExpense = computed(() => {
 
     <ChartComponent />
 
-    <div class="w-full grid gap-6 grid-cols-3">
+    <div class="w-full grid gap-6 grid-cols-3 items-start">
       <div class="col-span-2">
         <RecentActivity />
       </div>

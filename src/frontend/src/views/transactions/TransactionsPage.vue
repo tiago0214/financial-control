@@ -6,6 +6,7 @@ import TransactionTable from "./components/TransactionTable.vue";
 import CustomModal from "../layout/components/CustomModal.vue";
 import { useTransactionsStore } from "../../stores/transactions";
 import AddNewTransactionForm from "./components/AddNewTransactionForm.vue";
+import TopSpending from "./components/TopSpending.vue";
 
 const transactionsStore = useTransactionsStore();
 </script>
@@ -33,7 +34,11 @@ const transactionsStore = useTransactionsStore();
     </div>
 
     <FilterBar />
-    <TransactionTable />
+
+    <div class="w-full grid gap-6 grid-cols-3 items-start"> 
+      <TransactionTable class="col-span-2"/>
+      <TopSpending />
+    </div>
 
     <CustomModal modalId="add-transaction">
       <AddNewTransactionForm />
