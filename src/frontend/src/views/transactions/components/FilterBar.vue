@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Filter } from 'lucide-vue-next';
-import { ref } from 'vue';
+import { ArrowUpDown, Filter } from 'lucide-vue-next';
 import { useTransactionsStore } from '../../../stores/transactions';
 
 const transacationStore = useTransactionsStore();
@@ -23,14 +22,19 @@ function handleApplyFilters() {
                class="w-full outline-0 border border-border focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-2.5 text-sm transition-all pl-12 pr-4"
                placeholder="Pesquisar transações..."
             />
-
-            <!-- <Filter class="h-4 w-4 text-muted-foreground" :stroke-width="2" /> -->
-            <!-- <span class="text-muted-foreground text-sm">Filtros</span> -->
          </div>
 
         <!-- RIGHT -->
-         <div class="">
-            <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold ring-offset-background transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-linear-to-br from-accent to-warning text-accent-foreground hover:opacity-90 hover:-translate-y-0.5 h-9 px-4 text-xs rounded-full cursor-pointer" @click="handleApplyFilters">Aplicar Filtros</button>
+         <div class="flex items-center gap-2">
+            <button class="flex items-center gap-2 cursor-pointer rounded-sm px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors border hover:bg-muted" @click="handleApplyFilters">
+               <Filter class="h-4 w-4 text-muted-foreground" :stroke-width="2" />
+               <span class="text-foreground text-sm">Filtros</span>
+            </button>
+
+            <button class="flex items-center gap-2 cursor-pointer rounded-sm px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors border hover:bg-muted" @click="handleApplyFilters">
+               <ArrowUpDown class="h-5 w-5 text-muted-foreground" :stroke-width="2" />
+               <span class="text-foreground text-sm">Ordenar</span>
+            </button>
          </div>
     </div>
 </template>
