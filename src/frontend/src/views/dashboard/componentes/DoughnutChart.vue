@@ -3,11 +3,12 @@
         <header class="text-lg font-semibold mb-6">Gastos por Categoria</header>
         
         <div v-if="topSpending.length > 0" class="flex flex-col flex-1">
-            <div class="flex-1 flex items-center justify-center min-h-0 relative pb-6 h-64">
+            <div class="flex-1 flex items-center justify-center min-h-0 relative h-64">
                 <Chart 
                     type="doughnut" 
                     :data="chartData" 
                     :options="chartOptions" 
+                    class="h-60" 
                 />
             </div>
             
@@ -78,7 +79,7 @@ const setChartData = () => {
                 backgroundColor: chartColors.slice(0, topSpending.value.length),
                 hoverBackgroundColor: chartColors.slice(0, topSpending.value.length),
                 borderWidth: 6,
-                borderColor: 'hsl(222, 40%, 9.5%)', // Matches the average of your bg-gradient-card specifically
+                borderColor: '#18181b', // Change this to your card's background solid color
             }
         ]
     };
