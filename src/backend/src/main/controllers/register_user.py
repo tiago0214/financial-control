@@ -2,7 +2,7 @@ from src.models.repository.interfaces.users_repository import UsersRepositoryInt
 
 class RegisterUser:
     def __init__(self, users_repository: UsersRepositoryInterface) -> None:
-        self.users_repository = users_repository
+        self.__users_repository = users_repository
 
     async def register_user(self, user_data: dict) -> dict:
         self.__validate_user_data(user_data)
@@ -14,21 +14,21 @@ class RegisterUser:
         password = user_data["password"]
         email = user_data["email"]
 
-        if user_name.length < 3:
+        if len(user_name) < 3:
             raise Exception("O nome deve ter mais que 3 characteres!")
         
-        if password.length < 6:
+        if len(password) < 6:
             raise Exception("A senha deve ter mais que 6 characteres!")
         
-        if email is None:
+        if email is None or email == "":
             raise Exception("O email é o obrigatório!")
         
     async def __register_user(self, user_data: dict) -> None:
-        await self.users_repository.insert_user(user_data) 
+        await self.__users_repository.insert_user(user_data) 
 
-    async def __format_response(self, user_data: dict) -> dict:
+    def __format_response(self, user_data: dict) -> dict:
         return {
-            "type": "USER",
+            "type": "USERS",
             "count": 1,
             "data": user_data
         }

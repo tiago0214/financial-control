@@ -8,7 +8,7 @@ class FindUser:
         users = await self.users_repository.get_user_by_name(user_name)
 
         return {
-            "type" : "USER",
+            "type" : "USERS",
             "count" : len(users),
             "data": users
         }
