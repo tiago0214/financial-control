@@ -5,7 +5,7 @@ from .users_repository import UsersRepository
 @pytest.mark.skip(reason="Insert in the db")
 async def test_insert_user():
     user = {
-        "user_name": "TestUser",
+        "name": "TestUser",
         "email": "test@test.com",
         "password_hash": "senha_segura"
     }

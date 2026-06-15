@@ -11,11 +11,11 @@ class UsersRepository(UsersRepositoryInterface):
             await db.session.execute(query)
             await db.session.commit()
 
-    async def get_user_by_name(self, user_name):
+    async def get_user_by_name(self, name):
         async with DBConnectionHandler() as db:
             query = (
                 select(Users)
-                .where(Users.c.user_name == user_name)
+                .where(Users.c.name == name)
             )
 
             result = await db.session.execute(query)

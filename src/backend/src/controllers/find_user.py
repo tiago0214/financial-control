@@ -5,8 +5,8 @@ class FindUser(FindUserInterface):
     def __init__(self, users_repository: UsersRepositoryInterface) -> None:
         self.users_repository = users_repository
 
-    async def get_user_by_name(self, user_name: str) -> dict:
-        users = await self.users_repository.get_user_by_name(user_name)
+    async def get_user_by_name(self, name: str) -> dict:
+        users = await self.users_repository.get_user_by_name(name)
 
         return {
             "type" : "USERS",
