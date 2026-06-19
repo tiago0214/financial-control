@@ -7,14 +7,8 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
-
-  backend:
-    build: ./backend
-    container_name: backend
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./backend:/app
+#    volumes:
+ #     - ./backend:/app
 
   postgres_db:
     image: postgres
