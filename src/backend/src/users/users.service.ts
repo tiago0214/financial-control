@@ -2,13 +2,47 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { DbService } from 'src/db/db.service';
+import * as bcrypt from 'bcrypt';
+import { user } from 'src/db/schemas';
+import { DatabaseError } from 'pg';
+import { DrizzleQueryError } from 'drizzle-orm/errors';
 
 @Injectable()
 export class UsersService {
   constructor(private readonly dbService: DbService) {}
 
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  async create(createUserDto: CreateUserDto) {
+    const db = this.dbService.getSession();
+    const { password, email, name } = createUserDto;
+
+    const rounds = 10;
+    const hashedPassword = await bcrypt.hash(password!, rounds);
+
+    try {
+      const insertedUser = await db.insert(user).values({
+        name,
+        email,
+        password: hashedPassword,
+      });
+
+      if (insertedUser)
+        return {
+          message: 'User inserted sucefully!',
+          statusCode: 201,
+        };
+    } catch (error) {
+      if (error instanceof DrizzleQueryError) {
+        if (error.cause instanceof DatabaseError) {
+          if (error.cause.code === '23505') {
+            return {
+              message: error.cause.detail,
+              error: 'Database constrait violation!',
+              statusCode: 409,
+            };
+          }
+        }
+      }
+    }
   }
 
   findAll() {
