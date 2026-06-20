@@ -1,3 +1,4 @@
-import { users } from './schemas/users';
+import { user } from './schemas/user';
+import { transaction } from './schemas/transaction';
 
-export { users };
+export { user, transaction };
