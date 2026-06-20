@@ -6,6 +6,8 @@ import * as bcrypt from 'bcrypt';
 import { user } from 'src/db/schemas';
 import { DatabaseError } from 'pg';
 import { DrizzleQueryError } from 'drizzle-orm/errors';
+import { eq } from 'drizzle-orm';
+import { SelectUser } from 'src/db/schemas/user';
 
 @Injectable()
 export class UsersService {
@@ -49,8 +51,11 @@ export class UsersService {
     return `This action returns all users`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(email: string): Promise<SelectUser> {
+    const db = this.dbService.getSession();
+    const foundUser = await db.select().from(user).where(eq(user.email, email));
+
+    return foundUser[0];
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
