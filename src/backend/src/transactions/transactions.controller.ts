@@ -30,13 +30,12 @@ export class TransactionsController {
 
   @Get()
   findAll(@GetLoggedUser() user: LoggedUser) {
-    console.log(user);
-    return this.transactionsService.findAll();
+    return this.transactionsService.findAll(user);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.transactionsService.findOne(+id);
+  findOne(@GetLoggedUser() user: LoggedUser, @Param('id') id: number) {
+    return this.transactionsService.findOne(user, id);
   }
 
   @Patch(':id')

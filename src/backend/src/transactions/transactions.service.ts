@@ -4,6 +4,7 @@ import { UpdateTransactionDto } from './dto/update-transaction.dto';
 import { DbService } from 'src/db/db.service';
 import { transaction } from 'src/db/schemas';
 import { LoggedUser } from 'src/auth/types/types';
+import { eq, and } from 'drizzle-orm';
 
 @Injectable()
 export class TransactionsService {
@@ -43,12 +44,43 @@ export class TransactionsService {
     };
   }
 
-  findAll() {
-    return `This action returns all transactions`;
+  async findAll(loggedUser: LoggedUser) {
+    const db = this.dbService.getSession();
+    const userId = Number(loggedUser.sub);
+
+    const transacations = await db
+      .select()
+      .from(transaction)
+      .where(eq(transaction.userId, userId));
+
+    if (transacations.length > 0)
+      return {
+        transactions: transacations,
+      };
+
+    return {
+      transactions: [],
+    };
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} transaction`;
+  async findOne(loggedUser: LoggedUser, id: number) {
+    const userId = Number(loggedUser.sub);
+
+    const db = this.dbService.getSession();
+    const foundTransaction = await db
+      .select()
+      .from(transaction)
+      .where(and(eq(transaction.id, id), eq(transaction.userId, userId)));
+
+    if (foundTransaction.length > 0) {
+      return {
+        transactions: foundTransaction[0],
+      };
+    }
+
+    return {
+      transactions: {},
+    };
   }
 
   update(id: number, updateTransactionDto: UpdateTransactionDto) {
