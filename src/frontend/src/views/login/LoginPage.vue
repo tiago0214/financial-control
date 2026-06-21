@@ -7,9 +7,9 @@ import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useToast } from "primevue";
 import { z } from "zod";
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { Form } from '@primevue/forms';
-import Message from 'primevue/message';
+import { zodResolver } from "@primevue/forms/resolvers/zod";
+import { Form } from "@primevue/forms";
+import Message from "primevue/message";
 
 const router = useRouter();
 
@@ -21,20 +21,22 @@ const userData = reactive({
 
 const toast = useToast();
 
-const resolver = ref(zodResolver(
-  z.object({
-    email: z.email({ message: "Email inválido" }),
-    password: z.string().min(1, { message: "Senha é obrigatória" }),
-  })
-));
+const resolver = ref(
+  zodResolver(
+    z.object({
+      email: z.email({ message: "Email inválido" }),
+      password: z.string().min(1, { message: "Senha é obrigatória" }),
+    }),
+  ),
+);
 
-const onFormSubmit = ({ valid, states }: any) => {
+const onFormSubmit = async ({ valid, states }: any) => {
   if (valid) {
     try {
       const email = states.email.value;
       const password = states.password.value;
 
-      const sucess = authStore.login(email, password);
+      const sucess = await authStore.login(email, password);
 
       if (sucess) {
         router.push("/app/dashboard");
@@ -76,34 +78,56 @@ const onFormSubmit = ({ valid, states }: any) => {
 
         <div class="w-96">
           <div class="flex flex-col gap-8">
-            <Form class="flex flex-col gap-3" v-slot="$form" :resolver="resolver" :initialValues="userData" @submit="onFormSubmit">
+            <Form
+              class="flex flex-col gap-3"
+              v-slot="$form"
+              :resolver="resolver"
+              :initialValues="userData"
+              @submit="onFormSubmit"
+            >
               <div class="flex flex-col gap-1">
                 <div class="relative">
-                  <Mail class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground z-10 pointer-events-none" />
+                  <Mail
+                    class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground z-10 pointer-events-none"
+                  />
                   <InputText
                     name="email"
                     type="email"
                     placeholder="Seu email"
                     :pt="{
-                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.email?.invalid ? '!border-red-400 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
+                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.email?.invalid ? '!border-red-400 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`,
                     }"
                   />
                 </div>
-                <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">{{ $form.email.error?.message }}</Message>
+                <Message
+                  v-if="$form.email?.invalid"
+                  severity="error"
+                  size="small"
+                  variant="simple"
+                  >{{ $form.email.error?.message }}</Message
+                >
               </div>
               <div class="flex flex-col gap-1">
                 <div class="relative">
-                  <Lock class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground z-10 pointer-events-none" />
+                  <Lock
+                    class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground z-10 pointer-events-none"
+                  />
                   <InputText
                     name="password"
                     type="password"
                     placeholder="Senha"
                     :pt="{
-                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.password?.invalid ? '!border-red-400 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`
+                      root: `!w-full !rounded-xl !border !bg-input/50 !py-3 !pl-11 !pr-4 !text-sm transition-all placeholder:!text-muted-foreground focus:!outline-none focus:!ring-2 ${$form.password?.invalid ? '!border-red-400 focus:!border-red-500 focus:!ring-red-500/20' : '!border-border focus:!border-primary focus:!ring-primary/20'}`,
                     }"
                   />
                 </div>
-                <Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">{{ $form.password.error?.message }}</Message>
+                <Message
+                  v-if="$form.password?.invalid"
+                  severity="error"
+                  size="small"
+                  variant="simple"
+                  >{{ $form.password.error?.message }}</Message
+                >
               </div>
 
               <div class="pt-5">

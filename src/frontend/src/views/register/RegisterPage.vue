@@ -45,14 +45,14 @@ const resolver = ref(
   ),
 );
 
-const onFormSubmit = ({ valid, states }: any) => {
+const onFormSubmit = async ({ valid, states }: any) => {
   if (valid) {
     try {
       const name = states.name.value;
       const email = states.email.value;
       const password = states.password.value;
 
-      authStore.register({ name, email, password });
+      await authStore.register({ name, email, password });
 
       if (authStore.isAuthenticated) {
         route.push("/app/dashboard");
