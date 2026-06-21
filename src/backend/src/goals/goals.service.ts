@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateGoalDto } from './dto/create-goal.dto';
 import { UpdateGoalDto } from './dto/update-goal.dto';
 import { LoggedUser } from 'src/auth/types/types';
@@ -78,11 +78,45 @@ export class GoalsService {
     };
   }
 
-  update(id: number, updateGoalDto: UpdateGoalDto) {
-    return `This action updates a #${id} goal`;
+  async update(
+    loggedUser: LoggedUser,
+    id: number,
+    updateGoalDto: UpdateGoalDto,
+  ) {
+    const userId = loggedUser.sub;
+    const db = this.dbService.getSession();
+
+    const { currentAmount, iconString, targetAmount, targetDate, title } =
+      updateGoalDto;
+
+    const checkItens = Object.keys(updateGoalDto);
+
+    if (checkItens.length === 0) throw new BadRequestException();
+
+    await db
+      .update(goal)
+      .set({
+        currentAmount,
+        iconString,
+        targetAmount,
+        targetDate,
+        title,
+      })
+      .where(and(eq(goal.id, id), eq(goal.userId, userId)));
+
+    return {
+      message: `Goal updated sucefully!`,
+    };
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} goal`;
+  async remove(loggedUser: LoggedUser, id: number) {
+    const userId = loggedUser.sub;
+    const db = this.dbService.getSession();
+
+    await db.delete(goal).where(and(eq(goal.id, id), eq(goal.userId, userId)));
+
+    return {
+      message: 'Goal deleted sucefully!',
+    };
   }
 }

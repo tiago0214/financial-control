@@ -96,7 +96,6 @@ export class TransactionsService {
       updateTransactionDto;
 
     const checkItens = Object.keys(updateTransactionDto);
-    console.log(checkItens);
 
     if (checkItens.length == 0) throw new BadRequestException();
 
@@ -124,5 +123,9 @@ export class TransactionsService {
     await db
       .delete(transaction)
       .where(and(eq(transaction.id, userId), eq(transaction.id, id)));
+
+    return {
+      message: 'Transaction delete sucefully!',
+    };
   }
 }

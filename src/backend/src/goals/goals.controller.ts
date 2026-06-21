@@ -39,12 +39,16 @@ export class GoalsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateGoalDto: UpdateGoalDto) {
-    return this.goalsService.update(+id, updateGoalDto);
+  update(
+    @GetLoggedUser() user: LoggedUser,
+    @Param('id') id: number,
+    @Body() updateGoalDto: UpdateGoalDto,
+  ) {
+    return this.goalsService.update(user, id, updateGoalDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.goalsService.remove(+id);
+  remove(@GetLoggedUser() user: LoggedUser, @Param('id') id: number) {
+    return this.goalsService.remove(user, id);
   }
 }
