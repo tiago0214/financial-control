@@ -21,17 +21,21 @@ export class UsersService {
     const hashedPassword = await bcrypt.hash(password!, rounds);
 
     try {
-      const insertedUser = await db.insert(user).values({
-        name,
-        email,
-        password: hashedPassword,
-      });
+      const insertedUser = await db
+        .insert(user)
+        .values({
+          name,
+          email,
+          password: hashedPassword,
+        })
+        .returning();
 
-      if (insertedUser)
+      if (insertedUser) {
         return {
           message: 'User inserted sucefully!',
           statusCode: 201,
         };
+      }
     } catch (error) {
       if (error instanceof DrizzleQueryError) {
         if (error.cause instanceof DatabaseError) {

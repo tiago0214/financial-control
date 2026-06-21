@@ -3,25 +3,25 @@ import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 export class CreateTransactionDto {
   @IsString()
   @IsNotEmpty()
-  description: string | undefined;
+  description: string;
 
   @IsNumber()
   @IsNotEmpty()
-  amount: number | undefined;
+  amount: number;
 
   @IsNotEmpty()
   @IsString()
-  date: string | undefined;
+  date: string;
 
   @IsNotEmpty()
   @IsString()
-  category: string | undefined;
+  category: string;
 
   @IsNotEmpty()
   @IsString()
-  status: string | undefined;
+  status: string;
 
   @IsNotEmpty()
   @IsString()
-  paymentMethod: string | undefined;
+  paymentMethod: string;
 }

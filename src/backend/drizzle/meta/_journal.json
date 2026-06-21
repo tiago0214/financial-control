@@ -57,6 +57,13 @@
       "when": 1781969749381,
       "tag": "0007_curved_shen",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1782014050690,
+      "tag": "0008_marvelous_lady_vermin",
+      "breakpoints": true
     }
   ]
 }

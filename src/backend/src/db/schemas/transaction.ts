@@ -17,16 +17,14 @@ export const transaction = pgTable(
     userId: integer('user_id').references(() => user.id, {
       onDelete: 'cascade',
     }),
-    description: text().notNull(),
-    amount: decimal().notNull(),
-    date: date().notNull(),
-    category: text().notNull(),
-    status: text().notNull(),
-    paymentMethod: text('payment_method').notNull(),
-    createdAt: timestamp('created_at').notNull().defaultNow(),
-    updatedAt: timestamp('updated_at')
-      .notNull()
-      .$onUpdate(() => new Date()),
+    description: text(),
+    amount: decimal(),
+    date: date(),
+    category: text(),
+    status: text(),
+    paymentMethod: text('payment_method'),
+    createdAt: timestamp('created_at').defaultNow(),
+    updatedAt: timestamp('updated_at').$onUpdate(() => new Date()),
   },
   (table) => [
     index('unique_transactions').on(table.id),

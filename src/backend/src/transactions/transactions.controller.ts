@@ -25,13 +25,12 @@ export class TransactionsController {
     @GetLoggedUser() user: LoggedUser,
     @Body() createTransactionDto: CreateTransactionDto,
   ) {
-    return this.transactionsService.create(createTransactionDto);
+    return this.transactionsService.create(user, createTransactionDto);
   }
 
   @Get()
   findAll(@GetLoggedUser() user: LoggedUser) {
     console.log(user);
-
     return this.transactionsService.findAll();
   }
 
