@@ -19,8 +19,8 @@ const category = ref("Receita");
 const status = ref<"debito" | "credito">("credito");
 const paymentMethod = ref("Cartão de Crédito");
 
-function closeAndClean(){
-  transactionsStore.selectTransaction(null)
+function closeAndClean() {
+  transactionsStore.selectTransaction(null);
   uiStore.closeModal();
 
   // Reset form
@@ -32,14 +32,32 @@ function closeAndClean(){
   paymentMethod.value = "Cartão de Crédito";
 }
 
-function handleSubmit() {
+async function handleSubmit() {
   if (!description.value || !amount.value || !date.value) {
     alert("Preencha os campos obrigatórios");
     return;
   }
 
-  if(isEditing){
-    transactionsStore.updateTransaction({
+  if (isEditing) {
+    const response = await transactionsStore.updateTransaction({
+      id: transactionsStore.selectedTransactionId!,
+      description: description.value,
+      amount: Number(amount.value),
+      date: date.value,
+      category: category.value,
+      status: status.value,
+      paymentMethod: paymentMethod.value,
+    });
+
+    if (response.statusCode === 201)
+      toast.add({
+        severity: "success",
+        summary: "Sucesso",
+        detail: "Transação atualizada com sucesso!",
+        life: 3000,
+      });
+  } else {
+    const response = await transactionsStore.addTransaction({
       description: description.value,
       amount: amount.value,
       date: date.value,
@@ -48,30 +66,15 @@ function handleSubmit() {
       paymentMethod: paymentMethod.value,
     });
 
-    toast.add({
-      severity: "success",
-      summary: "Sucesso",
-      detail: "Transação atualizada com sucesso!",
-      life: 3000,
-    });
-
-  }else{
-    transactionsStore.addTransaction({
-      description: description.value,
-      amount: amount.value,
-      date: date.value,
-      category: category.value,
-      status: status.value,
-      paymentMethod: paymentMethod.value,
-    });
-
-    toast.add({
-      severity: "success",
-      summary: "Sucesso",
-      detail: "Nova transação adicionada com sucesso!",
-      life: 3000,
-    });
-  } 
+    if (response.statusCode === 201) {
+      toast.add({
+        severity: "success",
+        summary: "Sucesso",
+        detail: "Nova transação adicionada com sucesso!",
+        life: 3000,
+      });
+    }
+  }
 
   // Reset form
   closeAndClean();
@@ -112,27 +115,27 @@ watch(availableOptions, (newOption) => {
 });
 
 onMounted(() => {
-  if(transactionsStore.selectedTransactionId){
-    const findTransaction = transactionsStore.userTransactions.find((t) => {
-      return t.id == transactionsStore.selectedTransactionId
-    })
+  if (transactionsStore.selectedTransactionId) {
+    const findTransaction = transactionsStore.userTransactions?.find((t) => {
+      return t.id == transactionsStore.selectedTransactionId;
+    });
 
-    if(findTransaction){
-      description.value = findTransaction.description
-      amount.value = findTransaction.amount
-      date.value = findTransaction.date
-      category.value = findTransaction.category
-      status.value = findTransaction.status
-      paymentMethod.value = findTransaction.paymentMethod
+    if (findTransaction) {
+      description.value = findTransaction.description;
+      amount.value = findTransaction.amount;
+      date.value = findTransaction.date;
+      category.value = findTransaction.category;
+      status.value = findTransaction.status;
+      paymentMethod.value = findTransaction.paymentMethod;
     }
   }
-})
+});
 
 onBeforeUnmount(() => {
-  if(transactionsStore.selectedTransactionId){
-    transactionsStore.selectTransaction(null)
+  if (transactionsStore.selectedTransactionId) {
+    transactionsStore.selectTransaction(null);
   }
-})
+});
 </script>
 
 <template>

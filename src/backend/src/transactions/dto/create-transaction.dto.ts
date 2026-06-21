@@ -1,5 +1,4 @@
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
-import { Transform } from 'class-transformer';
 
 export class CreateTransactionDto {
   @IsString()
@@ -8,11 +7,7 @@ export class CreateTransactionDto {
 
   @IsNumber()
   @IsNotEmpty()
-  @Transform(({ value }) =>
-    //eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    value !== undefined && value !== null ? String(value) : value,
-  )
-  amount!: string;
+  amount!: number;
 
   @IsNotEmpty()
   @IsString()

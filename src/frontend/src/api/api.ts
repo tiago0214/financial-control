@@ -33,3 +33,9 @@ export async function get<T>(route: string) {
 
   return response.data;
 }
+
+export async function patch<T>(route: string, body: Record<string, any>) {
+  const response = await api.patch<T>(route, body);
+
+  return response.data;
+}

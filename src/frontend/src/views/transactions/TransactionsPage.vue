@@ -35,8 +35,8 @@ const transactionsStore = useTransactionsStore();
 
     <FilterBar />
 
-    <div class="w-full grid gap-6 grid-cols-3 items-start"> 
-      <TransactionTable class="col-span-2"/>
+    <div class="w-full grid gap-6 grid-cols-3 items-start">
+      <TransactionTable class="col-span-2" />
       <TopSpending />
     </div>
 
