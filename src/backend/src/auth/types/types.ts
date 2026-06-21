@@ -1,7 +1,7 @@
 import { Request } from 'express';
 
 export interface LoggedUser {
-  sub: string;
+  sub: number;
   email: string;
   name: string;
 }

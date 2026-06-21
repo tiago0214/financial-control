@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 export class CreateGoalDto {
   @IsString()
@@ -7,10 +8,18 @@ export class CreateGoalDto {
 
   @IsNumber()
   @IsNotEmpty()
-  targetAmount!: number;
+  @Transform(({ value }) =>
+    //eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    value !== undefined && value !== null ? String(value) : value,
+  )
+  targetAmount!: string;
 
   @IsNotEmpty()
   @IsNumber()
+  @Transform(({ value }) =>
+    //eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    value !== undefined && value !== null ? String(value) : value,
+  )
   currentAmount!: string;
 
   @IsNotEmpty()

@@ -40,14 +40,19 @@ export class TransactionsController {
 
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @GetLoggedUser() loggedUser: LoggedUser,
+    @Param('id') id: number,
     @Body() updateTransactionDto: UpdateTransactionDto,
   ) {
-    return this.transactionsService.update(+id, updateTransactionDto);
+    return this.transactionsService.update(
+      loggedUser,
+      id,
+      updateTransactionDto,
+    );
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.transactionsService.remove(+id);
+  remove(@GetLoggedUser() user: LoggedUser, @Param('id') id: number) {
+    return this.transactionsService.remove(user, id);
   }
 }

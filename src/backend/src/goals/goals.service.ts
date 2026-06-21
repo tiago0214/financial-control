@@ -15,14 +15,14 @@ export class GoalsService {
       createGoalDto;
 
     const db = this.dbService.getSession();
-    const userId = Number(loggedUser.sub);
+    const userId = loggedUser.sub;
     const insertedGoal = await db
       .insert(goal)
       .values({
         userId,
         title,
-        targetAmount: String(targetAmount),
-        currentAmount: String(currentAmount),
+        targetAmount,
+        currentAmount,
         targetDate,
         iconString,
       })
@@ -42,7 +42,7 @@ export class GoalsService {
   }
 
   async findAll(loggedUser: LoggedUser) {
-    const userId = Number(loggedUser.sub);
+    const userId = loggedUser.sub;
     const db = this.dbService.getSession();
 
     const goals = await db.select().from(goal).where(eq(goal.userId, userId));
@@ -59,7 +59,7 @@ export class GoalsService {
   }
 
   async findOne(loggedUser: LoggedUser, id: number) {
-    const userId = Number(loggedUser.sub);
+    const userId = loggedUser.sub;
     const db = this.dbService.getSession();
 
     const foundGoal = await db

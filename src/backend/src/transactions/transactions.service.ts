@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { UpdateTransactionDto } from './dto/update-transaction.dto';
 import { DbService } from 'src/db/db.service';
@@ -14,6 +14,7 @@ export class TransactionsService {
     loggedUser: LoggedUser,
     createTransactionDto: CreateTransactionDto,
   ) {
+    const userId = loggedUser.sub;
     const { amount, category, date, description, paymentMethod, status } =
       createTransactionDto;
 
@@ -21,9 +22,9 @@ export class TransactionsService {
     const insertedTransaction = await db
       .insert(transaction)
       .values({
-        userId: Number(loggedUser.sub),
+        userId,
         description,
-        amount: String(amount),
+        amount,
         date,
         category,
         status,
@@ -46,7 +47,7 @@ export class TransactionsService {
 
   async findAll(loggedUser: LoggedUser) {
     const db = this.dbService.getSession();
-    const userId = Number(loggedUser.sub);
+    const userId = loggedUser.sub;
 
     const transacations = await db
       .select()
@@ -65,7 +66,7 @@ export class TransactionsService {
   }
 
   async findOne(loggedUser: LoggedUser, id: number) {
-    const userId = Number(loggedUser.sub);
+    const userId = loggedUser.sub;
 
     const db = this.dbService.getSession();
     const foundTransaction = await db
@@ -84,11 +85,44 @@ export class TransactionsService {
     };
   }
 
-  update(id: number, updateTransactionDto: UpdateTransactionDto) {
-    return `This action updates a #${id} transaction`;
+  async update(
+    loggedUser: LoggedUser,
+    id: number,
+    updateTransactionDto: UpdateTransactionDto,
+  ) {
+    const userId = loggedUser.sub;
+    const db = this.dbService.getSession();
+    const { amount, category, date, description, paymentMethod, status } =
+      updateTransactionDto;
+
+    const checkItens = Object.keys(updateTransactionDto);
+    console.log(checkItens);
+
+    if (checkItens.length == 0) throw new BadRequestException();
+
+    await db
+      .update(transaction)
+      .set({
+        amount,
+        category,
+        date,
+        description,
+        paymentMethod,
+        status,
+      })
+      .where(and(eq(transaction.id, id), eq(transaction.userId, userId)));
+
+    return {
+      message: `Transaction updated sucefully!`,
+    };
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} transaction`;
+  async remove(loggedUser: LoggedUser, id: number) {
+    const userId = loggedUser.sub;
+    const db = this.dbService.getSession();
+
+    await db
+      .delete(transaction)
+      .where(and(eq(transaction.id, userId), eq(transaction.id, id)));
   }
 }
