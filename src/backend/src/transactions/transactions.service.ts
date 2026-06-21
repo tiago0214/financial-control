@@ -53,10 +53,11 @@ export class TransactionsService {
       .from(transaction)
       .where(eq(transaction.userId, userId));
 
-    if (transacations.length > 0)
+    if (transacations.length > 0) {
       return {
         transactions: transacations,
       };
+    }
 
     return {
       transactions: [],

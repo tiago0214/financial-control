@@ -17,16 +17,14 @@ export const goal = pgTable(
     userId: integer('user_id').references(() => user.id, {
       onDelete: 'cascade',
     }),
-    title: text().notNull(),
-    targetAmount: decimal('target_amount').notNull(),
-    currentAmount: decimal('current_amount').notNull(),
-    targetDate: date('target_date').notNull(),
-    iconString: text('icon_string').notNull(),
+    title: text(),
+    targetAmount: decimal('target_amount'),
+    currentAmount: decimal('current_amount'),
+    targetDate: date('target_date'),
+    iconString: text('icon_string'),
     aiInsight: text('ai_insigth'),
-    createAt: timestamp('created_at').notNull().defaultNow(),
-    updatedAt: timestamp('updated_at')
-      .notNull()
-      .$onUpdate(() => new Date()),
+    createAt: timestamp('created_at').defaultNow(),
+    updatedAt: timestamp('updated_at').$onUpdate(() => new Date()),
   },
   (table) => [
     index('single_goal').on(table.id),

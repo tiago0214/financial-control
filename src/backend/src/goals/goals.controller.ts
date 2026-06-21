@@ -1,25 +1,41 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { GoalsService } from './goals.service';
 import { CreateGoalDto } from './dto/create-goal.dto';
 import { UpdateGoalDto } from './dto/update-goal.dto';
+import { GetLoggedUser } from 'src/auth/decorators/logged-user.decorator';
+import type { LoggedUser } from 'src/auth/types/types';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('goals')
+@UseGuards(AuthGuard)
 export class GoalsController {
   constructor(private readonly goalsService: GoalsService) {}
 
   @Post()
-  create(@Body() createGoalDto: CreateGoalDto) {
-    return this.goalsService.create(createGoalDto);
+  create(
+    @GetLoggedUser() user: LoggedUser,
+    @Body() createGoalDto: CreateGoalDto,
+  ) {
+    return this.goalsService.create(user, createGoalDto);
   }
 
   @Get()
-  findAll() {
-    return this.goalsService.findAll();
+  findAll(@GetLoggedUser() user: LoggedUser) {
+    return this.goalsService.findAll(user);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.goalsService.findOne(+id);
+  findOne(@GetLoggedUser() user: LoggedUser, @Param('id') id: number) {
+    return this.goalsService.findOne(user, id);
   }
 
   @Patch(':id')
