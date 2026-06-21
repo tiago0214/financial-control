@@ -4,8 +4,6 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { DbService } from 'src/db/db.service';
 import * as bcrypt from 'bcrypt';
 import { user } from 'src/db/schemas';
-import { DatabaseError } from 'pg';
-import { DrizzleQueryError } from 'drizzle-orm/errors';
 import { eq } from 'drizzle-orm';
 import { SelectUser } from 'src/db/schemas/user';
 
@@ -31,23 +29,21 @@ export class UsersService {
         .returning();
 
       if (insertedUser) {
-        return {
-          message: 'User inserted sucefully!',
-          statusCode: 201,
-        };
+        return true;
       }
-    } catch (error) {
-      if (error instanceof DrizzleQueryError) {
-        if (error.cause instanceof DatabaseError) {
-          if (error.cause.code === '23505') {
-            return {
-              message: error.cause.detail,
-              error: 'Database constrait violation!',
-              statusCode: 409,
-            };
-          }
-        }
-      }
+    } catch {
+      return false;
+      // if (error instanceof DrizzleQueryError) {
+      //   if (error.cause instanceof DatabaseError) {
+      //     if (error.cause.code === '23505') {
+      //       return {
+      //         message: error.cause.detail,
+      //         error: 'Database constrait violation!',
+      //         statusCode: 409,
+      //       };
+      //     }
+      //   }
+      // }
     }
   }
 
