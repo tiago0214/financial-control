@@ -8,6 +8,8 @@ export class TransactionsService {
   constructor(private readonly dbService: DbService) {}
 
   create(createTransactionDto: CreateTransactionDto) {
+    const db = this.dbService.getSession();
+
     return 'This action adds a new transaction';
   }
 
