@@ -1,8 +1,6 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import { useAuthStore } from "./auth";
-import { useQuery } from "@tanstack/vue-query";
-import { fetchAllGoals } from "../services/goals.services";
 
 export interface Goal {
   id: string;
@@ -19,24 +17,24 @@ export const useGoalsStore = defineStore("goals", () => {
   const authStore = useAuthStore();
   const selectedGoalId = ref<string | null>(null);
 
-  const { data: userGoals } = useQuery({
-    queryKey: computed(() => ["transactions"]),
-    queryFn: fetchAllGoals,
-    initialData: [],
-  });
+  // const { data: userGoals } = useQuery({
+  //   queryKey: computed(() => ["goals"]),
+  //   queryFn: fetchAllGoals,
+  //   initialData: [],
+  // });
 
-  const totalTargetAmount = computed(() => {
-    return userGoals.value.reduce((sum, g) => sum + g.targetAmount, 0);
-  });
+  // const totalTargetAmount = computed(() => {
+  //   return userGoals.value.reduce((sum, g) => sum + g.targetAmount, 0);
+  // });
 
-  const totalCurrentAmount = computed(() => {
-    return userGoals.value.reduce((sum, g) => sum + g.currentAmount, 0);
-  });
+  // const totalCurrentAmount = computed(() => {
+  //   return userGoals.value.reduce((sum, g) => sum + g.currentAmount, 0);
+  // });
 
-  const overallProgress = computed(() => {
-    if (totalTargetAmount.value === 0) return 0;
-    return (totalCurrentAmount.value / totalTargetAmount.value) * 100;
-  });
+  // const overallProgress = computed(() => {
+  //   if (totalTargetAmount.value === 0) return 0;
+  //   return (totalCurrentAmount.value / totalTargetAmount.value) * 100;
+  // });
 
   function addGoal(goalData: Omit<Goal, "id" | "userId" | "currentAmount">) {
     if (!authStore.user?.id) throw new Error("Usuário não autenticado");
@@ -65,10 +63,10 @@ export const useGoalsStore = defineStore("goals", () => {
   }
 
   return {
-    userGoals,
-    totalTargetAmount,
-    totalCurrentAmount,
-    overallProgress,
+    // userGoals,
+    // totalTargetAmount,
+    // totalCurrentAmount,
+    // overallProgress,
     selectedGoalId,
     addGoal,
     selectGoal,

@@ -4,12 +4,14 @@ import { Plane, Car, Home, Star } from "lucide-vue-next";
 import OverallGoals from "./components/OverallGoals.vue";
 import SingleGoal from "./components/SingleGoal.vue";
 import CustomModal from "../layout/components/CustomModal.vue";
-import { useGoalsStore } from "../../stores/goals";
-import { useTransactionsStore } from "../../stores/transactions";
+import { useGoals } from "../../composables/useGoals";
 import AddNewGoalForm from "./components/AddNewGoalForm.vue";
+import { useTransactions } from "../../composables/useTransactions.ts";
 
-const goalsStore = useGoalsStore();
-const transactionsStore = useTransactionsStore();
+// const goalsStore = useGoalsStore();
+// const transactionsStore = useTransactionsStore();
+const transactions = useTransactions();
+const goalsComposable = useGoals();
 
 const iconMap: Record<string, any> = {
   Plane: Plane,
@@ -46,10 +48,10 @@ function formatDate(dateStr: string) {
 }
 
 const goalsList = computed(() => {
-  const available = transactionsStore.totalAvailable;
+  const available = transactions.totalAvailable.value;
   console.log(available);
 
-  return goalsStore.userGoals.map((g) => ({
+  return goalsComposable.userGoals.value.map((g) => ({
     id: g.id,
     icon: iconMap[g.iconString] || Star,
     tint: "from-primary-glow to-accent",

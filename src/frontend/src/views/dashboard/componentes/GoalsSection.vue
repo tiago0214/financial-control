@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { Plane, Home, Car, Calendar, Star } from "lucide-vue-next";
 import { useRouter } from "vue-router";
-import { useGoalsStore } from "../../../stores/goals";
 import { useTransactions } from "../../../composables/useTransactions";
+import { useGoals } from "../../../composables/useGoals";
 import { computed } from "vue";
 
 const route = useRouter();
-const goalsStore = useGoalsStore();
 const transactions = useTransactions();
+const goalsComposable = useGoals();
 
 const iconMap: Record<string, any> = {
   Plane: Plane,
@@ -40,12 +40,12 @@ const getProgressColor = (progress: number) => {
   return "from-primary to-primary-glow";
 };
 
-const activeGoals = computed(() => goalsStore.userGoals.length);
+const activeGoals = computed(() => goalsComposable.userGoals.value.length);
 const totalSaved = computed(() => transactions.totalAvailable.value);
 
 const goals = computed(() => {
   const available = transactions.totalAvailable.value;
-  return goalsStore.userGoals.map((g) => {
+  return goalsComposable.userGoals.value.map((g) => {
     const progress = g.targetAmount
       ? Math.min(100, Math.round((available / g.targetAmount) * 100))
       : 0;
