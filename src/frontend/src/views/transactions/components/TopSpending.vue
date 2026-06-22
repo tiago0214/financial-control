@@ -11,7 +11,7 @@
         v-for="(spending, index) in topSpending"
         :key="index"
         :spending="{ category: spending[0], amount: spending[1] }"
-        :total-expense="transactionsStore.totalExpense"
+        :total-expense="transactions.totalExpense.value"
         :index="index"
       />
       <p
@@ -25,13 +25,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useTransactionsStore } from "../../../stores/transactions";
 import { computed } from "vue";
 import SpendingCard from "./SpendingCard.vue";
+import { useTransactions } from "../../../composables/useTransactions";
 
-const transactionsStore = useTransactionsStore();
+const transactions = useTransactions();
 const topSpending = computed(() => {
-  const expenses = transactionsStore.userTransactions?.filter(
+  const expenses = transactions.userTransactions?.value.filter(
     (t) => t.status === "debito",
   );
   const categoryTotals: Record<string, number> = {};
