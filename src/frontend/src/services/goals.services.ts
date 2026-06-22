@@ -12,7 +12,7 @@ interface AddNewGoalResponse {
 interface PatchGoalsResponse extends AddNewGoalResponse {}
 
 export interface Goal {
-  id: string;
+  id: number;
   userId: string;
   title: string;
   targetAmount: number;
@@ -32,7 +32,7 @@ export async function fetchAllGoals(): Promise<Goal[]> {
   }
 }
 
-export async function addNewGoal(
+export async function addGoal(
   data: Partial<Goal>,
 ): Promise<AddNewGoalResponse> {
   try {
@@ -47,7 +47,7 @@ export async function addNewGoal(
   }
 }
 
-export async function updateGoalService(data: Partial<Goal>) {
+export async function updateGoal(data: Partial<Goal>) {
   try {
     if (!data.id)
       return {

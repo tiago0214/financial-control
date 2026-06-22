@@ -37,7 +37,7 @@ export class GoalsService {
 
     return {
       message: 'Something went wrong!',
-      stastatusCodetus: 500,
+      statusCode: 500,
     };
   }
 
@@ -106,6 +106,7 @@ export class GoalsService {
 
     return {
       message: `Goal updated sucefully!`,
+      statusCode: 200,
     };
   }
 
@@ -117,6 +118,7 @@ export class GoalsService {
 
     return {
       message: 'Goal deleted sucefully!',
+      statusCode: 200,
     };
   }
 }

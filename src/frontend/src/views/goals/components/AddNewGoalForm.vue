@@ -4,9 +4,12 @@ import { useUiStore } from "../../../stores/ui";
 import { useGoalsStore } from "../../../stores/goals";
 import { useToast } from "primevue";
 import { toLocalISOString } from "../../../lib/date";
+import { addGoal, updateGoal } from "../../../services/goals.services";
+import { useGoals } from "../../../composables/useGoals";
 
 const uiStore = useUiStore();
 const goalsStore = useGoalsStore();
+const goalsComposable = useGoals();
 
 const toast = useToast();
 
@@ -28,14 +31,15 @@ function closeAndClean() {
   selectedIcon.value = "Plane";
 }
 
-function handleSubmit() {
+async function handleSubmit() {
   if (!title.value || !targetAmount.value || !targetDate.value) {
     alert("Preencha os campos obrigatórios");
     return;
   }
 
   if (isEditing.value) {
-    goalsStore.updateGoal({
+    await updateGoal({
+      id: goalsStore.selectedGoalId!,
       title: title.value,
       targetAmount: targetAmount.value,
       targetDate: targetDate.value,
@@ -49,7 +53,7 @@ function handleSubmit() {
       life: 3000,
     });
   } else {
-    goalsStore.addGoal({
+    await addGoal({
       title: title.value,
       targetAmount: targetAmount.value,
       targetDate: targetDate.value,
@@ -71,7 +75,7 @@ function handleSubmit() {
 
 onMounted(() => {
   if (goalsStore.selectedGoalId) {
-    const goalToEdit = goalsStore.userGoals.find(
+    const goalToEdit = goalsComposable.userGoals.value.find(
       (g) => g.id === goalsStore.selectedGoalId,
     );
     if (goalToEdit) {
