@@ -38,7 +38,7 @@ async function handleSubmit() {
   }
 
   if (isEditing.value) {
-    await updateGoal({
+    const response = await updateGoal({
       id: goalsStore.selectedGoalId!,
       title: title.value,
       targetAmount: targetAmount.value,
@@ -46,14 +46,18 @@ async function handleSubmit() {
       iconString: selectedIcon.value,
     });
 
-    toast.add({
-      severity: "success",
-      summary: "Sucesso",
-      detail: "Meta atualizada com sucesso!",
-      life: 3000,
-    });
+    if (response.statusCode === 200) {
+      toast.add({
+        severity: "success",
+        summary: "Sucesso",
+        detail: "Meta atualizada com sucesso!",
+        life: 3000,
+      });
+
+      await goalsComposable.refetchGoals();
+    }
   } else {
-    await addGoal({
+    const response = await addGoal({
       title: title.value,
       targetAmount: targetAmount.value,
       targetDate: targetDate.value,
@@ -62,12 +66,16 @@ async function handleSubmit() {
         "Sua meta foi criada! Assim que você economizar seus primeiros valores, te ajudaremos com insights.",
     });
 
-    toast.add({
-      severity: "success",
-      summary: "Sucesso",
-      detail: "Nova meta adicionada com sucesso!",
-      life: 3000,
-    });
+    if (response.statusCode === 201) {
+      toast.add({
+        severity: "success",
+        summary: "Sucesso",
+        detail: "Nova meta adicionada com sucesso!",
+        life: 3000,
+      });
+
+      await goalsComposable.refetchGoals();
+    }
   }
 
   closeAndClean();

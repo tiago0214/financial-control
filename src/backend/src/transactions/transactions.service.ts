@@ -113,6 +113,7 @@ export class TransactionsService {
 
     return {
       message: `Transaction updated sucefully!`,
+      statusCode: 200,
     };
   }
 
@@ -126,6 +127,7 @@ export class TransactionsService {
 
     return {
       message: 'Transaction delete sucefully!',
+      statusCode: 200,
     };
   }
 }

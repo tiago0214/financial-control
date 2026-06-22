@@ -54,14 +54,15 @@ async function handleSubmit() {
       status: status.value,
       paymentMethod: paymentMethod.value,
     });
-
-    if (response.statusCode === 201)
+    if (response.statusCode === 200)
       toast.add({
         severity: "success",
         summary: "Sucesso",
         detail: "Transação atualizada com sucesso!",
         life: 3000,
       });
+
+    await transactions.refetchTransactions();
   } else {
     const response = await addTransaction({
       description: description.value,

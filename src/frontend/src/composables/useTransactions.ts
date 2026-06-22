@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/vue-query";
 import { fetchAllTransactions } from "../services/transactions.services";
 
 export function useTransactions() {
-  const { data: userTransactions } = useQuery({
+  const { data: userTransactions, refetch: refetchTransactions } = useQuery({
     queryKey: ["transactions"],
     queryFn: fetchAllTransactions,
     initialData: [],
@@ -37,5 +37,6 @@ export function useTransactions() {
     totalIncome,
     totalExpense,
     totalAvailable,
+    refetchTransactions,
   };
 }

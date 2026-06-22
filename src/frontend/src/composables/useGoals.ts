@@ -3,7 +3,7 @@ import { computed } from "vue";
 import { fetchAllGoals } from "../services/goals.services";
 
 export function useGoals() {
-  const { data: userGoals } = useQuery({
+  const { data: userGoals, refetch: refetchGoals } = useQuery({
     queryKey: computed(() => ["goals"]),
     queryFn: fetchAllGoals,
     initialData: [],
@@ -22,5 +22,11 @@ export function useGoals() {
     return (totalCurrentAmount.value / totalTargetAmount.value) * 100;
   });
 
-  return { userGoals, totalTargetAmount, totalCurrentAmount, overallProgress };
+  return {
+    userGoals,
+    totalTargetAmount,
+    totalCurrentAmount,
+    overallProgress,
+    refetchGoals,
+  };
 }

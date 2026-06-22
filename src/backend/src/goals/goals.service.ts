@@ -21,8 +21,8 @@ export class GoalsService {
       .values({
         userId,
         title,
-        targetAmount,
-        currentAmount,
+        targetAmount: Number(targetAmount),
+        currentAmount: Number(currentAmount),
         targetDate,
         iconString,
       })
@@ -96,9 +96,9 @@ export class GoalsService {
     await db
       .update(goal)
       .set({
-        currentAmount,
+        currentAmount: Number(currentAmount),
         iconString,
-        targetAmount,
+        targetAmount: Number(targetAmount),
         targetDate,
         title,
       })
