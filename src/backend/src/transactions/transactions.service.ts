@@ -24,7 +24,7 @@ export class TransactionsService {
       .values({
         userId,
         description,
-        amount,
+        amount: String(amount),
         date,
         category,
         status,
@@ -102,7 +102,7 @@ export class TransactionsService {
     await db
       .update(transaction)
       .set({
-        amount,
+        amount: String(amount),
         category,
         date,
         description,

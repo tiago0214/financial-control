@@ -27,6 +27,7 @@ export const useTransactionsStore = defineStore("transactions", () => {
   const { data: userTransactions } = useQuery({
     queryKey: computed(() => ["transactions"]),
     queryFn: fetchAllTransactions,
+    initialData: [],
   });
 
   // Calculate totals

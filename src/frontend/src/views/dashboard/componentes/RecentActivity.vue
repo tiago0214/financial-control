@@ -8,7 +8,7 @@ const route = useRouter();
 const transactionsStore = useTransactionsStore();
 
 const txns = computed(() => {
-  return [...transactionsStore.userTransactions]
+  return [...(transactionsStore.userTransactions || [])]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 6)
     .map((t) => {
@@ -77,4 +77,3 @@ const txns = computed(() => {
     </div>
   </section>
 </template>
-

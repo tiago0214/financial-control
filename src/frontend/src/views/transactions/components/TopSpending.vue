@@ -40,7 +40,7 @@ const topSpending = computed(() => {
     if (!categoryTotals[expense.category]) {
       categoryTotals[expense.category] = 0;
     }
-    categoryTotals[expense.category] += expense.amount;
+    categoryTotals[expense.category] += Number(expense.amount);
   });
 
   return Object.entries(categoryTotals)

@@ -12,7 +12,7 @@ const weeklyIncoming = computed(() => {
   startOfWeek.setHours(0, 0, 0, 0);
 
   let total = 0;
-  transactionStore.userTransactions.forEach((ts) => {
+  transactionStore.userTransactions?.forEach((ts) => {
     if (ts.status === "credito") {
       const txDate = new Date(ts.date);
       if (txDate >= startOfWeek) {
