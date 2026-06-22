@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { TrendingUp } from "lucide-vue-next";
-import { useTransactionsStore } from "../../../stores/transactions";
 import { computed } from "vue";
-
-const transactionStore = useTransactionsStore();
+import { useTransactions } from "../../../composables/useTransactions";
+const transactions = useTransactions();
 
 const weeklyIncoming = computed(() => {
   const now = new Date();
@@ -12,7 +11,7 @@ const weeklyIncoming = computed(() => {
   startOfWeek.setHours(0, 0, 0, 0);
 
   let total = 0;
-  transactionStore.userTransactions?.forEach((ts) => {
+  transactions.userTransactions?.value.forEach((ts) => {
     if (ts.status === "credito") {
       const txDate = new Date(ts.date);
       if (txDate >= startOfWeek) {
@@ -44,7 +43,7 @@ const weeklyIncoming = computed(() => {
         </div>
       </div>
       <div class="mt-3 font-display text-4xl font-bold text-primary-foreground">
-        R${{ transactionStore.totalAvailable }}
+        R${{ transactions.totalAvailable }}
       </div>
       <div class="mt-1 text-xs text-primary-foreground/80">
         +{{ weeklyIncoming }} Esta semana

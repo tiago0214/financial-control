@@ -4,30 +4,30 @@ import StatCard from "./components/StatCard.vue";
 import FilterBar from "./components/FilterBar.vue";
 import TransactionTable from "./components/TransactionTable.vue";
 import CustomModal from "../layout/components/CustomModal.vue";
-import { useTransactionsStore } from "../../stores/transactions";
 import AddNewTransactionForm from "./components/AddNewTransactionForm.vue";
 import TopSpending from "./components/TopSpending.vue";
+import { useTransactions } from "../../composables/useTransactions";
 
-const transactionsStore = useTransactionsStore();
+const transactions = useTransactions();
 </script>
 <template>
   <main class="flex flex-col space-y-6">
     <div class="grid grid-cols-3 gap-4">
       <StatCard
         label="Depositos Totais"
-        :value="transactionsStore.totalIncome"
+        :value="transactions.totalIncome.value"
         tint="bg-primary/10 text-primary"
         :icon="ArrowDownLeft"
       />
       <StatCard
         label="Gastos Totais"
-        :value="transactionsStore.totalExpense"
+        :value="transactions.totalExpense.value"
         tint="bg-accent/10 text-accent"
         :icon="ArrowUpRight"
       />
       <StatCard
         label="Valor Disponível"
-        :value="transactionsStore.totalAvailable"
+        :value="transactions.totalAvailable.value"
         tint="bg-slate-400/10 text-slate-300"
         :icon="CreditCard"
       />

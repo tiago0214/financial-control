@@ -14,13 +14,15 @@ import {
   TrendingUp,
   Briefcase,
 } from "lucide-vue-next";
+import { useTransactions } from "../../../composables/useTransactions";
 import { useTransactionsStore } from "../../../stores/transactions";
 import { useUiStore } from "../../../stores/ui";
 
+const transactions = useTransactions();
 const transactionsStore = useTransactionsStore();
 const uiStore = useUiStore();
 
-const userTransactions = computed(() => transactionsStore.userTransactions);
+const userTransactions = computed(() => transactions.userTransactions.value);
 
 const categoryIconMap: Record<string, any> = {
   Alimentação: Pizza,

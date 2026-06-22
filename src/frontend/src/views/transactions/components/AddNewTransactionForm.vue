@@ -4,9 +4,15 @@ import { useUiStore } from "../../../stores/ui";
 import { useTransactionsStore } from "../../../stores/transactions";
 import { useToast } from "primevue/usetoast";
 import { toLocalISOString } from "../../../lib/date";
+import {
+  addTransaction,
+  updateTransaction,
+} from "../../../services/transactions.services";
+import { useTransactions } from "../../../composables/useTransactions";
 
 const uiStore = useUiStore();
 const transactionsStore = useTransactionsStore();
+const transactions = useTransactions();
 const isEditing = !!transactionsStore.selectedTransactionId;
 const defaultDate = toLocalISOString(new Date()).split("T")[0]; // Get only the date part in YYYY-MM-DD format
 
@@ -39,7 +45,7 @@ async function handleSubmit() {
   }
 
   if (isEditing) {
-    const response = await transactionsStore.updateTransaction({
+    const response = await updateTransaction({
       id: transactionsStore.selectedTransactionId!,
       description: description.value,
       amount: Number(amount.value),
@@ -57,7 +63,7 @@ async function handleSubmit() {
         life: 3000,
       });
   } else {
-    const response = await transactionsStore.addTransaction({
+    const response = await addTransaction({
       description: description.value,
       amount: amount.value,
       date: date.value,
@@ -116,7 +122,7 @@ watch(availableOptions, (newOption) => {
 
 onMounted(() => {
   if (transactionsStore.selectedTransactionId) {
-    const findTransaction = transactionsStore.userTransactions?.find((t) => {
+    const findTransaction = transactions.userTransactions?.value?.find((t) => {
       return t.id == transactionsStore.selectedTransactionId;
     });
 

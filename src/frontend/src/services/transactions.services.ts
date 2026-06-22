@@ -1,4 +1,4 @@
-import { get, patch, post } from "../../api/api";
+import { get, patch, post } from "../api/api";
 
 interface TransactionResponse {
   transactions: Transaction[];
@@ -32,7 +32,7 @@ export async function fetchAllTransactions(): Promise<Transaction[]> {
   }
 }
 
-export async function addNewTransaction(
+export async function addTransaction(
   data: Partial<Transaction>,
 ): Promise<AddNewTransactionResponse> {
   try {
@@ -50,7 +50,7 @@ export async function addNewTransaction(
   }
 }
 
-export async function updateTransactionService(data: Partial<Transaction>) {
+export async function updateTransaction(data: Partial<Transaction>) {
   try {
     if (!data.id)
       return {

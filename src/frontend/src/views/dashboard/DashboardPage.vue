@@ -4,12 +4,12 @@ import GoalsSection from "./componentes/GoalsSection.vue";
 import RecentActivity from "./componentes/RecentActivity.vue";
 import StatCard from "./componentes/StatCard.vue";
 import { PiggyBank, ShoppingBag } from "lucide-vue-next";
-import { useTransactionsStore } from "../../stores/transactions";
 import { computed } from "vue";
 import ChartComponent from "./componentes/ChartComponent.vue";
 import DoughnutChart from "./componentes/DoughnutChart.vue";
+import { useTransactions } from "../../composables/useTransactions";
 
-const transactions = useTransactionsStore();
+const transactions = useTransactions();
 
 const formatCurrency = (value: number) => {
   return new Intl.NumberFormat("pt-BR", {
@@ -30,7 +30,7 @@ const computedIncoming = computed(() => {
   let thisMonthTransactionsTotal = 0;
   let lastMonthTransactionsTotal = 0;
 
-  transactions.userTransactions?.forEach((ts) => {
+  transactions.userTransactions?.value.forEach((ts) => {
     const transactionDate = new Date(ts.date);
     const transactionMonth = transactionDate.getMonth();
     const transactionYear = transactionDate.getFullYear();
@@ -83,7 +83,7 @@ const computedExpense = computed(() => {
   let thisMonthExpensesTotal = 0;
   let lastMonthExpensesTotal = 0;
 
-  transactions.userTransactions?.forEach((ts) => {
+  transactions.userTransactions?.value.forEach((ts) => {
     const transactionDate = new Date(ts.date);
     const transactionMonth = transactionDate.getMonth();
     const transactionYear = transactionDate.getFullYear();

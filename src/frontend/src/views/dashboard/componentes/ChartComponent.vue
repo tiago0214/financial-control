@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, watchEffect } from "vue";
 import Chart from "primevue/chart";
-import { useTransactionsStore } from "../../../stores/transactions";
 import { ChartColumn } from "lucide-vue-next";
+import { useTransactions } from "../../../composables/useTransactions";
 
 const chartData = ref({});
 const chartOptions = ref({});
-const transactions = useTransactionsStore();
+const transactions = useTransactions();
 
 const setChartData = () => {
   const monthNames = [
@@ -28,7 +28,7 @@ const setChartData = () => {
     { income: number; expense: number; dateValue: number }
   > = {};
 
-  transactions.userTransactions?.forEach((ts) => {
+  transactions.userTransactions?.value.forEach((ts) => {
     const transactionDate = new Date(ts.date);
     const month = transactionDate.getMonth();
     const year = transactionDate.getFullYear();
@@ -152,7 +152,7 @@ watchEffect(() => {
 
     <!-- Show the chart if there are transactions -->
     <Chart
-      v-if="transactions.userTransactions.length > 0"
+      v-if="transactions.userTransactions?.value.length > 0"
       type="bar"
       :data="chartData"
       :options="chartOptions"

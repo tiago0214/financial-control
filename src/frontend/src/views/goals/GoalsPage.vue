@@ -47,6 +47,8 @@ function formatDate(dateStr: string) {
 
 const goalsList = computed(() => {
   const available = transactionsStore.totalAvailable;
+  console.log(available);
+
   return goalsStore.userGoals.map((g) => ({
     id: g.id,
     icon: iconMap[g.iconString] || Star,
@@ -82,4 +84,3 @@ const goalsList = computed(() => {
     </CustomModal>
   </main>
 </template>
-

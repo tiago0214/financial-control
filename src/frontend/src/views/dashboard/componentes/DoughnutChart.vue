@@ -56,10 +56,10 @@
 <script lang="ts" setup>
 import { ref, computed, watchEffect } from "vue";
 import Chart from "primevue/chart";
-import { useTransactionsStore } from "../../../stores/transactions";
 import { ChartPie } from "lucide-vue-next";
+import { useTransactions } from "../../../composables/useTransactions";
 
-const transactions = useTransactionsStore();
+const transactions = useTransactions();
 
 const chartColors = [
   "#fb923c", // orange (lighter tone)
@@ -72,7 +72,8 @@ const chartColors = [
 
 const topSpending = computed(() => {
   const expenses =
-    transactions.userTransactions?.filter((t) => t.status === "debito") || [];
+    transactions.userTransactions?.value.filter((t) => t.status === "debito") ||
+    [];
   const categoryTotals: Record<string, number> = {};
 
   expenses.forEach((expense) => {

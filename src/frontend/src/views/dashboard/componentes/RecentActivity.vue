@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ArrowDownLeft, ShoppingBag } from "lucide-vue-next";
 import { useRouter } from "vue-router";
-import { useTransactionsStore } from "../../../stores/transactions";
+import { useTransactions } from "../../../composables/useTransactions";
 import { computed } from "vue";
 
 const route = useRouter();
-const transactionsStore = useTransactionsStore();
+const transactions = useTransactions();
 
 const txns = computed(() => {
-  return [...(transactionsStore.userTransactions || [])]
+  return [...(transactions.userTransactions.value || [])]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 6)
     .map((t) => {
