@@ -1,6 +1,6 @@
 # Application Documentation
 
-This project consists of a full-stack application with a **FastAPI backend** (Python) and a **Vue frontend** powered by **Vite** (TypeScript).
+This project consists of a full-stack application with a **Nestjs backend** (Node) and a **Vue frontend** powered by **Vite** (TypeScript).
 
 Here is how you can run the application, either via Docker (recommended) or locally on your machine.
 
@@ -8,7 +8,6 @@ Here is how you can run the application, either via Docker (recommended) or loca
 
 - **Docker** and **Docker Compose** (for Docker setup)
 - **Node.js** (v18+ recommended) and `npm` (for local frontend setup)
-- **Python** 3.9+ (for local backend setup)
 
 ---
 
@@ -21,13 +20,13 @@ Running the application with Docker is the easiest method and ensures that all d
    ```bash
    docker-compose up --build
    ```
-   *(Add `-d` at the end to run it in detached mode / in the background)*
+   _(Add `-d` at the end to run it in detached mode / in the background)_
 3. **Access the application:**
    - **Frontend:** http://localhost:5173
-   - **Backend API:** http://localhost:8000
-   - **Backend Interactive Docs (Swagger UI):** http://localhost:8000/docs
+   - **Backend API:** http://localhost:3000
 
 To stop the containers, use `Ctrl+C` (if running in the foreground), or run:
+
 ```bash
 docker-compose down
 ```
@@ -44,21 +43,17 @@ to run the applications locally without Docker, follow these steps:
    ```bash
    cd backend
    ```
-2. **Create a virtual environment** (optional but recommended):
+2. **Install the dependencies:**
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Linux/macOS
-   # On Windows run: venv\Scripts\activate
+   npm install
    ```
-3. **Install the dependencies:**
+3. **Start the backend server:**
    ```bash
-   pip install -r requirements.txt
+   npm run start:dev
+   # or
+   npm run start:prod
    ```
-4. **Start the backend server:**
-   ```bash
-   fastapi dev app/main.py
-   ```
-   *The backend server will be running on `http://localhost:8000`.*
+   _The backend server will be running on `http://localhost:3000`._
 
 ### 2. Running the Vue Frontend
 
@@ -74,11 +69,11 @@ to run the applications locally without Docker, follow these steps:
    ```bash
    npm run dev
    ```
-   *The frontend application will be visible on `http://localhost:5173`.*
+   _The frontend application will be visible on `http://localhost:5173`._
 
 ---
 
 ## Troubleshooting
 
-- **Ports already in use:** If port `5173` or `8000` are already in use by another application, you'll need to stop the conflicting service, or adjust the port mappings inside the `docker-compose.yml` file.
+- **Ports already in use:** If port `5173` or `3000` are already in use by another application, you'll need to stop the conflicting service, or adjust the port mappings inside the `docker-compose.yml` file.
 - **Permission errors with volumes (Docker):** Ensure you have sufficient permissions over the current directory, or try prefixing commands with `sudo` if on Linux.

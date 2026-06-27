@@ -7,8 +7,8 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
-#    volumes:
- #     - ./backend:/app
+  #    volumes:
+  #     - ./backend:/app
 
   postgres_db:
     image: postgres
