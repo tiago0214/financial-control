@@ -1,50 +1,50 @@
-name: Deploy Midas Helper to GitHub Pages
+# name: Deploy Midas Helper to GitHub Pages
 
-on:
-  push:
-    branches: ["main"]
+# on:
+#   push:
+#     branches: ["main"]
 
-permissions: 
-  contents: read
-  pages: write
-  id-token: write
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
 
-jobs:
-  build-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+# jobs:
+#   build-and-deploy:
+#     environment:
+#       name: github-pages
+#       url: ${{ steps.deployment.outputs.page_url }}
+#     runs-on: ubuntu-latest
 
-    defaults:
-      run: 
-        working-directory: ./src/frontend
+#     defaults:
+#       run:
+#         working-directory: ./src/frontend
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v5
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v5
-        with:
-          node-version: 24
-          cache: 'npm'
-          cache-dependency-path: './src/frontend/package-lock.json'
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v5
+#         with:
+#           node-version: 24
+#           cache: 'npm'
+#           cache-dependency-path: './src/frontend/package-lock.json'
 
-      - name: Install dependencies
-        run: npm ci
+#       - name: Install dependencies
+#         run: npm ci
 
-      - name: Build project
-        run: npm run build
+#       - name: Build project
+#         run: npm run build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+#       - name: Setup Pages
+#         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './src/frontend/dist'
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v3
+#         with:
+#           path: './src/frontend/dist'
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+#       - name: Deploy to GitHub Pages
+#         id: deployment
+#         uses: actions/deploy-pages@v5
